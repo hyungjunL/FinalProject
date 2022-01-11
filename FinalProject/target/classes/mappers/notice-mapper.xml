@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- xml 파일의 유효성 체크를 위한 부분 -->
+<mapper namespace="notice">
+	
+	<!-- 공지사항 리스트 -->
+	<select id="notice" resultType="notice">
+		SELECT *
+		FROM notice
+		ORDER BY NOTICE_NO DESC
+	</select>
+	
+	<select id="detail" resultType="notice" parameterType="notice">
+		SELECT NOTICE_NO, MEMBER_NUM, NOTICE_TITLE, NOTICE_CONTENT, CREATE_DATE, STATUS, COUNT, C.CATEGORY_NUM, NOTICE_NAME
+		FROM NOTICE N
+		JOIN NOTICE_CATEGORY C 
+        ON N.CATEGORY_NUM = C.CATEGORY_NUM
+		WHERE NOTICE_NO = #{noticeNo}
+	</select>
+	
+	<select id="nextDetail" resultType="notice" parameterType="notice">
+		SELECT NOTICE_NO, MEMBER_NUM, NOTICE_TITLE, NOTICE_CONTENT, CREATE_DATE, STATUS, COUNT, C.CATEGORY_NUM, NOTICE_NAME
+		FROM NOTICE N
+		JOIN NOTICE_CATEGORY C 
+        ON N.CATEGORY_NUM = C.CATEGORY_NUM
+		WHERE NOTICE_NO = #{noticeNo}+1
+	</select>
+	
+	<select id="beforeDetail" resultType="notice" parameterType="notice">
+		SELECT NOTICE_NO, MEMBER_NUM, NOTICE_TITLE, NOTICE_CONTENT, CREATE_DATE, STATUS, COUNT, C.CATEGORY_NUM, NOTICE_NAME
+		FROM NOTICE N
+		JOIN NOTICE_CATEGORY C 
+        ON N.CATEGORY_NUM = C.CATEGORY_NUM
+		WHERE NOTICE_NO = #{noticeNo}-1
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+

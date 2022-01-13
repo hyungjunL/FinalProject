@@ -2,112 +2,117 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
+
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-  <style>
-    /* Make the image fully responsive */
-    .carousel-inner img {
-      width: 100%;
-      height: 100%;
-    }
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ogani | Template</title>
 
-    .col-sm-6 {
-      text-align:center;
-    }
-
-    .nav-link {
-      color:black;
-    }
-    .header a:hover {
-      text-decoration: underline;
-      color:black;
-    }
-
-    .card {
-      display:inline-block;
-      margin:10px;
-      box-sizing: border-box;
-    }
-  </style>
-
-  <style>
-    .login {
-      width:277px;
-      margin:auto;
-    }
-  </style>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="../resources/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../resources/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../resources/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="../resources/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="../resources/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="../resources/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../resources/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
+    <link rel="stylesheet" href="../resources/css/main-top.css">
 </head>
-<body style="width:1000px; margin:auto">
 
-<div class="header">
-  <nav class="navbar navbar-expand-sm bg-light justify-content-end" style="font-size:12px;">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#">로그인</a>
-      </li> 
-      <li class="nav-item">
-        <a class="nav-link" href="#">회원가입</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">마이페이지</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="maincenter.do">고객센터</a>
-      </li>
-    </ul>
-  </nav>
-  
-  <div class="header-log">
-    <img src="../resources/baner.JPG" style="width:100%; height:100%;">
-  </div>
-</div>
+<body>
 
-<div class="nav" style="margin-top:10px;">
-    <ul class="nav nav-tabs">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">카테고리</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">패키지</a>
-            <a class="dropdown-item" href="#">저당식단</a>
-            <a class="dropdown-item" href="#">칼로리식단</a>
-            <br>
-            <a class="dropdown-item" href="#">장수식단</a>
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6"></div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">
+                            <div class="header__top__right__social">
+                                <a href="${ pageContext.request.contextPath }/customercenter/notice.do?currentPage=1"">고객센터</a>
+                                <a href="#">마이페이지</a>
+                                <a href="#">회원가입</a>
+                            </div>
+                            <div class="header__top__right__auth">
+                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">신상품</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">베스트</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">이벤트</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">패키지식단</a>
-        </li>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <!-- <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li> -->
-        <li class="nav-item">
-            <form class="form-inline" action="/action_page.php">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-primary active" type="submit">검색</button>
-            </form>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">장바구니</a>
-        </li>
-      </ul>
-</div>
+        <div class="container" style="text-align: center;">
+            <div class="header__logo">
+                <a href="./index.html"><img src="../resources/logo.png" alt=""></a>
+            </div>
 
-</body>
+                <div>
+                    <nav class="header__menu">
+                        <ul>
+                            <li>
+                                <i class="fa fa-bars"></i>
+                                <span class="categoryName"><b>카테고리</b></span>
+
+                                <ul class="header__menu__dropdown" style="border: 1px solid lightgray;">
+                                    <li><a href="./shop-details.html" class="categoryHover categoryBold" style="color: black; text-decoration: underline;"><b>패키지 도시락</b></a></li>
+                                    <li><a href="./shoping-cart.html" class="categoryHover" style="color: black;">저당식당</a></li>
+                                    <li><a href="./checkout.html" class="categoryHover" style="color: black;">칼로리식단</a></li>
+                                    <li><a href="./checkout.html" class="categoryHover" style="color: black;">장수식단</a></li>
+                                    <li><a href="./blog-details.html" class="categoryHover categoryBold" style="color: black; text-decoration: underline;"><b>셀프 도시락</b></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./shop-grid.html" class="a">신상품</a></li>
+                            <li><a href="./shop-grid.html" class="a">베스트</a></li>
+                            <li><a href="#" class="a">이벤트</a></li>
+                            <li><a href="./blog.html" class="a">패키지식단</a></li>
+                            <li>
+                                <form class="form-inline" action="/action_page.php">
+                                    <input class="form-control mr-sm-2 inp_search" type="text" placeholder="Search">
+                                    <a href="#"><img src="../resources/img/search.png" alt="" style="width: 30px; height: 30px;"></a>
+                                </form>
+                            </li>
+                            <li>
+                                <div class="header__top__right__auth">
+                                    <a href="#"><i class="fa fa-shopping-bag"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+
+    </header>
+    <!-- Header Section End -->
+
+    </body>
+    <script src="../resources/js/jquery-3.3.1.min.js"></script>
+        <script src="../resources/js/bootstrap.min.js"></script>
+        <script src="../resources/js/jquery.nice-select.min.js"></script>
+        <script src="../resources/js/jquery-ui.min.js"></script>
+        <script src="../resources/js/jquery.slicknav.js"></script>
+        <script src="../resources/js/mixitup.min.js"></script>
+        <script src="../resources/js/owl.carousel.min.js"></script>
+        <script src="../resources/js/main.js"></script>
 </html>

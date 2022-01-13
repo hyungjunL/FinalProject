@@ -38,6 +38,7 @@
 	<!-- typeAliases : VO 클래스에 별칭을 지정하겠다. -->
 	<typeAliases>
 		<typeAlias alias="notice" type="com.oneteam.wo9wo9.customercenter.model.vo.Notice"></typeAlias>
+		<typeAlias alias="question" type="com.oneteam.wo9wo9.customercenter.model.vo.Question"></typeAlias>
 	</typeAliases>
 	
 </configuration>

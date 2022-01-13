@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.oneteam.wo9wo9.customercenter.model.service.CustomerCenterService;
 import com.oneteam.wo9wo9.customercenter.model.vo.Notice;
+import com.oneteam.wo9wo9.customercenter.model.vo.PageInfo;
+import com.oneteam.wo9wo9.customercenter.model.vo.Question;
 
 @Controller
 @RequestMapping("/customercenter")
@@ -39,23 +41,74 @@ public class CustomerCenterController {
 		Notice notice = customerCenterService.detail(noticeNo);
 		Notice nextNotice = customerCenterService.nextDetail(noticeNo);
 		Notice beforeNotice = customerCenterService.beforeDetail(noticeNo);
-		
-		System.out.println(notice.getNoticeNo());
-		
-		model.addAttribute("notice", notice);
-		model.addAttribute("nextNotice", nextNotice);
-		model.addAttribute("beforeNotice", beforeNotice);
+		int result = customerCenterService.viewCount(noticeNo);
+		System.out.println(notice.getCount());
 		
 		
-		return "customercenter/noticedetail";
+		
+		if(result > 0) {
+		
+			model.addAttribute("notice", notice);
+			model.addAttribute("nextNotice", nextNotice);
+			model.addAttribute("beforeNotice", beforeNotice);
+			
+			//응답뷰 지정
+			return "customercenter/noticedetail";
+		}
+		else {
+			// 실패 했다면
+			return "redirect:notice.do";
+		}
+		
+		
 	}
 	
 	@GetMapping("/notice.do")
-	public String notice(Model model) {
+	public String notice(
+			@RequestParam int currentPage
+			,Model model) {
+		int listCount; 
+		int pageLimit; 
+		int boardLimit; 
 		
-		List<Notice> list = customerCenterService.notice(); 
+		int maxPage; 
+		int startPage; 
+		int endPage; 
 		
+		listCount = customerCenterService.selectAllListCount();
+		System.out.println("리스트 카운트 : " + listCount);
+		
+		pageLimit = 10;
+
+		boardLimit = 10;
+		
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+		endPage = startPage + pageLimit - 1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		List<Notice> list = customerCenterService.notice(pi); 
 		System.out.println(list);
+		System.out.println(pi.getCurrentPage());
+		System.out.println(listCount);
+		System.out.println(pi.getPageLimit());
+		System.out.println(pi.getBoardLimit());
+		System.out.println(pi.getMaxPage());
+		System.out.println(pi.getStartPage());
+		System.out.println(pi.getEndPage());
+		
+		model.addAttribute("currentPage", pi.getCurrentPage());
+		model.addAttribute("listCount", listCount);
+		model.addAttribute("pageLimit", pi.getPageLimit());
+		model.addAttribute("boardLimit", pi.getBoardLimit());
+		model.addAttribute("maxPage", pi.getMaxPage());
+		model.addAttribute("startPage", pi.getStartPage());
+		model.addAttribute("endPage", pi.getEndPage());
 		
 		model.addAttribute("list", list);
 		
@@ -68,7 +121,57 @@ public class CustomerCenterController {
 	}
 	
 	@GetMapping("/onevsone.do")
-	public String onevsone() {
+	public String onevsone(
+			@RequestParam int currentPage,
+			Model model) {
+		
+		int listCount; 
+		int pageLimit; 
+		int boardLimit; 
+		
+		int maxPage; 
+		int startPage; 
+		int endPage;
+		
+		listCount = customerCenterService.questionListCount();
+		System.out.println("리스트 카운트 1:1 문의 : " + listCount);
+		
+		pageLimit = 10;
+
+		boardLimit = 10;
+		
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+		endPage = startPage + pageLimit - 1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		
+		List<Question> list = customerCenterService.questionList(pi);
+		System.out.println(list);
+		System.out.println(pi.getCurrentPage());
+		System.out.println(listCount);
+		System.out.println(pi.getPageLimit());
+		System.out.println(pi.getBoardLimit());
+		System.out.println(pi.getMaxPage());
+		System.out.println(pi.getStartPage());
+		System.out.println(pi.getEndPage());
+		
+		model.addAttribute("currentPage", pi.getCurrentPage());
+		model.addAttribute("listCount", listCount);
+		model.addAttribute("pageLimit", pi.getPageLimit());
+		model.addAttribute("boardLimit", pi.getBoardLimit());
+		model.addAttribute("maxPage", pi.getMaxPage());
+		model.addAttribute("startPage", pi.getStartPage());
+		model.addAttribute("endPage", pi.getEndPage());
+		
+		
+		model.addAttribute("list", list);
+		
 		return "customercenter/onevsone";
 	}
 	
@@ -77,32 +180,51 @@ public class CustomerCenterController {
 		return "customercenter/onevsonedetail";
 	}
 	
+	@GetMapping("/search.do")
+	public String search(
+			@RequestParam String keyword,
+			@RequestParam int currentPage,
+			Model model) {
+		
+		int listCount; 
+		int pageLimit; 
+		int boardLimit; 
+		
+		int maxPage; 
+		int startPage; 
+		int endPage; 
+		
+		listCount = customerCenterService.selectSearchListCount(keyword);
+		System.out.println("리스트 카운트 : " + listCount);
+		
+		pageLimit = 10;
+
+		boardLimit = 10;
+		
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+		endPage = startPage + pageLimit - 1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		List<Notice> list = customerCenterService.search(keyword,pi); 
+		
+		System.out.println(currentPage);
+		model.addAttribute("currentPage", pi.getCurrentPage());
+		model.addAttribute("listCount", listCount);
+		model.addAttribute("pageLimit", pi.getPageLimit());
+		model.addAttribute("boardLimit", pi.getBoardLimit());
+		model.addAttribute("maxPage", pi.getMaxPage());
+		model.addAttribute("startPage", pi.getStartPage());
+		model.addAttribute("endPage", pi.getEndPage());
+		model.addAttribute("currentPage",currentPage);
+		model.addAttribute("list",list);
+		
+		
+		return "customercenter/notice";
+	}
 	
-	
-//	@GetMapping("/detail.do")
-//	public String detail(
-//			@RequestParam int boardNo,
-//			Model model) {
-//		
-//		// 게시글 조회 FLOW
-//		// => 조회수 증가 먼저, 성공했다면 SELECT 문을 실행
-//		
-//		// 조회수 증가
-//		int result = customerCenterService.increaseCount(boardNo);
-//		
-//		if(result > 0) {
-//			// 조회수 증가가 성공했다면
-//			Notice notice = customerCenterService.content(boardNo);
-//			// 수하물 붙이기
-//			model.addAttribute("notice",notice);
-//			
-//			//응답뷰 지정
-//			return "customercenter/noticedetail";
-//		}
-//		else {
-//			// 실패 했다면
-//			return "redirect:union.do";
-//		}
-//		
-//	}
 }

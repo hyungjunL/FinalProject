@@ -34,194 +34,10 @@
 
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
-    <div class="humberger__menu__wrapper">
-        <div class="humberger__menu__logo">
-            <a href="#"><img src="../resources/img/logo.png" alt=""></a>
-        </div>
-        <div class="humberger__menu__cart">
-            <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-            </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
-        </div>
-        <div class="humberger__menu__widget">
-            <div class="header__top__right__language">
-                <img src="../resources/img/language.png" alt="">
-                <div>English</div>
-                <span class="arrow_carrot-down"></span>
-                <ul>
-                    <li><a href="#">Spanis</a></li>
-                    <li><a href="#">English</a></li>
-                </ul>
-            </div>
-            <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
-            </div>
-        </div>
-        <nav class="humberger__menu__nav mobile-menu">
-            <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-            </ul>
-        </nav>
-        <div id="mobile-menu-wrap"></div>
-        <div class="header__top__right__social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-        </div>
-        <div class="humberger__menu__contact">
-            <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                <li>Free Shipping for all Order of $99</li>
-            </ul>
-        </div>
-    </div>
-    <!-- Humberger End -->
-
-    <!-- Header Section Begin -->
+   
     <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="header__top__left">
-                            <ul>
-                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                                <li>Free Shipping for all Order of $99</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="header__top__right">
-                            <div class="header__top__right__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            </div>
-                            <div class="header__top__right__language">
-                                <img src="../resources/img/language.png" alt="">
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div>
-                            <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="../resources/img/logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li class="active"><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3">
-                    <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                        </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="humberger__open">
-                <i class="fa fa-bars"></i>
-            </div>
-        </div>
+        <%@ include file="../common/header.jsp" %>
     </header>
-    <!-- Header Section End -->
-
-    <!-- Hero Section Begin -->
-    <section class="hero hero-normal">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>All departments</span>
-                        </div>
-                        <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
@@ -248,8 +64,8 @@
                         <div class="blog__sidebar__item">
                             <h4>Categories</h4>
                             <ul>
-                                <li><a href="notice.do">공지사항</a></li>
-                                <li><a href="onevsone.do">1:1 문의</a></li>
+                                <li><a href="notice.do?currentPage=1">공지사항</a></li>
+                                <li><a href="onevsone.do?currentPage=1">1:1 문의</a></li>
                                 <li><a href="faq.do">자주하는 질문</a></li>
                             </ul>
                         </div>
@@ -290,7 +106,7 @@
                         <hr>
                         <br>
                         <table>
-                            <td width="25%">&nbsp;&nbsp;&nbsp;전체 52개</td>
+                            <td width="25%">&nbsp;&nbsp;&nbsp;전체 ${ listCount }개</td>
                             <td width="25%">
                             
                             <td width="60%">
@@ -321,70 +137,25 @@
                                       </tr>
                                   </thead>
                                   <tbody>
-                                        <tr>
-                                          <td>8</td>
-                                          <td>[환불문의]</td>
-                                          <td>안녕하십니까? </td>
-                                          <td>user01</td>
-                                          <td>2021-12-28</td>
-                                          <td>7</td>
-                                        </tr>
-                                        <tr>
-                                          <td>7</td>
-                                          <td>[교환문의]</td>
-                                          <td>mary@example.com</td>
-                                          <td>6</td>
-                                          <td>2021-12-28</td>
-                                          <td>7</td>
-                                        </tr>
-                                        <tr>
-                                          <td>6</td>
-                                          <td>[상품문의]</td>
-                                          <td>july@example.com</td>
-                                          <td>4</td>
-                                          <td>2021-12-28</td>
-                                          <td>7</td>
-                                        </tr>
-                                        <tr>
-                                          <td>5</td>
-                                          <td>[서비스문의]</td>
-                                          <td>july@example.com</td>
-                                          <td>9</td>
-                                          <td>2021-12-28</td>
-                                          <td>7</td>
-                                        </tr>
-                                        <tr>
-                                          <td>4</td>
-                                          <td>[환불문의]</td>
-                                          <td>july@example.com</td>
-                                          <td>8</td>
-                                          <td>2021-12-28</td>
-                                          <td>7</td>
-                                        </tr>
-                                        <tr>
-                                          <td>3</td>
-                                          <td>[교환문의]</td>
-                                          <td>july@example.com</td>
-                                          <td>5</td>
-                                          <td>2021-12-28</td>
-                                          <td>7</td>
-                                        </tr>
-                                        <tr>
-                                          <td>2</td>
-                                          <td>[서비스문의]</td>
-                                          <td>july@example.com</td>
-                                          <td>8</td>
-                                          <td>2021-12-28</td>
-                                          <td>7</td>
-                                        </tr>
-                                        <tr>
-                                          <td>1</td>
-                                          <td>[기타문의]</td>
-                                          <td>2021-12-31</td>
-                                          <td>13</td>
-                                          <td>2021-12-28</td>
-                                          <td>7</td>
-                                        </tr>
+                                        <c:choose>
+											<c:when test="${ empty list }">
+												<tr>
+													<td colspan="5">조회 결과가 없습니다.</td>
+												</tr>
+											</c:when>
+											<c:otherwise>
+												<c:forEach var="n" items="${ list }">
+													<tr>
+														<td>${ n.QNum }</td>
+														<td>${ n.categoryNum }</td>
+														<td>${ n.QTitle }</td>
+														<td>${ n.memberId }</td>
+														<td>${ n.QDate.substring(0, 10) }</td>
+														<td>${ n.count }</td>
+													</tr>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
                                      </tbody>
                                      
                               </table>
@@ -392,14 +163,25 @@
                               <table width="100%">
                               <td width="13%"></td>
                               <td width="74%">
-                              	 <div id="paging" align="center" class="container">                 
-									  <ul class="pagination justify-content-center">
-									    <li class="page-item"><a class="page-link" href="">Previous</a></li>
-									    <li class="page-item"><a class="page-link" href="">1</a></li>
-									    <li class="page-item"><a class="page-link" href="">2</a></li>
-									    <li class="page-item"><a class="page-link" href="">Next</a></li>
-									  </ul>
-								</div>
+                              	 <div align="center" class="paging-area">
+			        				<c:if test="${currentPage != 1}">
+										<button class = "btn btn-ligh" onclick="location.href='${ pageContext.request.contextPath }/customercenter/onevsone.do?currentPage=${ currentPage - 1 }'">&lt;</button>									
+									</c:if>
+							        <c:forEach var="i" begin="${ startPage }" end="${ endPage }">
+							        	<c:choose>
+											<c:when test="${ i != currentPage }">
+												<button class = "btn btn-ligh" onclick="location.href='${ pageContext.request.contextPath }/customercenter/onevsone.do?currentPage=${ i }'">${ i }</button>									
+											</c:when>
+											<c:otherwise>
+												<button id="disable"class = "btn btn-ligh" disabled>${ i }</button>	
+											</c:otherwise>
+										</c:choose>
+										
+									</c:forEach>
+									<c:if test="${currentPage != maxPage}">
+										<button class = "btn btn-ligh" onclick="location.href='${ pageContext.request.contextPath }/customercenter/onevsone.do?currentPage=${ currentPage + 1 }'">&gt;</button>									
+									</c:if>
+							    </div>
                               </td>
                               <td width="13%">
                                   <!-- <%-- <c:if test="${ loginUser == null }">
@@ -419,69 +201,7 @@
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__about__logo">
-                            <a href="./index.html"><img src="../resources/img/logo.png" alt=""></a>
-                        </div>
-                        <ul>
-                            <li>Address: 60-49 Road 11378 New York</li>
-                            <li>Phone: +65 11.188.888</li>
-                            <li>Email: hello@colorlib.com</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
-                    <div class="footer__widget">
-                        <h6>Useful Links</h6>
-                        <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">About Our Shop</a></li>
-                            <li><a href="#">Secure Shopping</a></li>
-                            <li><a href="#">Delivery infomation</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Our Sitemap</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">Who We Are</a></li>
-                            <li><a href="#">Our Services</a></li>
-                            <li><a href="#">Projects</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Innovation</a></li>
-                            <li><a href="#">Testimonials</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12">
-                    <div class="footer__widget">
-                        <h6>Join Our Newsletter Now</h6>
-                        <p>Get E-mail updates about our latest shop and special offers.</p>
-                        <form action="#">
-                            <input type="text" placeholder="Enter your mail">
-                            <button type="submit" class="site-btn">Subscribe</button>
-                        </form>
-                        <div class="footer__widget__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer__copyright">
-                        <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                        <div class="footer__copyright__payment"><img src="../resources/img/payment-item.png" alt=""></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <%@ include file="../common/footer.jsp" %>
     </footer>
     <!-- Footer Section End -->
 

@@ -39,6 +39,7 @@
 	<typeAliases>
 		<typeAlias alias="notice" type="com.oneteam.wo9wo9.customercenter.model.vo.Notice"></typeAlias>
 		<typeAlias alias="question" type="com.oneteam.wo9wo9.customercenter.model.vo.Question"></typeAlias>
+		<typeAlias alias="review" type="com.oneteam.wo9wo9.review.vo.Review"></typeAlias>
 	</typeAliases>
 	
 </configuration>

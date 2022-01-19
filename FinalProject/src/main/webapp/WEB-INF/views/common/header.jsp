@@ -48,7 +48,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__right">
                             <div class="header__top__right__social">
-                                <a href="${ pageContext.request.contextPath }/customercenter/notice.do?currentPage=1"">고객센터</a>
+                                <a href="${ pageContext.request.contextPath }/customercenter/notice.do?currentPage=1">고객센터</a>
                                 <a href="#">마이페이지</a>
                                 <a href="#">회원가입</a>
                             </div>
@@ -82,7 +82,7 @@
                             </li>
                             <li><a href="./shop-grid.html" class="a">신상품</a></li>
                             <li><a href="./shop-grid.html" class="a">베스트</a></li>
-                            <li><a href="#" class="a">이벤트</a></li>
+                            <li><a href="${ pageContext.request.contextPath }/customercenter/event.do" class="a">이벤트</a></li>
                             <li><a href="./blog.html" class="a">패키지식단</a></li>
                             <li>
                                 <form class="form-inline" action="/action_page.php">
@@ -108,11 +108,11 @@
 
     </body>
     <script src="../resources/js/jquery-3.3.1.min.js"></script>
-        <script src="../resources/js/bootstrap.min.js"></script>
-        <script src="../resources/js/jquery.nice-select.min.js"></script>
-        <script src="../resources/js/jquery-ui.min.js"></script>
-        <script src="../resources/js/jquery.slicknav.js"></script>
-        <script src="../resources/js/mixitup.min.js"></script>
-        <script src="../resources/js/owl.carousel.min.js"></script>
-        <script src="../resources/js/main.js"></script>
+    <script src="../resources/js/bootstrap.min.js"></script>
+    <script src="../resources/js/jquery.nice-select.min.js"></script>
+    <script src="../resources/js/jquery-ui.min.js"></script>
+    <script src="../resources/js/jquery.slicknav.js"></script>
+    <script src="../resources/js/mixitup.min.js"></script>
+    <script src="../resources/js/owl.carousel.min.js"></script>
+    <script src="../resources/js/main.js"></script>
 </html>

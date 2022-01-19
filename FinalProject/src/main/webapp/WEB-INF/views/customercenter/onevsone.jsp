@@ -101,22 +101,23 @@
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-7">
-                    <div id="menu1" class="container tab-pane active"><br>
+                    <div class="container tab-pane active"><br>
                         <h3><strong>1:1 문의</strong></h3>
                         <hr>
                         <br>
                         <table>
-                            <td width="25%">&nbsp;&nbsp;&nbsp;전체 ${ listCount }개</td>
-                            <td width="25%">
+                            <td width="15%">&nbsp;&nbsp;&nbsp;전체 ${ listCount }개</td>
+                            <td width="30%">
                             
-                            <td width="60%">
+                            <td width="55%">
                                 
-                                <form class="form-inline" action="/action_page.php">
+                                <form class="form-inline" action="onesearch.do">
                                     <select name="type">
-                                        <option value="BOARD_TITLE">제목</option>
-                                        <option value="BOARD_WRITER">작성자</option>
+                                        <option value="Q_TITLE">제목</option>
+                                        <option value="MEMBER_ID">작성자</option>
                                     </select>
-                                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                                    <input type="hidden" name="currentPage" value="1">
+                                    <input class="form-control mr-sm-2" type="text" name="keyword" placeholder="Search">
                                     <button class="btn btn-success" type="submit">Search</button>
                                 </form>
                                 
@@ -125,13 +126,13 @@
                           <br>
                           <div class="container">
                       
-                                <table class="table table-hover" >
+                                <table id="menu1" class="table table-hover" >
                                      <thead>
                                          <tr width="100%">
                                           <th width="8%">No.</th>
-                                          <th width="17%">카테고리</th>
-                                          <th width="30%">제목</th>
-                                          <th width="15%">작성자</th>
+                                          <th width="15%">카테고리</th>
+                                          <th width="34%">제목</th>
+                                          <th width="13%">작성자</th>
                                           <th width="17.5%">작성일</th>
                                           <th width="12.5%">조회수</th>	
                                       </tr>
@@ -147,8 +148,35 @@
 												<c:forEach var="n" items="${ list }">
 													<tr>
 														<td>${ n.QNum }</td>
-														<td>${ n.categoryNum }</td>
-														<td>${ n.QTitle }</td>
+														<td>
+															<c:choose>
+																<c:when test="${n.categoryNum == 1 }">
+																	셀프
+																</c:when>
+																<c:when test="${n.categoryNum == 2 }">
+																	페키지
+																</c:when>
+																<c:when test="${n.categoryNum == 3 }">
+																	서비스
+																</c:when>
+																<c:when test="${n.categoryNum == 4 }">
+																	기타
+																</c:when>
+																
+															</c:choose>
+														</td>
+														<td>
+															${ n.QTitle }
+															<c:choose>
+																<c:when test="${ n.AContent == null}">
+																	&nbsp;&nbsp;[대기중]									
+																</c:when>
+																<c:otherwise>
+																	&nbsp;&nbsp;[답변완료]	
+																</c:otherwise>
+															</c:choose>
+															
+														</td>
 														<td>${ n.memberId }</td>
 														<td>${ n.QDate.substring(0, 10) }</td>
 														<td>${ n.count }</td>
@@ -213,7 +241,16 @@
     <script src="../resources/js/mixitup.min.js"></script>
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
-
+	<script>
+		$(function(){
+			$("#menu1 tbody tr").click(function(){
+				
+				var nno = $(this).children().eq(0).text();
+				location.href="${ pageContext.request.contextPath }/customercenter/onedetail.do?noticeNo=" + nno;
+				
+			});
+		});	
+	</script>
 
 </body>
 

@@ -99,6 +99,50 @@ public class CustomerCenterDaoImpl implements CustomerCenterDao {
 		return sqlSession.selectList("question.questionList",param);
 	}
 
+
+	@Override
+	public int selectoneSearchListCount(Map<String, String> param) {
+		
+		return Integer.parseInt(String.valueOf((sqlSession.selectOne("question.selectoneSearchListCount",param).toString())));
+	}
+
+	@Override
+	public List<Question> onesearch(Map<String, String> param) {
+		// TODO Auto-generated method stub
+		System.out.println("이게 뭘까???" + param.get("type"));
+		System.out.println("이게 뭘까???" + param.get("keyword"));
+		return sqlSession.selectList("question.onesearch",param);
+	}
+
+	@Override
+	public Question onedetail(int noticeNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("question.onedetail", noticeNo);
+	}
+
+	@Override
+	public int write(Question question) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("question.write", question);
+	}
+
+	@Override
+	public int insertCoupon(Map<Object, Object> param) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("question.insertCoupon", param);
+	}
+
+	@Override
+	public int CouponList(Map<Object, Object> param) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("question.CouponList",param);
+	}
+
+	
+
+
+	
+
 	
 	
 

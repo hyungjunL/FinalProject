@@ -110,43 +110,40 @@
                         <br>
                         
                         <div id="home2" class="container">
-                            <form method="post" action="${pageContext.request.contextPath}/board/saveBoard">
+                            <form method="post" action="enrollQuestion.do">
                                                            카테고리 
                                 <br>
                                 <div >
-                                    <select>
-                                        <option>교환문의</option>
-                                        <option>환불문의</option>
+                                    <select name="categoryNum">
+                                        <option value="1">페키지도시락</option>
+                                        <option value="2">셀프도시락</option>
+                                        <option value="3">서비스</option>
+                                        <option value="4">기타</option>
                                     </select>
                                 </div>
                                 <br>
                                 <br>
                                 <div class="mb-3">
                                     <label for="title">제목</label>
-                                    <input type="text" class="form-control" name="noticeTitle" placeholder="제목을 입력해 주세요">
+                                    <input type="text" class="form-control" name="qTitle" placeholder="제목을 입력해 주세요">
                                 </div>
                 
-                                <div class="mb-3">
-                                    <label for="reg_id">사진 첨부</label>
-                                    <input type="file" class="form-control" name="noticeImg" accept="image/png, image/gif, image/jpeg">
-                                    png, gif, jpg 파일만 첨부 가능
-                                </div>
                 
                                 <div class="mb-3">
                                     <label for="content">내용</label>
-                                    <textarea class="form-control" rows="5" name=noticeContent placeholder="내용을 입력해 주세요" ></textarea>
+                                    <textarea class="form-control" rows="5" name="qContent" placeholder="내용을 입력해 주세요" ></textarea>
                                 </div>
                                 
                                 
                 
-                            
+                            <div align="center">
+                                <button type="submit" class="btn btn-sm btn-success" id="btnSave">저장</button>
+                                <button type="button" class="btn btn-sm btn-success" id="btnList">목록</button>
+                            </div>
                 
                             </form>
                 
-                            <div align="center">
-                                <button type="button" class="btn btn-sm btn-primary active" id="btnSave">저장</button>
-                                <button type="button" class="btn btn-sm btn-primary active" id="btnList">목록</button>
-                            </div>
+                            
                             
                         </div>
                     </div>

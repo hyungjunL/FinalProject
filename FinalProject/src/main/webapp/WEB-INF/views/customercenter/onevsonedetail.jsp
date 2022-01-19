@@ -119,32 +119,37 @@
                         <div id="home2" class="container">
                         
                             <br>
-                            <h3>[택배배송 관련 안내]</h3>
+                            <h3>
+                            	[
+	           						<c:choose>
+									<c:when test="${question.categoryNum == 1 }">
+										배송
+									</c:when>
+									<c:when test="${question.categoryNum == 2 }">
+										서비스
+									</c:when>
+									<c:when test="${question.categoryNum == 3 }">
+										결제
+									</c:when>
+									<c:when test="${question.categoryNum == 4 }">
+										기타
+									</c:when>
+									
+								</c:choose>] ${question.QTitle}</h5>
+                            </h3>
                             
                             <br>
                             <p>
-				                            고객님 죄송합니다.<br><br>
-				
-				                            현재 CJ대한통운 파업의 여파로<br><br>
-				                            
-				                            택배배송 가능 여부는 배송안내 페이지 또는<br><br>
-				                            
-				                            주문서에서 확인하실 수 있습니다.
+				                ${question.QContent}	            
                             </p>
-                          
+                          		
                         
                             <br>
                             <h3>[답변]</h3>
                             
                             <br>
                             <p>
-				                            고객님 죄송합니다.<br><br>
-				
-				                            현재 CJ대한통운 파업의 여파로<br><br>
-				                            
-				                            택배배송 가능 여부는 배송안내 페이지 또는<br><br>
-				                            
-				                            주문서에서 확인하실 수 있습니다.
+				            	${question.AContent }
                             </p>
                 
                         </div>
@@ -174,7 +179,16 @@
     <script src="../resources/js/owl.carousel.min.js"></script>
     <script src="../resources/js/main.js"></script>
 
-
+	<script>
+	$(function(){
+		$("#list").click(function(){
+			
+			location.href="${ pageContext.request.contextPath }/customercenter/onevsone.do?currentPage=1";
+			
+			
+		});
+	});
+	</script>
 </body>
 
 </html>

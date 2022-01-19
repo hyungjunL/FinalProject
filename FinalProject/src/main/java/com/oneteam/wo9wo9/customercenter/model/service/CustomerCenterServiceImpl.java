@@ -2,6 +2,7 @@ package com.oneteam.wo9wo9.customercenter.model.service;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -77,6 +78,48 @@ public class CustomerCenterServiceImpl implements CustomerCenterService {
 		// TODO Auto-generated method stub
 		return customerCenterDao.questionList(pi);
 	}
+
+	@Override
+	public int selectoneSearchListCount(Map<String, String> param) {
+		// TODO Auto-generated method stub
+		return customerCenterDao.selectoneSearchListCount(param);
+	}
+
+	@Override
+	public List<Question> onesearch(Map<String, String> param) {
+		// TODO Auto-generated method stub
+		return customerCenterDao.onesearch(param);
+	}
+
+	@Override
+	public Question onedetail(int noticeNo) {
+		// TODO Auto-generated method stub
+		return customerCenterDao.onedetail(noticeNo);
+	}
+
+	@Override
+	public int write(Question question) {
+		// TODO Auto-generated method stub
+		return customerCenterDao.write(question);
+	}
+
+	@Override
+	public int insertCoupon(Map<Object, Object> param) {
+		// TODO Auto-generated method stub
+		return customerCenterDao.insertCoupon(param);
+	}
+
+	@Override
+	public int CouponList(Map<Object, Object> param) {
+		// TODO Auto-generated method stub
+		return customerCenterDao.CouponList(param);
+	}
+
+	
+
+	
+
+	
 
 
 	

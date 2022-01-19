@@ -3,6 +3,7 @@ package com.oneteam.wo9wo9.customercenter.model.service;
 
 
 import java.util.List;
+import java.util.Map;
 
 import com.oneteam.wo9wo9.customercenter.model.vo.Notice;
 import com.oneteam.wo9wo9.customercenter.model.vo.PageInfo;
@@ -31,6 +32,25 @@ public interface CustomerCenterService {
 	int questionListCount();
 
 	List<Question> questionList(PageInfo pi);
+
+	int selectoneSearchListCount(Map<String, String> param);
+
+	List<Question> onesearch(Map<String, String> param);
+
+	Question onedetail(int noticeNo);
+
+	int write(Question question);
+
+	int insertCoupon(Map<Object, Object> param);
+
+	int CouponList(Map<Object, Object> param);
+
+
+
+
+	
+
+	
 
 
 

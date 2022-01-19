@@ -56,7 +56,7 @@
 <body>
 	<div id="outer">	
 		<div id="header">
-			<%@include file = "../common/header.jsp" %>
+			<%@include file = "../common/main_top.jsp" %>
 		</div>
 		<br><br>
 		<div id="body">

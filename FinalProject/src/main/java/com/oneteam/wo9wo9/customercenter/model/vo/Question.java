@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class Question {
 	private int qNum;
+	private int rowNum;
 	private int memberNum;
 	private int categoryNum;
 	private String status;
@@ -15,4 +16,5 @@ public class Question {
 	private String aDate;
 	private int count;
 	private String memberId;
+	private int noticeNo;
 }

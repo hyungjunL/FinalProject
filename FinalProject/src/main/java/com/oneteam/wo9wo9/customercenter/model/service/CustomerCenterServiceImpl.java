@@ -115,6 +115,12 @@ public class CustomerCenterServiceImpl implements CustomerCenterService {
 		return customerCenterDao.CouponList(param);
 	}
 
+	@Override
+	public int oneviewCount(int noticeNo) {
+		// TODO Auto-generated method stub
+		return customerCenterDao.oneviewCount(noticeNo);
+	}
+
 	
 
 	

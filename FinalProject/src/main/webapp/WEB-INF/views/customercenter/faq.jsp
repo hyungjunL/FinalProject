@@ -82,7 +82,7 @@
     <div class="humberger__menu__overlay"></div>
    
     <header class="header">
-        <%@ include file="../common/header.jsp" %>
+        <%@ include file="../common/main_top.jsp" %>
     </header>
     <!-- Hero Section End -->
 
@@ -152,14 +152,9 @@
                           <hr>
                           <br>
                           <table>
-                            <td width="25%">&nbsp;&nbsp;&nbsp;전체 52개</td>
+                            <td width="25%">&nbsp;&nbsp;&nbsp;전체 6개</td>
                             <td width="36.5%"></td>
-                            <td>
-                                <form class="form-inline" action="/action_page.php">
-                                    <input class="form-control mr-sm-2" type="text" placeholder="Search..">
-                                    <button class="btn btn-success" type="submit">Search</button>
-                                  </form>
-                              </td>
+                            
                         </table>
                           <div class="faq-content">
                             <button class="question" id="que-1"><span id="que-1-toggle">▷</span><span>wo9wo9는 무슨 의미입니까?</span></button>
@@ -202,14 +197,7 @@
                             </p>
                         </div>
                       	<br>
-                      	<div id="paging" align="center" class="container">                 
-									  <ul class="pagination justify-content-center">
-									    <li class="page-item"><a class="page-link" href="">Previous</a></li>
-									    <li class="page-item"><a class="page-link" href="">1</a></li>
-									    <li class="page-item"><a class="page-link" href="">2</a></li>
-									    <li class="page-item"><a class="page-link" href="">Next</a></li>
-									  </ul>
-								</div>
+                     
                     </div>  
                 </div>
             </div>
@@ -219,7 +207,7 @@
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
-        <%@ include file="../common/footer.jsp" %>
+        <%@ include file="../common/main_bottom.jsp" %>
     </footer>
     <!-- Footer Section End -->
 

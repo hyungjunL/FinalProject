@@ -40,7 +40,7 @@
     <div class="humberger__menu__overlay"></div>
    
     <header class="header">
-        <%@ include file="../common/header.jsp" %>
+        <%@ include file="../common/main_top.jsp" %>
     </header>
  
 
@@ -115,7 +115,7 @@
 		            				<form class="form-inline" action="search.do" method="get">
 		            					<input type="hidden" name="currentPage" value="1">
 						    			<input type="text" sclass="form-control mr-sm-2" name="keyword" placeholder="Search">
-						    			<button class="btn btn-success" type="submit">Search</button>
+						    			<button class="btn btn-success sm" type="submit">Search</button>
 					  				</form>
 					  			</td>
 		            		</table>
@@ -181,7 +181,7 @@
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
-        <%@ include file="../common/footer.jsp" %>
+        <%@ include file="../common/main_bottom.jsp" %>
     </footer>
     <!-- Footer Section End -->
 

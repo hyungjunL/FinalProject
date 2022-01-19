@@ -58,7 +58,7 @@
 	    <div class="humberger__menu__overlay"></div>
 	   
 	    <header class="header">
-	        <%@ include file="../common/header.jsp" %>
+	        <%@ include file="../common/main_top.jsp" %>
 	    </header>
 	    <!-- Hero Section End -->
 	
@@ -138,7 +138,7 @@
 		        		<input type="hidden" name="couponName" value="대박기원 7% 할인쿠폰">
 		     	
 						<input type="button" id="btn4" class="btn btn-success" value="쿠폰받기" style="width:200px; height:200px;font-size : 30px">						
-						
+						<input type="hidden" id="memberNum" value="${loginUser.memberNum }">
 		        	</div>
 		        </td>
 		      </tr>
@@ -152,7 +152,7 @@
 	
 	    <!-- Footer Section Begin -->
 	    <footer class="footer spad">
-	        <%@ include file="../common/footer.jsp" %>
+	        <%@ include file="../common/main_bottom.jsp" %>
 	    </footer>
 	    <!-- Footer Section End -->
 		
@@ -171,7 +171,9 @@
 			$.ajax({
 				url : "${ pageContext.request.contextPath }/customercenterrest/disable.do",
 				type : "post",
-				data : { couponName : "신규 가입 30% 할인쿠폰"},
+				data : { couponName : "신규 가입 30% 할인쿠폰",
+					     memberNum : $("#memberNum").val()
+					     },
 				success : function(result) {
 					// console.log(result);
 					

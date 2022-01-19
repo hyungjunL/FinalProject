@@ -8,6 +8,7 @@
 	<select id="reviewList" resultType="review">
 		SELECT *
 		FROM REVIEW
+		ORDER BY NOTICE_NO DESC
 	</select>
 	
 	<insert id="insertList" parameterType="map">
@@ -16,13 +17,15 @@
 						  ORDER_NUM,
 						  NOTICE_CONTENT,
 						  CREATE_DATE,
-						  STATUS)
+						  STATUS,
+						  POINT)
 		VALUES(
 			   SEQ_RNO.NEXTVAL,
 			   1,
 			   #{content},
 			   SYSDATE,
-			   DEFAULT)
+			   DEFAULT,
+			   #{point})
 	</insert>
 </mapper>
 

@@ -62,7 +62,7 @@
 						  COUPON_NAME)
 		VALUES(
 			   SEQ_CNO.NEXTVAL,
-			   #{userNo},
+			   #{memberNum},
 			   #{discount},
 			   DEFAULT,
 			   #{couponName})
@@ -96,9 +96,15 @@
 	<select id="CouponList" resultType="int" parameterType="map">
 		SELECT COUNT(*) COUNT
 		FROM COUPON
-		WHERE MEMBER_NUM = #{userNo}
+		WHERE MEMBER_NUM = #{memberNum}
 		AND COUPON_NAME=#{couponName}
 	</select>
+	
+	<update id="oneviewCount" parameterType="int">
+		UPDATE QUESTION
+		   SET COUNT = COUNT + 1
+		   WHERE Q_NUM = #{noticeNo}
+	</update>
 </mapper>
 
 

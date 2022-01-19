@@ -35,7 +35,7 @@
     <div class="humberger__menu__overlay"></div>
    
     <header class="header">
-        <%@ include file="../common/header.jsp" %>
+        <%@ include file="../common/main_top.jsp" %>
     </header>
     <!-- Hero Section End -->
 
@@ -143,9 +143,11 @@
 										</c:choose>관련 안내] </h3>
 								
 								<br>
-								<p>
-								${notice.noticeContent}
-								</p>
+								<div>
+									${notice.noticeContent}
+								</div>
+								
+								
 							  	<div border="1" width="50" height="40"></div>
 							</div>
 							<br><br>
@@ -223,7 +225,7 @@
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
-        <%@ include file="../common/footer.jsp" %>
+        <%@ include file="../common/main_bottom.jsp" %>
     </footer>
     <!-- Footer Section End -->
 	

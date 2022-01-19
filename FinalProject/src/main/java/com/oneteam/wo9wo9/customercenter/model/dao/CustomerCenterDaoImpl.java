@@ -138,6 +138,12 @@ public class CustomerCenterDaoImpl implements CustomerCenterDao {
 		return sqlSession.selectOne("question.CouponList",param);
 	}
 
+	@Override
+	public int oneviewCount(int noticeNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("question.oneviewCount",noticeNo);
+	}
+
 	
 
 

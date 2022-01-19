@@ -43,6 +43,8 @@ public interface CustomerCenterDao {
 
 	int CouponList(Map<Object, Object> param);
 
+	int oneviewCount(int noticeNo);
+
 
 
 

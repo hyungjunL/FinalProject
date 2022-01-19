@@ -33,12 +33,16 @@ public class RestReviewController {
 		
 	}
 	@PostMapping("/insert.do")
-	public int insertList(@RequestParam String content) {
+	public int insertList(@RequestParam String content,
+			  @RequestParam String memberName,
+			  @RequestParam int point) {
 		
-		int memeberNo = 1;
+		
 		Map<Object,Object> param = new HashMap<>();
-		param.put("memberNo", memeberNo);
+		param.put("memberName", memberName);
 		param.put("content", content);
+		param.put("point", point);
+		System.out.println("이름: " + memberName);
 		int result = ReviewService.insertList(param);
 		System.out.println("아이작스 리절트 : " + result);
 		return result;

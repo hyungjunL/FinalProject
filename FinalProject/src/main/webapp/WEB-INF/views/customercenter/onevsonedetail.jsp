@@ -35,7 +35,7 @@
     <div class="humberger__menu__overlay"></div>
    
     <header class="header">
-        <%@ include file="../common/header.jsp" %>
+        <%@ include file="../common/main_top.jsp" %>
     </header>
     <!-- Hero Section End -->
 
@@ -139,10 +139,11 @@
                             </h3>
                             
                             <br>
-                            <p>
-				                ${question.QContent}	            
-                            </p>
-                          		
+                            <div>
+                            	${question.QContent}	            
+                         
+                            </div>
+				             		
                         
                             <br>
                             <h3>[답변]</h3>
@@ -166,7 +167,7 @@
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
-        <%@ include file="../common/footer.jsp" %>
+        <%@ include file="../common/main_bottom.jsp" %>
     </footer>
     <!-- Footer Section End -->
 

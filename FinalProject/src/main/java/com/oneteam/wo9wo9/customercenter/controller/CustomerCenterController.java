@@ -71,7 +71,7 @@ public class CustomerCenterController {
 	
 	@GetMapping("/notice.do")
 	public String notice(
-			@RequestParam int currentPage
+			@RequestParam(defaultValue="1") int currentPage 
 			,Model model) {
 		int listCount; 
 		int pageLimit; 
@@ -185,8 +185,12 @@ public class CustomerCenterController {
 	public String onedetail(
 			@RequestParam int noticeNo,
 			Model model) {
+		System.out.println("번호: " + noticeNo);
 		Question question = customerCenterService.onedetail(noticeNo);
+		int count = customerCenterService.oneviewCount(noticeNo);
 		
+		
+		System.out.println("카운트 증가 값 : " + count);
 		model.addAttribute("question",question);
 		return "customercenter/onevsonedetail";
 	}

@@ -6,90 +6,72 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-	<!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	
-	<!-- Popper JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	
-	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<style>
-	
-
-
-.table-side td {
-	border: 1px solid lightgrey;
-	width: 200px;
-	height: 50px;
-	text-indent: 10px
-}
-.table-side tr:hover {
-	color: green;
-}
-.next-content1 {
-	height: 50px;
-	width: 80%;
-	border-top: 1px solid lightgray;
-	border-bottom: 1px solid lightgray;
-	color: gray;
-}
-.next-content:hover {
-	background: lightgray;
-	cursor: pointer;
-}
-.next-content2 {
-	height: 50px;
-	width: 10%;
-	border-top: 1px solid lightgray;
-	border-bottom: 1px solid lightgray;
-	color: gray;
-}
-#rewrap td{padding-bottom:10px; height:50px;}
-#rewrap td:nth-of-type(2n){color:lightgray; font-size:0.8em; text-align:right;}
-#rewrap tr:nth-of-type(1n){font-weight:bold}
-#rewrap tr:nth-of-type(2n){border-bottom:0.5px solid lightgray; font-weight:normal}
-
-</style>
 </head>
 <body>
-	<div id="reply-area" >
+	<header class="header">
+        <%@ include file="../common/header.jsp" %>
+    </header>
+    <hr>
+    <br>
+	<div class="container">
+	
+		<table class="table" id="list-area" width="50%">
+			<thead>
+				<tr>
+					<th>글번호</th>
+					<th>별점</th>
+					<th>내용</th>
+					<th>작성자</th>
+					<th>날짜</th>
 					
-		<div class="card mt-2">
-			<div class="card-header p-2">
-				
-			</div>
-			<div class="card-body" >
-				<table width=100% id="rewrap">
-					
+				</tr>
+			</thead>
+			<tbody></tbody>
 			
-				</table>
-			</div>
-		</div>
-			
-		</div>
+		</table>
 		<br>
 		
-		<div class="reply">
-			<div class="card-header">
-				<i class="fa fa-comment fa"></i> REVEIWS 
-			</div>
+		<div align="center">
+			<table class="table">
 			
-			<br>
-	
-			
-			<div>
 				<tr>
-                    <td>
-                        <textarea class="form-control" id="replyContent" cols="50" rows="3" style="resize:none;"></textarea>
-                    </td>
-                    <td>
-                    	<button onclick="insertReply();" class="btn btn-dark mt-3 btn-sm" style="float:right">등록</button>
-                    </td>
-               	</tr>
-			</div>
+				
+					<td width="7%"></td>
+					
+					<td>
+						<textarea id="replyContent" cols="70" rows="2" style="resize:none; margin-top:1px;" placeholder="내용을 입력해 주세요.."></textarea>
+        			   	
+						</td>
+					<td>
+						
+					별점:<select id="point" style="margin-top:10px;">
+							<option value="1">1점</option>
+							<option value="2">2점</option>
+							<option value="3">3점</option>
+							<option value="4">4점</option>
+							<option value="5">5점</option>
+						</select>
+					</td>
+					<td>
+						<c:if test="${ loginUser != null }">
+                            <button onclick="insertReply();" class="btn btn-success" style="margin-top:10px;">등록</button>
+                        </c:if>
+							
+						<input type="hidden" id="userName" value="${loginUser.memberName }">
+					</td>
+					<td width="17%"></td>
+				</tr>
+			</table>
+		
 			
 		</div>
+				
+	</div>
+	
+	<br>
+	
+	
 		
 		<!-- 댓글 -->
 		<script>
@@ -103,12 +85,14 @@
     				for(var i = 0; i < result.length; i++) {
 						str += "<tr>"
 							 		+ "<td>" + result[i].noticeNo + "</td>"
-							 		+ "<td>" + result[i].createDate + "</td>"
+							 		+ "<td><img src='../resources/img/"+ result[i].point +"point.PNG'width='100' height='20' ></td>"
 							 		+ "<td>" + result[i].noticeContent + "</td>"
+							 		+ "<td> ${loginUser.memberName} </td>"
+							 		+ "<td>" + result[i].createDate.substring(0, 10) + "</td>"
 							 + "</tr>";
 					}
     				console.log(str);
-    				$("#rewrap").html(str);
+    				$("#list-area>tbody").html(str);
 				},
 				error : function() {
 					console.log("댓글리스트용 ajax 실패");
@@ -120,8 +104,10 @@
         		$.ajax({
         			url : "${ pageContext.request.contextPath }/reply/insert.do",
         			data : {
-        				content : $("#replyContent").val() // text() 가 아닌 val() 로 가져와야 함
-        				
+	        				content : $("#replyContent").val(),
+	        				point : $("#point").val(),
+	        				memberName : $("#userName").val()
+	        				  // text() 가 아닌 val() 로 가져와야 함
         			},
         			type : "post",
         			success : function(result) {
@@ -139,7 +125,7 @@
         				
         			},
         			error : function() {
-        				alert("댓글내용을 작성해주세요.");
+        				alert("댓글을 쓰시오 또는 로그인을 하시오.");
         				console.log("댓글 삽입용 ajax 실패");
         			}
         		});
@@ -161,6 +147,7 @@
         	
         	 
         	</script>
+        	
 
 </body>
 </html>

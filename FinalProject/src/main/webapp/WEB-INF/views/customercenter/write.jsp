@@ -36,7 +36,7 @@
 
     <!-- Header Section Begin -->
     <header class="header">
-        <%@ include file="../common/header.jsp" %>
+        <%@ include file="../common/main_top.jsp" %>
     </header>
     <!-- Header Section End -->
 
@@ -155,7 +155,7 @@
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
-        <%@ include file="../common/footer.jsp" %>
+        <%@ include file="../common/main_bottom.jsp" %>
     </footer>
     <!-- Footer Section End -->
 

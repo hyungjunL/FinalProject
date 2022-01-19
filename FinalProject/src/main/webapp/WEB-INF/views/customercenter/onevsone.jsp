@@ -36,7 +36,7 @@
     <div class="humberger__menu__overlay"></div>
    
     <header class="header">
-        <%@ include file="../common/header.jsp" %>
+        <%@ include file="../common/main_top.jsp" %>
     </header>
     <!-- Hero Section End -->
 
@@ -212,11 +212,10 @@
 							    </div>
                               </td>
                               <td width="13%">
-                                  <!-- <%-- <c:if test="${ loginUser == null }">
-                                      <a class="btn btn-primary active" href="write.do">글작성</a>
-                                  </c:if> --%> -->
-                                  <a class="btn btn-success" href="write.do">글작성</a>
-                                </td>
+                                  <c:if test="${ loginUser != null }">
+                                      <a class="btn btn-success" href="write.do">글작성</a>
+                                  </c:if>
+                              </td>
                           </table>
                           </div>
                       </div>  
@@ -229,7 +228,7 @@
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
-        <%@ include file="../common/footer.jsp" %>
+        <%@ include file="../common/main_bottom.jsp" %>
     </footer>
     <!-- Footer Section End -->
 

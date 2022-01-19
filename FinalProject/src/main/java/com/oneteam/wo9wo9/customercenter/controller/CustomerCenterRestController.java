@@ -29,16 +29,17 @@ public class CustomerCenterRestController {
 	
 	@PostMapping("/disable.do")
 	public int couponCheck(
-						@RequestParam String couponName
-						,Model model	) {
+						@RequestParam String couponName,
+						@RequestParam int memberNum,
+						Model model	) {
 		System.out.println("쿠폰 번호: " + couponName);
-		int userNo = 1;
+		
 		String str = couponName;
 		String intStr = str.replaceAll("[^0-9]", "");
 		int discount = Integer.parseInt(intStr);
 		Map<Object,Object> param = new HashMap<>(); // 다형성
 		
-		param.put("userNo",userNo);
+		param.put("memberNum",memberNum);
 		param.put("couponName",couponName);
 		param.put("discount",discount);
 		int disableCount = customerCenterService.CouponList(param); 

@@ -40,6 +40,16 @@
 		<typeAlias alias="notice" type="com.oneteam.wo9wo9.customercenter.model.vo.Notice"></typeAlias>
 		<typeAlias alias="question" type="com.oneteam.wo9wo9.customercenter.model.vo.Question"></typeAlias>
 		<typeAlias alias="review" type="com.oneteam.wo9wo9.review.vo.Review"></typeAlias>
+		<typeAlias alias="member" type="com.oneteam.wo9wo9.member.model.vo.Member"></typeAlias>
+		
+		<typeAlias alias="selfProduct" type="com.oneteam.wo9wo9.admin.model.vo.SelfProduct"></typeAlias>
+		<typeAlias alias="selfAttachment" type="com.oneteam.wo9wo9.admin.model.vo.SelfAttachment"></typeAlias>
+		<typeAlias alias="packageAttachment" type="com.oneteam.wo9wo9.admin.model.vo.PackageAttachment"></typeAlias>
+		<typeAlias alias="packageProduct" type="com.oneteam.wo9wo9.admin.model.vo.PackageProduct"></typeAlias>
+		
+		<typeAlias alias="mypageOderList" type="com.oneteam.wo9wo9.mypage.model.vo.MypageOrderList"/>
+		<typeAlias alias="coupon" type="com.oneteam.wo9wo9.mypage.model.vo.Coupon"/>
+		<typeAlias alias="reviewList" type="com.oneteam.wo9wo9.mypage.model.vo.ReviewList"/>
 	</typeAliases>
 	
 </configuration>

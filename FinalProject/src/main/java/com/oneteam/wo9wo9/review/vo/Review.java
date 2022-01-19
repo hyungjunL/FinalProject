@@ -9,4 +9,5 @@ public class Review {
 	private String noticeContent;
 	private String createDate;
 	private String status;
+	private int point;
 }

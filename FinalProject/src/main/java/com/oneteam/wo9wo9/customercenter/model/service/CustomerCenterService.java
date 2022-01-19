@@ -45,6 +45,8 @@ public interface CustomerCenterService {
 
 	int CouponList(Map<Object, Object> param);
 
+	int oneviewCount(int noticeNo);
+
 
 
 

@@ -103,6 +103,16 @@
         <script src="../resources/js/mixitup.min.js"></script>
         <script src="../resources/js/owl.carousel.min.js"></script>
         <script src="../resources/js/main.js"></script>
+        
+        <!-- 마이페이지 추가 링크 -->
+    <script src="${ pageContext.request.contextPath }/resources/assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/resources/sidebars.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/demo/chart-area-demo.js"></script>
+    <script src="${ pageContext.request.contextPath }/resources/assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="${ pageContext.request.contextPath }/resources/js/datatables-simple-demo.js"></script>
     
     
 </body>

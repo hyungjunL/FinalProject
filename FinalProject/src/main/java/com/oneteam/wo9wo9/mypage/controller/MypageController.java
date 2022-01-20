@@ -60,7 +60,7 @@ public class MypageController {
 			
 			session.setAttribute("alertMsg", "정보 확인이 성공하였습니다.");
 			
-			session.setAttribute("loginUser", member); // 예비용 세션 사용자 정보
+			//session.setAttribute("loginUser", member); // 예비용 세션 사용자 정보
 			
 			return "mypage/mypageSuccess";
 		} else {
@@ -213,7 +213,7 @@ public class MypageController {
 			HttpSession session,
 			Model model) {
 		
-		String memberId = ((Member)session.getAttribute("loginUser")).getMemberId();
+		String memberId = "user01";
 		
 		// 쿠폰 사용가능 조회
 		List<Coupon> list = mypageService.mypageCouponList(memberId);
@@ -308,7 +308,7 @@ public class MypageController {
 			HttpSession session,
 			Model model) {
 		
-		String memberId = ((Member)session.getAttribute("loginUser")).getMemberId();	
+		String memberId = "user01";	
 		
 		List<ReviewList> list = mypageService.mypageReviewList(memberId);
 		

@@ -37,6 +37,22 @@
     <link rel="stylesheet" href="../resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
     <link rel="stylesheet" href="../resources/css/main-top.css">
+    
+    <!-- 마이페이지 링크 -->
+    <!-- Bootstrap core CSS -->
+    <link href="${ pageContext.request.contextPath }/resources/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="${ pageContext.request.contextPath }/resources/css/sidebars.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="${ pageContext.request.contextPath }/resources/css/styles.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>

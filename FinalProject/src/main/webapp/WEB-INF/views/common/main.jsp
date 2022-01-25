@@ -10,6 +10,14 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+  	#image-box {
+		    width:100%;
+		    height:50%;
+		    overflow:hidden;
+		    margin:0 auto;
+		}
+  </style>
 </head>
 <body>
     <%@ include file="main_top.jsp" %>
@@ -17,28 +25,25 @@
     <section class="hero">
 
         <div class="set-bg">
-            <div id="demo" class="carousel slide" data-ride="carousel">
-                ​
+            <div id="demo" class="carousel slide" data-ride="carousel" style="height: 350px;">
                     <!-- Indicators -->
                     <ul class="carousel-indicators">
                       <li data-target="#demo" data-slide-to="0" class="active"></li>
                       <li data-target="#demo" data-slide-to="1"></li>
                       <li data-target="#demo" data-slide-to="2"></li>
                     </ul>
-                    
                     <!-- The slideshow -->
-                    <div class="carousel-inner">
+                    <div class="carousel-inner" style="width: 1000; height: 300;">
                       <div class="carousel-item active">
-                        <img src="../resources/img/slide01.PNG" alt="New York" width="1100" height="500">
+                        <img src="../resources/img/slide01.PNG" alt="New York" style="height: 350px;">
                       </div>
                       <div class="carousel-item">
-                        <img src="../resources/img/slide02.PNG" alt="New York" width="1100" height="500">
+                        <img src="../resources/img/slide02.PNG" alt="New York"style="height: 350px;" >
                       </div>
                       <div class="carousel-item">
-                        <img src="../resources/img/slide03.PNG" alt="New York" width="1100" height="500">
+                        <img src="../resources/img/slide03.PNG" alt="New York" style="height: 350px;">
                       </div>
                     </div>
-                    
                     <!-- Left and right controls -->
                     <a class="carousel-control-prev" href="#demo" data-slide="prev">
                       <span class="carousel-control-prev-icon"></span>

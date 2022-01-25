@@ -58,4 +58,24 @@ public class MainServiceImpl implements MainService {
 		
 		return mainDao.mdPick();
 	}
+
+	@Override
+	public List<Main> bestC() {
+		return mainDao.bestC();
+	}
+
+	@Override
+	public List<Main> bestF() {
+		return mainDao.bestF();
+	}
+
+	@Override
+	public List<Main> bestG() {
+		return mainDao.bestG();
+	}
+
+	@Override
+	public List<Main> bestP() {
+		return mainDao.bestP();
+	}
 }

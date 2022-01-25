@@ -102,7 +102,7 @@ table {
 	font-weight: bord;
 }
 
-.btn-sm {
+.btn-lg {
 	margin: auto;
 	width: 100%;
 	height: 100%;
@@ -184,7 +184,6 @@ button:hover:before, button:hover:after {
 	width: 100%;
 	transition: 800ms ease all;
 }
-
 .adesign {
 	background: rgb(127, 173, 57);
 	color: #fff;
@@ -221,7 +220,123 @@ button:hover:before, button:hover:after {
 	width: 100%;
 	transition: 800ms ease all;
 }
-/*버튼 디자인*/
+/*버튼 디자인 끝*/
+
+/*삭제 버튼 디자인*/
+.del {
+	background: red;
+	color: #fff;
+	border: none;
+	position: relative;
+	height: 60px;
+	font-size: 1.6em;
+	padding: 0 2em;
+	cursor: pointer;
+	transition: 800ms ease all;
+	outline: none;
+}
+.del:hover {
+	background: #fff;
+	color: red;
+}
+.del:before, .del:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background: red;
+	transition: 400ms ease all;
+}
+.del:after {
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
+}
+.del:hover:before, .del:hover:after {
+	width: 100%;
+	transition: 800ms ease all;
+}
+
+/*수정 버튼 디자인*/
+.upd {
+	background: rgb(255,193,7);
+	color: #fff;
+	border: none;
+	position: relative;
+	height: 60px;
+	font-size: 1.6em;
+	padding: 0 2em;
+	cursor: pointer;
+	transition: 800ms ease all;
+	outline: none;
+}
+.upd:hover {
+	background: #fff;
+	color: rgb(255,193,7);
+}
+.upd:before, .upd:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background: rgb(255,193,7);
+	transition: 400ms ease all;
+}
+.upd:after {
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
+}
+.upd:hover:before, .upd:hover:after {
+	width: 100%;
+	transition: 800ms ease all;
+}
+/*수정 버튼 디자인 끝*/
+
+/*활성비활성 버튼 디자인*/
+.act {
+	background: rgb(127, 173, 57);
+	color: #fff;
+	border: none;
+	position: relative;
+	height: 60px;
+	font-size: 1.6em;
+	padding: 0 2em;
+	cursor: pointer;
+	transition: 800ms ease all;
+	outline: none;
+}
+.act:hover {
+	background: #fff;
+	color: rgb(127, 173, 57);
+}
+.act:before, .act:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background: rgb(127, 173, 57);
+	transition: 400ms ease all;
+}
+.act:after {
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
+}
+.act:hover:before, .act:hover:after {
+	width: 100%;
+	transition: 800ms ease all;
+}
+/*활성비활성 버튼 디자인 끝*/
 </style>
 </head>
 <body>

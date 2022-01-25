@@ -67,23 +67,23 @@
 														<td align="center">
 															<c:choose>
 																<c:when test="${ sl.status eq 'Y' }">
-																	<button class="act btn-sm" type="button" onclick="location.href='${pageContext.request.contextPath}/admin/unactivation.ad?sideNum=${ sl.sideNum }'">
+																	<button class="act btn" style="width:80%; height:100%; font-size:18px;" type="button" onclick="location.href='${pageContext.request.contextPath}/admin/unactivation.ad?sideNum=${ sl.sideNum }'">
 																		비활성화
 																	</button>
 																</c:when>
 																<c:otherwise>
-																	<button class="act btn-sm" type="button" onclick="location.href='${pageContext.request.contextPath}/admin/activation.ad?sideNum=${ sl.sideNum }'">
+																	<button class="act btn" style="width:80%; height:100%; font-size:18px;" type="button" onclick="location.href='${pageContext.request.contextPath}/admin/activation.ad?sideNum=${ sl.sideNum }'">
 																		활성화
 																	</button>
 																</c:otherwise>															
 															</c:choose>
 														</td>
 														<td align="center">
-															<button class="del btn-sm" type="button"
+															<button class="upd btn" style="width:80%; height:100%; font-size:18px;" type="button"
 																onclick="location.href='${pageContext.request.contextPath}/admin/updateSelfEnroll.ad?sideNum=${ sl.sideNum }&categoryNum=${ sl.categoryNum }&sideName=${ sl.sideName }&price=${ sl.price }'">수정</button>
 														</td>
 														<td align="center">
-															<button class="del btn-sm" type="button" onclick="location.href='${pageContext.request.contextPath}/admin/deleteSelf.ad?sideNum=${sl.sideNum }'">삭제</button>
+															<button class="del btn" style="width:80%; height:100%; font-size:18px;" type="button" onclick="location.href='${pageContext.request.contextPath}/admin/deleteSelf.ad?sideNum=${sl.sideNum }'">삭제</button>
 														</td>
 													</tr>
 												</c:forEach>

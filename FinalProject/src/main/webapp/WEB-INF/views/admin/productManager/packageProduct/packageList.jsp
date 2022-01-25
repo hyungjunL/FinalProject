@@ -72,12 +72,12 @@
 			                                  
 			                                    <c:choose>
 													<c:when test="${ dl.status eq 'Y' }">
-														<button class="act btn-sm" type="button" onclick="location.href='${pageContext.request.contextPath}/admin/unactivationPack.ad?packageNum=${ dl.packageNum }'">
+														<button class="act btn" style="width:80%; height:100%; font-size:18px;" type="button" onclick="location.href='${pageContext.request.contextPath}/admin/unactivationPack.ad?packageNum=${ dl.packageNum }'">
 															비활성화
 														</button>
 													</c:when>
 													<c:otherwise>
-														<button class="act btn-sm" type="button" onclick="location.href='${pageContext.request.contextPath}/admin/activationPack.ad?packageNum=${ dl.packageNum }'">
+														<button class="act btn" style="width:80%; height:100%; font-size:18px;" type="button" onclick="location.href='${pageContext.request.contextPath}/admin/activationPack.ad?packageNum=${ dl.packageNum }'">
 															활성화
 														</button>
 													</c:otherwise>															
@@ -85,10 +85,10 @@
 											 
 			                                  </td>
 			                                  <td align="center">
-			                                    <button type="button" class="btn-sm" onclick="location.href='${pageContext.request.contextPath}/admin/updatePackageEnroll.ad?packageNum=${ dl.packageNum }&packageNum2=${ dl.packageNum2 }&packageName=${ dl.packageName }&packagePrice=${ dl.packagePrice }'">정보수정</button>
+			                                    <button type="button" class="upd btn" style="width:80%; height:100%; font-size:18px;" onclick="location.href='${pageContext.request.contextPath}/admin/updatePackageEnroll.ad?packageNum=${ dl.packageNum }&packageNum2=${ dl.packageNum2 }&packageName=${ dl.packageName }&packagePrice=${ dl.packagePrice }'">정보수정</button>
 			                                  </td>
 			                                  <td align="center">
-			                                    <button type="button" class="btn-sm" onclick="location.href='${pageContext.request.contextPath}/admin/deletePack.ad?packageNum=${ dl.packageNum }'">삭제</button>
+			                                    <button type="button" class="del btn" style="width:80%; height:100%; font-size:18px;" onclick="location.href='${pageContext.request.contextPath}/admin/deletePack.ad?packageNum=${ dl.packageNum }'">삭제</button>
 			                                  </td>
 			                              </tr>
                             			</c:forEach>

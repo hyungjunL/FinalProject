@@ -2,17 +2,12 @@ package com.oneteam.wo9wo9.main.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.oneteam.wo9wo9.main.model.service.MainService;
 import com.oneteam.wo9wo9.main.model.vo.Main;
@@ -39,7 +34,7 @@ public class MainController {
 		List<Main> bestSelfImg = mainService.bestSelfImg();
 		
 		model.addAttribute("bestSelfImg", bestSelfImg);
-		System.out.println("bset : "+ bestSelfImg );
+		
 		// 패키지 베스트
 		List<Main> bestPackage = mainService.bestPackage();
 		
@@ -84,12 +79,70 @@ public class MainController {
         //System.out.println(list);
         
         model.addAttribute("list", list);
+        model.addAttribute("keyword",keyword);
         
         
 		
 		return "common/sideSearch";
 	}
 	
+	// 헤더 베스트 상품
+	@GetMapping("/bestProduct.mi")
+	public String bestProduct(
+			Model model) {
+		// 반찬 베스트 3
+		List<Main> bestside = mainService.bestSelfImg();
+		
+		model.addAttribute("bestside", bestside);
+		
+		// 패키지 베스트
+		List<Main> bestPackage = mainService.bestPackage();
+		
+		model.addAttribute("bestPackage", bestPackage);
+		
+		//System.out.println("bestPackage" + bestPackage);
+		
+		// 밥 베스트 1
+		List<Main> bestRice = mainService.bestRice();
+		
+		model.addAttribute("bestRice", bestRice);
+		
+		//System.out.println("bestRice" + bestRice);
+		
+		// 국 베스트
+		List<Main> bestSoup = mainService.bestSoup();
+		
+		model.addAttribute("bestSoup", bestSoup);
+		
+		return"common/bestProduct";
+	}
 	
+	@GetMapping("/bestProductP.mi")
+	public String bestProductP(
+			Model model) {
+		
+		// 패키지 베스트
+		List<Main> bestPackage = mainService.bestPackage();
+		
+		model.addAttribute("bestPackage", bestPackage);
+		
+		
+		List<Main> bestC = mainService.bestC();
+		model.addAttribute("bestC", bestC);
+		
+		List<Main> bestF = mainService.bestF();
+		model.addAttribute("bestF", bestF);
+		
+		List<Main> bestG = mainService.bestG();
+		model.addAttribute("bestG", bestG);
+		
+		List<Main> bestP = mainService.bestP();
+		model.addAttribute("bestP", bestP);
+		
+		
+		
+		return"common/bestProductP";
+		
+	}
 	
 }

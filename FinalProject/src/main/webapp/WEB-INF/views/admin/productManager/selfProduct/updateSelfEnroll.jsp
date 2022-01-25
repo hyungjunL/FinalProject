@@ -74,7 +74,7 @@
 	                            <tr class="ttt">
 	                              <td colspan="2">
 	                                <button class="btn-success adesign" type="submit" style="width:50%; float:left;">수정하기</button>
-	                                <button class="btn-warning" type="button"
+	                                <button class="upd btn-warning" type="button"
 												style="width: 50%; float: left;" onclick="location.href='${pageContext.request.contextPath}/admin/selfList.do'">뒤로가기</button>
 	                              </td>
 	                            </tr>

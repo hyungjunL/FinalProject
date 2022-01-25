@@ -8,9 +8,9 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body style="margin: auto">
-
-	<%@ include file="../common/sidevar.jsp"%>
-
+	<div>
+		<%@ include file="../common/sidevar.jsp"%>
+	</div>
 	<div class="header">
 		<%@include file="../common/header.jsp"%>
 	</div>

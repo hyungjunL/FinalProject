@@ -119,7 +119,7 @@
 				                            <div id="flush-collapse${ r.reviewListNum }" class="accordion-collapse collapse" aria-labelledby="flush-heading${ q.reviewListNum }/>" data-bs-parent="#accordionFlushExample">
 				                                <div class="accordion-body">
 				                                    <!-- 리뷰내용 -->
-				                                    <div class="contact-form spad">
+				                                    <div class="contact-form spad" style="padding-top: 10px; padding-bottom: 5px;">
 				                                        <div class="container rounded">
 				                                            <div class="row">
 				                                                <div class="col-lg-12">

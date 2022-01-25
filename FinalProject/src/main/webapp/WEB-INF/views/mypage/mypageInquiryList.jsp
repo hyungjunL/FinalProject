@@ -66,6 +66,7 @@
     input:read-only {
     	background-color: white;
 	}
+
 </style>
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -111,15 +112,15 @@
 								<c:otherwise>
 									<c:forEach var="q" items="${ list }" varStatus="status">
 					                      <div class="accordion-item">
-				                            <h2 class="accordion-header" id="flush-heading${ q.rownum }">
-				                                <button class="accordion-button collapsed rounded" style="font-family: 'BMDOHYEON'; border: 0.1px solid goldenrod;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${ q.rownum }" aria-expanded="false" aria-controls="flush-collapse${ q.rownum }/>">
+				                            <h2 class="accordion-header" id="flush-heading${ q.rowNum }">
+				                                <button class="accordion-button collapsed rounded" style="font-family: 'BMDOHYEON'; border: 0.1px solid goldenrod;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${ q.rowNum }" aria-expanded="false" aria-controls="flush-collapse${ q.rowNum }/>">
 				                                    ${ q.QTitle }
 				                                </button>
 				                            </h2>
-				                            <div id="flush-collapse${ q.rownum }" class="accordion-collapse collapse" aria-labelledby="flush-heading${ q.rownum }/>" data-bs-parent="#accordionFlushExample">
+				                            <div id="flush-collapse${ q.rowNum }" class="accordion-collapse collapse" aria-labelledby="flush-heading${ q.rowNum }/>" data-bs-parent="#accordionFlushExample">
 				                                <div class="accordion-body">
 				                                    <!-- 1:1 문의내용 -->
-				                                    <div class="contact-form spad">
+				                                    <div class="contact-form spad" style="padding-top: 10px; padding-bottom: 5px;">
 				                                        <div class="container rounded">
 				                                            <div class="row">
 				                                                <div class="col-lg-12">
@@ -164,7 +165,7 @@
 				                                    <!-- 관리자 답변 -->
 				                                    <c:choose>
 				                                    	<c:when test="${ q.ADate eq null || '' }">
-						                                    <div class="contact-form spad">
+						                                    <div class="contact-form spad" style="padding-top: 10px; padding-bottom: 5px;">
 						                                        <div class="container rounded" style="border: 0.1px solid yellowgreen;">
 						                                            <div class="row">
 						                                                <div class="col-lg-12">

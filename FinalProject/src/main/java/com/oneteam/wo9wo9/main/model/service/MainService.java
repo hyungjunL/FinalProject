@@ -25,6 +25,11 @@ public interface MainService {
 	List<Main> bestSoup();
 
 	List<Main> mdPick();
+
+	List<Main> bestC();
+	List<Main> bestF();
+	List<Main> bestG();
+	List<Main> bestP();
 	
 
 	

@@ -40,7 +40,6 @@ public class MypageController {
 	// 마이페이지 진입 로그인
 	@PostMapping("/main.wo")
 	public String mypagemainLogin(
-			@RequestParam String memberId,
 			@RequestParam String memberPwd,
 			Model model,
 			HttpSession session) {
@@ -48,7 +47,7 @@ public class MypageController {
 		// 키값이 두개이므로 맵으로 가공
 		Map<String, String> param = new HashMap<>();
 		
-		param.put("memberId", memberId);
+		param.put("memberId", ((Member)session.getAttribute("loginUser")).getMemberId());
 		param.put("memberPwd", memberPwd);
 		
 		// 조회될 자료는 하나이므로 객체로 충분
@@ -60,7 +59,7 @@ public class MypageController {
 			
 			session.setAttribute("alertMsg", "정보 확인이 성공하였습니다.");
 			
-			//session.setAttribute("loginUser", member); // 예비용 세션 사용자 정보
+			// session.setAttribute("loginUser", member); // 예비용 세션 사용자 정보
 			
 			return "mypage/mypageSuccess";
 		} else {

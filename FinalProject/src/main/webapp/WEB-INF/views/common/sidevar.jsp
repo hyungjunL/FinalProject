@@ -367,14 +367,14 @@
         <span class="tooltip">상품 관리</span>
       </li>
       <li>
-       <a href="#">
+       <a href="${pageContext.request.contextPath}/memberList">
          <i class='bx bx-user' ></i>
          <span class="links_name">회원관리</span>
        </a>
        <span class="tooltip">회원관리</span>
      </li>
      <li>
-       <a href="#">
+       <a href="${pageContext.request.contextPath}/inquiryList">
          <i class='bx bx-chat' ></i>
          <span class="links_name">문의사항 관리</span>
        </a>
@@ -382,14 +382,14 @@
      </li>
      
      <li>
-       <a href="#">
+       <a href="${pageContext.request.contextPath}/orderList">
          <i class='bx bx-cart-alt' ></i>
          <span class="links_name">주문 관리</span>
        </a>
        <span class="tooltip">주문 관리</span>
      </li>
      <li>
-        <a href="#">
+        <a href="${pageContext.request.contextPath}/noticeList">
           <i class='bx bx-folder' ></i>
           <span class="links_name">공지사항</span>
         </a>

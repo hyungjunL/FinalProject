@@ -132,7 +132,7 @@
                                             <div class="modal-content">
                                             <div class="modal-header">
                                                 <div>
-                                                    <img src="${ pageContext.request.contextPath }/resources/img/logo.png" style="display: block; margin-left: 95px;">
+                                                    <img src="${ pageContext.request.contextPath }/resources/logo.png" style="display: block; margin-left: 95px;">
                                                 </div>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>

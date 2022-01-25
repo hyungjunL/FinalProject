@@ -21,46 +21,85 @@ import com.oneteam.wo9wo9.admin.model.vo.PackageProduct;
 import com.oneteam.wo9wo9.admin.model.vo.SelfAttachment;
 import com.oneteam.wo9wo9.admin.model.vo.SelfProduct;
 import com.oneteam.wo9wo9.common.MyFileRenamePolicy;
+import com.oneteam.wo9wo9.member.model.vo.Member;
+
 
 @Controller
 @RequestMapping("/admin")
+
 public class AdminController {
 	
 	@Autowired
 	private AdminService adminService;
 	
 	@GetMapping("/adminmain.do")
-	public String main(Model model) {
+	public String main(
+			Model model
+		  , HttpSession session) {
 		
-		List<SelfProduct> sList = adminService.selectPList();
-		List<PackageProduct> pList = adminService.selectDList();
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		model.addAttribute("sList", sList);
-		model.addAttribute("pList", pList);
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			List<SelfProduct> sList = adminService.selectPList();
+			List<PackageProduct> pList = adminService.selectDList();
+			
+			model.addAttribute("sList", sList);
+			model.addAttribute("pList", pList);
+			
+			return "admin/adminMain";
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
+		}
 		
-		return "admin/adminMain";
 	}
 	
 	@GetMapping("/productmain.do")
-	public String productmain(Model model) {
+	public String productmain(Model model
+			, HttpSession session) {
 		
-		List<SelfProduct> sList = adminService.selectPList();
-		List<PackageProduct> pList = adminService.selectDList();
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		model.addAttribute("sList", sList);
-		model.addAttribute("pList", pList);
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			List<SelfProduct> sList = adminService.selectPList();
+			List<PackageProduct> pList = adminService.selectDList();
+			
+			model.addAttribute("sList", sList);
+			model.addAttribute("pList", pList);
+			
+			return "admin/productManager/main";
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
+		}
 		
-		return "admin/productManager/main";
 	}
 	
 	@GetMapping("/addselfEnroll.ad")
-	public String addselfEnroll() {
-		return "admin/productManager/selfProduct/addSelfEnroll";
+	public String addselfEnroll(HttpSession session) {
+		
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			return "admin/productManager/selfProduct/addSelfEnroll";
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
+		}
+
 	}
 	
 	@GetMapping("/addPackageEnroll.ad")
-	public String addPackageEnroll() {
-		return "admin/productManager/packageProduct/addPackageEnroll";
+	public String addPackageEnroll(HttpSession session) {
+		
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			return "admin/productManager/packageProduct/addPackageEnroll";
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
+		}
 	}
 	
 	@GetMapping("/updatePackageEnroll.ad")
@@ -69,22 +108,32 @@ public class AdminController {
 		  , @RequestParam int packageNum2
 		  , @RequestParam String packageName
 		  , @RequestParam int packagePrice
-		  , Model model) {
+		  , Model model
+		  , HttpSession session) {
 		
-		PackageProduct packageProduct = new PackageProduct();
-		packageProduct.setPackageNum(packageNum);
-		packageProduct.setPackageNum2(packageNum2);
-		packageProduct.setPackageName(packageName);
-		packageProduct.setPackagePrice(packagePrice);
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		PackageProduct packageProductImg = adminService.selectPackImg(packageNum);
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			PackageProduct packageProduct = new PackageProduct();
+			packageProduct.setPackageNum(packageNum);
+			packageProduct.setPackageNum2(packageNum2);
+			packageProduct.setPackageName(packageName);
+			packageProduct.setPackagePrice(packagePrice);
+			
+			PackageProduct packageProductImg = adminService.selectPackImg(packageNum);
+			
+			System.out.println("파일 경로 나와라!!!! : " + packageProductImg);
+			
+			model.addAttribute("packAtt",packageProductImg);
+			model.addAttribute("pack", packageProduct);
+			
+			return "admin/productManager/packageProduct/updatePackageEnroll";
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
+		}
 		
-		System.out.println("파일 경로 나와라!!!! : " + packageProductImg);
 		
-		model.addAttribute("packAtt",packageProductImg);
-		model.addAttribute("pack", packageProduct);
-		
-		return "admin/productManager/packageProduct/updatePackageEnroll";
 	}
 	
 	@GetMapping("/updateSelfEnroll.ad")
@@ -92,21 +141,30 @@ public class AdminController {
 			                     , @RequestParam int categoryNum
 			                     , @RequestParam String sideName
 			                     , @RequestParam int price
-			                     , Model model) {
-		SelfProduct selfProduct = new SelfProduct();
-		selfProduct.setSideNum(sideNum);
-		selfProduct.setCategoryNum(categoryNum);
-		selfProduct.setSideName(sideName);
-		selfProduct.setPrice(price);
+			                     , Model model
+			                     , HttpSession session) {
 		
-		SelfProduct selfProductImg =  adminService.selectOriginImg(sideNum);
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		System.out.println("나ㅣ와라ㅏㅏ : " + selfProductImg);
-		
-		model.addAttribute("selfAtt", selfProductImg);
-		model.addAttribute("self", selfProduct);
-		
-		return "admin/productManager/selfProduct/updateSelfEnroll";
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			SelfProduct selfProduct = new SelfProduct();
+			selfProduct.setSideNum(sideNum);
+			selfProduct.setCategoryNum(categoryNum);
+			selfProduct.setSideName(sideName);
+			selfProduct.setPrice(price);
+			
+			SelfProduct selfProductImg =  adminService.selectOriginImg(sideNum);
+			
+			System.out.println("나ㅣ와라ㅏㅏ : " + selfProductImg);
+			
+			model.addAttribute("selfAtt", selfProductImg);
+			model.addAttribute("self", selfProduct);
+			
+			return "admin/productManager/selfProduct/updateSelfEnroll";
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
+		}
 	}
 	
 //	// 셀프 메뉴 이미지 가져오기
@@ -126,14 +184,23 @@ public class AdminController {
 // ----- 셀프 도시락-----
 // 셀프 메뉴 조회 메소드
 	@GetMapping("/selfList.do")
-	public String selfProductList(Model model) {
-		List<SelfProduct> list = adminService.selectPList();
+	public String selfProductList(Model model, HttpSession session) {
 		
-		model.addAttribute("list", list);
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		System.out.println(list);
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			List<SelfProduct> list = adminService.selectPList();
+			
+			model.addAttribute("list", list);
+			
+			System.out.println(list);
+			
+			return "admin/productManager/selfProduct/selfList";
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
+		}
 		
-		return "admin/productManager/selfProduct/selfList";
 	}
 
 
@@ -142,30 +209,51 @@ public class AdminController {
 	public String activation(
 			@RequestParam int sideNum
 		  , HttpSession session) {
-		int result = adminService.activation(sideNum);
 		
-		if(result > 0) {
-			session.setAttribute("alertMsg", "활성화 되었습니다.");
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			int result = adminService.activation(sideNum);
+			
+			if(result > 0) {
+				session.setAttribute("alertMsg", "활성화 되었습니다.");
+			} else {
+				session.setAttribute("alertMsg", "오류~~~~~~");
+			}
+			
+			return "redirect:/admin/selfList.do";
 		} else {
-			session.setAttribute("alertMsg", "오류~~~~~~");
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
 		}
 		
-		return "redirect:/admin/selfList.do";
+		
 	}
 	// 셀프 상품 비활성화
 	@GetMapping("/unactivation.ad")
 	public String unactivation(
 			@RequestParam int sideNum
 		  , HttpSession session) {
-		int result = adminService.unactivation(sideNum);
 		
-		if(result > 0) {
-			session.setAttribute("alertMsg", "비활성화 되었습니다.");
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			int result = adminService.unactivation(sideNum);
+			
+			if(result > 0) {
+				session.setAttribute("alertMsg", "비활성화 되었습니다.");
+			} else {
+				session.setAttribute("alertMsg", "오류!!!!!");
+			}
+			
+			return "redirect:/admin/selfList.do";
 		} else {
-			session.setAttribute("alertMsg", "오류!!!!!");
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
 		}
 		
-		return "redirect:/admin/selfList.do";
+		
+
 	}
 
 	
@@ -179,52 +267,54 @@ public class AdminController {
 			@RequestParam MultipartFile upfile,
 			HttpSession session) {
 		
-		System.out.println(categoryNum);
-		System.out.println(sideName);
-		System.out.println(price);
-		System.out.println(upfile.isEmpty());
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		SelfProduct selfProduct = new SelfProduct();
-		selfProduct.setCategoryNum(categoryNum);
-		selfProduct.setSideName(sideName);
-		selfProduct.setPrice(price);
-		
-		// SIDE 테이블에 들어갔는지 확인하는 result1
-		int result1 = adminService.insertSelf(selfProduct);
-
-		if(result1 > 0) {
-			String filePath = session.getServletContext().getRealPath("/resources/selfUpfiles/");
-			String changeName = new MyFileRenamePolicy().rename(upfile.getOriginalFilename());
-			String originName = upfile.getOriginalFilename();
-				
-			// 우선 File 객체를 만들고
-			File target = new File(filePath, changeName);
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			SelfProduct selfProduct = new SelfProduct();
+			selfProduct.setCategoryNum(categoryNum);
+			selfProduct.setSideName(sideName);
+			selfProduct.setPrice(price);
 			
-			// MultipartFile 객체에서 제공하는 transferTo 메소드를 이용해서 이관시켜줌
-			try {
-				upfile.transferTo(target);
+			// SIDE 테이블에 들어갔는지 확인하는 result1
+			int result1 = adminService.insertSelf(selfProduct);
+
+			if(result1 > 0) {
+				String filePath = session.getServletContext().getRealPath("/resources/selfUpfiles/");
+				String changeName = new MyFileRenamePolicy().rename(upfile.getOriginalFilename());
+				String originName = upfile.getOriginalFilename();
+					
+				// 우선 File 객체를 만들고
+				File target = new File(filePath, changeName);
 				
-				SelfAttachment selfAttachment = new SelfAttachment();
-				selfAttachment.setOriginName(originName);
-				selfAttachment.setChangeName(changeName);
-				selfAttachment.setFilePath("resources/selfUpfiles/");
-				
-				// 상품 이미지 테이블에 들어갔는지 확인하는 result1
-				int result2 = adminService.insertSelfAtt(selfAttachment);
-				
-				if(result1 > 0 || result2 > 0) {
-					session.setAttribute("alertMsg", "상품이 성공적으로 추가되었습니다.");
-				} else {
+				// MultipartFile 객체에서 제공하는 transferTo 메소드를 이용해서 이관시켜줌
+				try {
+					upfile.transferTo(target);
+					
+					SelfAttachment selfAttachment = new SelfAttachment();
+					selfAttachment.setOriginName(originName);
+					selfAttachment.setChangeName(changeName);
+					selfAttachment.setFilePath("resources/selfUpfiles/");
+					
+					// 상품 이미지 테이블에 들어갔는지 확인하는 result1
+					int result2 = adminService.insertSelfAtt(selfAttachment);
+					
+					if(result1 > 0 || result2 > 0) {
+						session.setAttribute("alertMsg", "상품이 성공적으로 추가되었습니다.");
+					} else {
+						session.setAttribute("alertMsg", "상품 추가중 오류가 발생하였습니다. 확인해 주세요.");
+						return "redirect:/admin/selfList.do";
+					}
+					
+				} catch (IllegalStateException | IOException e) {
 					session.setAttribute("alertMsg", "상품 추가중 오류가 발생하였습니다. 확인해 주세요.");
-					return "redirect:/admin/selfList.do";
+					e.printStackTrace();
 				}
-				
-			} catch (IllegalStateException | IOException e) {
-				session.setAttribute("alertMsg", "상품 추가중 오류가 발생하였습니다. 확인해 주세요.");
-				e.printStackTrace();
 			}
+			return "redirect:/admin/selfList.do";
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
 		}
-		return "redirect:/admin/selfList.do";
 		
 	}
 	
@@ -236,21 +326,28 @@ public String updateSelf(@RequestParam int sideNum
 					   , @RequestParam int price
 					   , HttpSession session) {
 	
-	SelfProduct selfProduct = new SelfProduct();
-	selfProduct.setSideNum(sideNum);
-	selfProduct.setCategoryNum(categoryNum);
-	selfProduct.setSideName(sideName);
-	selfProduct.setPrice(price);
+	Member loginUser = (Member)session.getAttribute("loginUser");
 	
-	int result = adminService.updateSelf(selfProduct);
-	
-	if(result > 0) {
-		session.setAttribute("alertMsg", "정보 수정 성공");
+	if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+		SelfProduct selfProduct = new SelfProduct();
+		selfProduct.setSideNum(sideNum);
+		selfProduct.setCategoryNum(categoryNum);
+		selfProduct.setSideName(sideName);
+		selfProduct.setPrice(price);
+		
+		int result = adminService.updateSelf(selfProduct);
+		
+		if(result > 0) {
+			session.setAttribute("alertMsg", "정보 수정 성공");
+		} else {
+			session.setAttribute("alertMsg", "정소 수정 실패 ㅠㅠ. 정보를 확인해 주세요.");
+		}
+		
+		return "redirect:/admin/selfList.do";
 	} else {
-		session.setAttribute("alertMsg", "정소 수정 실패 ㅠㅠ. 정보를 확인해 주세요.");
+		session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+		return "redirect:/member/login.do";
 	}
-	
-	return "redirect:/admin/selfList.do";
 }
 
 
@@ -262,16 +359,26 @@ public String deleteSelf(
 		@RequestParam int sideNum
 	  , HttpSession session) {
 	
-	int result1 = adminService.deleteSelfAtt(sideNum);
-	int result2 = adminService.deleteSelf(sideNum);
 	
-	if(result1 > 0 && result2 > 0) {
-		session.setAttribute("alertMsg", "상품 정보 삭제 성공!!");
-		return "redirect:/admin/selfList.do";
+	Member loginUser = (Member)session.getAttribute("loginUser");
+	
+	if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+		int result1 = adminService.deleteSelfAtt(sideNum);
+		int result2 = adminService.deleteSelf(sideNum);
+		
+		if(result1 > 0 && result2 > 0) {
+			session.setAttribute("alertMsg", "상품 정보 삭제 성공!!");
+			return "redirect:/admin/selfList.do";
+		} else {
+			session.setAttribute("alertMsg", "상품 정보 삭제 실패 ㅠㅠ");
+			return "redirect:/admin/selfList.do";
+		}
 	} else {
-		session.setAttribute("alertMsg", "상품 정보 삭제 실패 ㅠㅠ");
-		return "redirect:/admin/selfList.do";
+		session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+		return "redirect:/member/login.do";
 	}
+	
+	
 }
 
 
@@ -279,12 +386,21 @@ public String deleteSelf(
 // ----- 패키지-----
 // 패키지 도시락 조회 메소드
 @GetMapping("/packageList.ad")
-public String packageList(Model model) {
-	List<PackageProduct> list = adminService.selectDList();
+public String packageList(Model model, HttpSession session) {
 	
-	model.addAttribute("list", list);
+	Member loginUser = (Member)session.getAttribute("loginUser");
 	
-	return "admin/productManager/packageProduct/packageList";
+	if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+		List<PackageProduct> list = adminService.selectDList();
+		
+		model.addAttribute("list", list);
+		
+		return "admin/productManager/packageProduct/packageList";
+	} else {
+		session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+		return "redirect:/member/login.do";
+	}
+	
 }
 
 // 패키지 도시락 추가 메소드
@@ -297,51 +413,54 @@ public String addPackage(
 		@RequestParam MultipartFile upfile,
 		HttpSession session) {
 	
-	System.out.println(packageNum2);
-	System.out.println(packageName);
-	System.out.println(packagePrice);
-	System.out.println(upfile.isEmpty());
-	
-	PackageProduct packageProduct = new PackageProduct();
-	packageProduct.setPackageNum2(packageNum2);
-	packageProduct.setPackageName(packageName);
-	packageProduct.setPackagePrice(packagePrice);
-	
-	// SIDE 테이블에 들어갔는지 확인하는 result1
-	int result1 = adminService.insertPack(packageProduct);
 
-	if(result1 > 0) {
-		String filePath = session.getServletContext().getRealPath("/resources/packUpfiles/");
-		String changeName = new MyFileRenamePolicy().rename(upfile.getOriginalFilename());
-		String originName = upfile.getOriginalFilename();
-			
-		// 우선 File 객체를 만들고
-		File target = new File(filePath, changeName);
+	Member loginUser = (Member)session.getAttribute("loginUser");
+	
+	if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+		PackageProduct packageProduct = new PackageProduct();
+		packageProduct.setPackageNum2(packageNum2);
+		packageProduct.setPackageName(packageName);
+		packageProduct.setPackagePrice(packagePrice);
 		
-		// MultipartFile 객체에서 제공하는 transferTo 메소드를 이용해서 이관시켜줌
-		try {
-			upfile.transferTo(target);
+		// SIDE 테이블에 들어갔는지 확인하는 result1
+		int result1 = adminService.insertPack(packageProduct);
+
+		if(result1 > 0) {
+			String filePath = session.getServletContext().getRealPath("/resources/packUpfiles/");
+			String changeName = new MyFileRenamePolicy().rename(upfile.getOriginalFilename());
+			String originName = upfile.getOriginalFilename();
+				
+			// 우선 File 객체를 만들고
+			File target = new File(filePath, changeName);
 			
-			PackageAttachment packageAttachment = new PackageAttachment();
-			packageAttachment.setOriginName(originName);
-			packageAttachment.setChangeName(changeName);
-			packageAttachment.setFilePath(filePath);
-			
-			// 상품 이미지 테이블에 들어갔는지 확인하는 result1
-			int result2 = adminService.insertPackAtt(packageAttachment);
-			
-			if(result1 > 0 || result2 > 0) {
-				session.setAttribute("alertMsg", "패키지가 성공적으로 추가되었습니다.");
-			} else {
+			// MultipartFile 객체에서 제공하는 transferTo 메소드를 이용해서 이관시켜줌
+			try {
+				upfile.transferTo(target);
+				
+				PackageAttachment packageAttachment = new PackageAttachment();
+				packageAttachment.setOriginName(originName);
+				packageAttachment.setChangeName(changeName);
+				packageAttachment.setFilePath(filePath);
+				
+				// 상품 이미지 테이블에 들어갔는지 확인하는 result1
+				int result2 = adminService.insertPackAtt(packageAttachment);
+				
+				if(result1 > 0 || result2 > 0) {
+					session.setAttribute("alertMsg", "패키지가 성공적으로 추가되었습니다.");
+				} else {
+					session.setAttribute("alertMsg", "패키지가 추가중 오류가 발생하였습니다. 확인해 주세요.");
+				}
+				
+			} catch (IllegalStateException | IOException e) {
 				session.setAttribute("alertMsg", "패키지가 추가중 오류가 발생하였습니다. 확인해 주세요.");
 			}
-			
-		} catch (IllegalStateException | IOException e) {
-			session.setAttribute("alertMsg", "패키지가 추가중 오류가 발생하였습니다. 확인해 주세요.");
 		}
+		return "redirect:/admin/packageList.ad";
+	} else {
+		session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+		return "redirect:/member/login.do";
 	}
-	return "redirect:/admin/packageList.ad";
-	
+
 }
 
 // 패키지 도시락 수정 메소드
@@ -353,21 +472,32 @@ public String updataPack(
 	  , @RequestParam int packagePrice
 	  , HttpSession session) {
 	
-	PackageProduct packageProduct = new PackageProduct();
-	packageProduct.setPackageNum(packageNum);
-	packageProduct.setPackageNum2(packageNum2);
-	packageProduct.setPackageName(packageName);
-	packageProduct.setPackagePrice(packagePrice);
 	
-	int result1 = adminService.updatePack(packageProduct);
+	Member loginUser = (Member)session.getAttribute("loginUser");
 	
-	if(result1 > 0) {
-		session.setAttribute("alertMsg", "패키지 정보 수정 성공!!");
+	if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+		PackageProduct packageProduct = new PackageProduct();
+		packageProduct.setPackageNum(packageNum);
+		packageProduct.setPackageNum2(packageNum2);
+		packageProduct.setPackageName(packageName);
+		packageProduct.setPackagePrice(packagePrice);
+		
+		int result1 = adminService.updatePack(packageProduct);
+		
+		if(result1 > 0) {
+			session.setAttribute("alertMsg", "패키지 정보 수정 성공!!");
+		} else {
+			session.setAttribute("alertMsg", "패키지 정보 수정이 잘못됬다고!? 이대로 가면 이상해지니 다시 수정해!!!!!!!!!!");
+		}
+		
+		return "redirect:/admin/packageList.ad";
 	} else {
-		session.setAttribute("alertMsg", "패키지 정보 수정이 잘못됬다고!? 이대로 가면 이상해지니 다시 수정해!!!!!!!!!!");
+		session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+		return "redirect:/member/login.do";
 	}
 	
-	return "redirect:/admin/packageList.ad";
+	
+	
 	
 	
 }
@@ -392,18 +522,25 @@ public String deletePack(
 //		}
 //	}
 	
-	int result2 = adminService.deletePackAtt(packageNum);
+	Member loginUser = (Member)session.getAttribute("loginUser");
 	
-	int result1 = adminService.deletePack(packageNum);
-	
+	if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+		int result2 = adminService.deletePackAtt(packageNum);
+		
+		int result1 = adminService.deletePack(packageNum);
+		
 
-	
-	if(result1 > 0 && result2 > 0) {
-		session.setAttribute("alertMsg", "패키지 삭제 성공");
-		return "redirect:/admin/packageList.ad";
+		
+		if(result1 > 0 && result2 > 0) {
+			session.setAttribute("alertMsg", "패키지 삭제 성공");
+			return "redirect:/admin/packageList.ad";
+		} else {
+			session.setAttribute("alertMsg", "패키지 삭제 실패");
+			return "redirect:/admin/packageList.ad";
+		}
 	} else {
-		session.setAttribute("alertMsg", "패키지 삭제 실패");
-		return "redirect:/admin/packageList.ad";
+		session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+		return "redirect:/member/login.do";
 	}
 }
 
@@ -412,30 +549,49 @@ public String deletePack(
 	public String activationPack(
 			@RequestParam int packageNum
 		  , HttpSession session) {
-		int result = adminService.activationPack(packageNum);
 		
-		if(result > 0) {
-			session.setAttribute("alertMsg", "활성화 되었습니다.");
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			int result = adminService.activationPack(packageNum);
+			
+			if(result > 0) {
+				session.setAttribute("alertMsg", "활성화 되었습니다.");
+			} else {
+				session.setAttribute("alertMsg", "오류~~~~~~");
+			}
+			
+			return "redirect:/admin/packageList.ad";
 		} else {
-			session.setAttribute("alertMsg", "오류~~~~~~");
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
 		}
 		
-		return "redirect:/admin/packageList.ad";
 	}
 	// 셀프 상품 비활성화
 	@GetMapping("/unactivationPack.ad")
 	public String unactivationPack(
 			@RequestParam int packageNum
 		  , HttpSession session) {
-		int result = adminService.unactivationPack(packageNum);
 		
-		if(result > 0) {
-			session.setAttribute("alertMsg", "비활성화 되었습니다.");
+		
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			int result = adminService.unactivationPack(packageNum);
+			
+			if(result > 0) {
+				session.setAttribute("alertMsg", "비활성화 되었습니다.");
+			} else {
+				session.setAttribute("alertMsg", "오류!!!!!");
+			}
+			
+			return "redirect:/admin/packageList.ad";
 		} else {
-			session.setAttribute("alertMsg", "오류!!!!!");
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
 		}
 		
-		return "redirect:/admin/packageList.ad";
 	}
 
 	
@@ -448,7 +604,9 @@ public String deletePack(
 		
 		session.setAttribute("alertMsg", "로그아웃에 성공하였습니다.");
 		
-		return "admin/adminMain";
+		return "redirect:/member/login.do";
 	}
 	
 }
+
+

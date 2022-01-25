@@ -60,7 +60,7 @@
                           <tr class="ttt">
                             <td colspan="2">
                               <button class="btn-success adesign" type="submit" style="width:50%; float:left;">등록하기</button>
-                              <button class="btn-warning" type="button" style="width:50%;" onclick="location.href='${pageContext.request.contextPath}/admin/packageList.ad'">뒤로가기</button>
+                              <button class="upd" type="button" style="width:50%;" onclick="location.href='${pageContext.request.contextPath}/admin/packageList.ad'">뒤로가기</button>
                             </td>
                           </tr>
                       </table>

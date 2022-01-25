@@ -53,7 +53,6 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
     <style>
         .header__top__right a:hover{
             color: green;
@@ -80,7 +79,6 @@
                            			<div class="header__top__right__social">
 		                                <a href="${ pageContext.request.contextPath }/customercenter/notice.do?currentPage=1">고객센터</a>
 		                                <a href="${ pageContext.request.contextPath }/mypage/main.wo">마이페이지</a>
-		                                <a href="${pageContext.request.contextPath}/member/join.do">회원가입</a>
 		                            </div>
                            		</c:when>
                            		<c:otherwise><!-- 로그인이 안되었다면 -->
@@ -127,8 +125,8 @@
                                     <li><a href="${ pageContext.request.contextPath }/selfdo/meal.do" class="categoryHover categoryBold" style="color: black; text-decoration: underline;"><b>셀프 도시락</b></a></li>
                                 </ul>
                             </li>
-                            <li><a href="./shop-grid.html" class="a">신상품</a></li>
-                            <li><a href="./shop-grid.html" class="a">베스트</a></li>
+                            <li><a href="${pageContext.request.contextPath}/main/bestProductP.mi" class="a">package베스트</a></li>
+                            <li><a href="${pageContext.request.contextPath}/main/bestProduct.mi" class="a">self베스트</a></li>
                             <li><a href="${ pageContext.request.contextPath }/customercenter/event.do" class="a">이벤트</a></li>
                             <li><a href="${ pageContext.request.contextPath }/packagedo/category.do" class="a">패키지식단</a></li>
                             <li>

@@ -22,7 +22,7 @@
 		<div class="cbody body-content"
 			style="width: 80%; height: 100%; display: inline-block; box-sizing: border-box; padding-bottom: 50px; margin-left: 13%; margin-bottom: 50px; border: 1px solid rgb(127, 173, 57); border-radius: 10px;">
 			<div class="cbody mbody self" align="center">
-				<h2 align="center" style="margin: 10px;">셀프 도시락 상품 관리</h2>
+				<h1 align="center" style="margin: 10px;">셀프 도시락 상품 관리</h1>
 				<br> <a class="btn manage"
 					href="${pageContext.request.contextPath}/admin/selfList.do"> <img
 					src="${pageContext.request.contextPath}/resources/admin/self.png"
@@ -30,7 +30,7 @@
 				</a>
 			</div>
 			<div class="cbody mbody pacakge" align="center">
-				<h2 align="center" style="margin: 10px">패키지 상품 관리</h2>
+				<h1 align="center" style="margin: 10px">패키지 상품 관리</h1>
 				<br> <a class="btn manage"
 					href="${pageContext.request.contextPath}/admin/packageList.ad">
 					<img

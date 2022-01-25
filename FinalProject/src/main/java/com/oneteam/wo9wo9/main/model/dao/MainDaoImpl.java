@@ -56,8 +56,27 @@ public class MainDaoImpl implements MainDao{
 
 	@Override
 	public List<Main> mdPick() {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList("main.mdPick");
+	}
+
+	@Override
+	public List<Main> bestC() {
+		return sqlSession.selectList("main.bestC");
+	}
+
+	@Override
+	public List<Main> bestF() {
+		return sqlSession.selectList("main.bestF");
+	}
+
+	@Override
+	public List<Main> bestG() {
+		return sqlSession.selectList("main.bestG");
+	}
+
+	@Override
+	public List<Main> bestP() {
+		return sqlSession.selectList("main.bestP");
 	}
 	
 	

@@ -97,13 +97,9 @@
               <div class="row justify-content-center">
                   <div class="col-lg-5">
                       <div class="shadow-lg border-0 rounded-lg mt-5">
-                          <div class="card-header" style="background-color: white;"><h3 class="text-center"><img src="${ pageContext.request.contextPath }/resources/img/logo.png" alt=""></h3></div>
+                          <div class="card-header" style="background-color: white;"><h3 class="text-center"><img src="${ pageContext.request.contextPath }/resources/logo.png" alt=""></h3></div>
                           <div class="card-body">
                               <form action="main.wo" method="post">
-                              	  <div class="form-floating mb-3">
-                                      <input class="form-control" id="inputid" style="border-color: rgb(4, 158, 4);" id="memberId" name="memberId" type="text" placeholder="ID" maxlength="15"/>
-                                      <label for="inputid">ID</label>
-                                  </div>
                                   <div class="form-floating mb-3">
                                       <input class="form-control" id="memberPwd" style="border-color: rgb(4, 158, 4);" id="inputPassword" name="memberPwd" type="password" maxlength="15" placeholder="Password" />
                                       <label for="inputPassword">Password</label>

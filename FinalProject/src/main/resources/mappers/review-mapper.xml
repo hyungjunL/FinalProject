@@ -13,21 +13,19 @@
 	
 	<insert id="insertList" parameterType="map">
 		INSERT INTO REVIEW(
-		                    NOTICE_NO,
-		                    ORDER_NUM,
-		                    NOTICE_CONTENT,
-		                    CREATE_DATE,
-		                    STATUS,
-		                    POINT,
-		                    MEMBER_NAME)
-		      VALUES(
-		            SEQ_REVI.NEXTVAL,
-		            1,
-		            #{content},
-		            SYSDATE,
-		            DEFAULT,
-		            #{point},
-		            #{memberName})
+						  NOTICE_NO,
+						  ORDER_NUM,
+						  NOTICE_CONTENT,
+						  CREATE_DATE,
+						  STATUS,
+						  POINT)
+		VALUES(
+			   SEQ_RNO.NEXTVAL,
+			   1,
+			   #{content},
+			   SYSDATE,
+			   DEFAULT,
+			   #{point})
 	</insert>
 </mapper>
 

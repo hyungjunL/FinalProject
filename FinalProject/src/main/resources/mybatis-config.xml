@@ -57,6 +57,14 @@
 		<typeAlias type="com.oneteam.wo9wo9.packagedo.model.vo.Basket" alias="basket"/>
 		<typeAlias type="com.oneteam.wo9wo9.selfdo.model.vo.Selfdo" alias="selfdo"/>
 		<typeAlias type="com.oneteam.wo9wo9.selfdo.model.vo.Sidedo" alias="sidedo"/>
+		<!-- 이영훈 -->
+		<typeAlias alias="noticeSecond" type="com.oneteam.wo9wo9.notice.model.vo.NoticeS"></typeAlias>
+		<typeAlias alias="inquiry" type="com.oneteam.wo9wo9.inquiry.model.vo.Inquiry"></typeAlias>
+		<typeAlias alias="order" type="com.oneteam.wo9wo9.order.model.vo.Order"></typeAlias>
+		
+		<typeAlias alias="orderList" type="com.oneteam.wo9wo9.order.model.vo.OrderList"></typeAlias>
+		
+		<!-- 이영훈 -->
 	</typeAliases>
 	
 </configuration>

@@ -18,4 +18,12 @@ public interface MemberService {
 	// 비밀번호 찾기
 	Member findPwd(Member member);
 
+	// 이메일 중복
+	int emailCheck(String email);
+
+
+
+
+
+
 }

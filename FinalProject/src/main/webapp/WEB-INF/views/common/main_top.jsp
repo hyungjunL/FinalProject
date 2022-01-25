@@ -53,6 +53,16 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        .header__top__right a:hover{
+            color: green;
+        }
+
+        .header__top__right a{
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -65,20 +75,31 @@
                     <div class="col-lg-6 col-md-6"></div>
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__right">
-                            <div class="header__top__right__social">
-                                <a href="${ pageContext.request.contextPath }/customercenter/notice.do?currentPage=1">고객센터</a>
-                                <a href="#">마이페이지</a>
-                                <a href="#">회원가입</a>
-                            </div>
+                            <c:choose>
+                           		<c:when test="${ !empty loginUser }"><!-- 로그인 되었을때 -->
+                           			<div class="header__top__right__social">
+		                                <a href="${ pageContext.request.contextPath }/customercenter/notice.do?currentPage=1">고객센터</a>
+		                                <a href="${ pageContext.request.contextPath }/mypage/main.wo">마이페이지</a>
+		                                <a href="${pageContext.request.contextPath}/member/join.do">회원가입</a>
+		                            </div>
+                           		</c:when>
+                           		<c:otherwise><!-- 로그인이 안되었다면 -->
+                           			<div class="header__top__right__social">
+		                                <a href="${ pageContext.request.contextPath }/customercenter/notice.do?currentPage=1">고객센터</a>
+		                                <a href="${pageContext.request.contextPath}/member/join.do">회원가입</a>
+		                            </div>
+                           		</c:otherwise>
+                            </c:choose>
                             <div class="header__top__right__auth">
                                 <c:choose>
                                 		<c:when test="${ !empty loginUser }"><!-- 로그인 되었을때 -->
-                                			<a>${ loginUser.memberName } 님</a>
+                                			<a style="display: inline-block;">${ loginUser.memberName } 님</a>
+                                			<a style="display: inline-block;" href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
                                 		</c:when>
                                 		<c:otherwise><!-- 로그인이 안되었다면 -->
                                 			<a href="${pageContext.request.contextPath}/member/login.do">Login</a>
                                 		</c:otherwise>
-                                	</c:choose>
+                                </c:choose>
                             </div>
                         </div>
                     </div>
@@ -87,7 +108,7 @@
         </div>
         <div class="container" style="text-align: center;">
             <div class="header__logo">
-                <a href="./index.html"><img src="../resources/logo.png" alt=""></a>
+                <a href="${pageContext.request.contextPath}/main/main.do"><img src="../resources/logo.png" alt=""></a>
             </div>
 
                 <div>
@@ -95,25 +116,27 @@
                         <ul>
                             <li>
                                 <i class="fa fa-bars"></i>
-                                <span class="categoryName"><b>카테고리</b></span>
+                                <span class="categoryName" style="color: black;"><b>카테고리</b></span>
 
-                                <ul class="header__menu__dropdown" style="border: 1px solid lightgray;">
-                                    <li><a href="./shop-details.html" class="categoryHover categoryBold" style="color: black; text-decoration: underline;"><b>패키지 도시락</b></a></li>
-                                    <li><a href="./shoping-cart.html" class="categoryHover" style="color: black;">저당식당</a></li>
-                                    <li><a href="./checkout.html" class="categoryHover" style="color: black;">칼로리식단</a></li>
-                                    <li><a href="./checkout.html" class="categoryHover" style="color: black;">장수식단</a></li>
-                                    <li><a href="./blog-details.html" class="categoryHover categoryBold" style="color: black; text-decoration: underline;"><b>셀프 도시락</b></a></li>
+                               <ul class="header__menu__dropdown" style="border: 1px solid lightgray;">
+                                    <li><a href="${ pageContext.request.contextPath }/packagedo/category.do" class="categoryHover categoryBold" style="color: black; text-decoration: underline;"><b>패키지 도시락</b></a></li>
+                                    <li><a href="${ pageContext.request.contextPath }/packagedo/meal1.do" class="categoryHover" style="color: black;">키토제닉 식단</a></li>
+                                    <li><a href="${ pageContext.request.contextPath }/packagedo/meal2.do" class="categoryHover" style="color: black;">채식주의 식단</a></li>
+                                    <li><a href="${ pageContext.request.contextPath }/packagedo/meal3.do" class="categoryHover" style="color: black;">지중해식 식단</a></li>
+                                    <li><a href="${ pageContext.request.contextPath }/packagedo/meal4.do" class="categoryHover" style="color: black;">단백질 식단</a></li>
+                                    <li><a href="${ pageContext.request.contextPath }/selfdo/meal.do" class="categoryHover categoryBold" style="color: black; text-decoration: underline;"><b>셀프 도시락</b></a></li>
                                 </ul>
                             </li>
                             <li><a href="./shop-grid.html" class="a">신상품</a></li>
                             <li><a href="./shop-grid.html" class="a">베스트</a></li>
                             <li><a href="${ pageContext.request.contextPath }/customercenter/event.do" class="a">이벤트</a></li>
-                            <li><a href="./blog.html" class="a">패키지식단</a></li>
+                            <li><a href="${ pageContext.request.contextPath }/packagedo/category.do" class="a">패키지식단</a></li>
                             <li>
-                                <form class="form-inline" action="/action_page.php">
-                                    <input class="form-control mr-sm-2 inp_search" type="text" placeholder="Search">
-                                    <a href="#"><img src="../resources/img/search.png" alt="" style="width: 30px; height: 30px;"></a>
+                                <form id="search_form" class="form-inline" action="${pageContext.request.contextPath}/main/sideSearch.mi" mathod="get">
+                                    <input class="form-control mr-sm-2 inp_search" id="keyword" name="keyword" type="text" placeholder="Search">
+                                    <a type="submit"><img src="../resources/img/search.png" alt="" style="width: 30px; height: 30px;"></a>
                                 </form>
+
                             </li>
                             <li>
                                 <div class="header__top__right__auth">
@@ -127,7 +150,14 @@
                 <i class="fa fa-bars"></i>
             </div>
         </div>
-
+	<!-- 일회성 메세지 띄우기 -->
+	<c:if test="${ !empty alertMsg }">
+		<script type="text/javascript">
+			var msg = "${ alertMsg }";
+			alert(msg);
+		</script>
+		<c:remove var="alertMsg" scope="session"/>
+	</c:if>
     </header>
     <!-- Header Section End -->
 

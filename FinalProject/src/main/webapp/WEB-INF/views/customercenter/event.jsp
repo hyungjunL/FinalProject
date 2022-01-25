@@ -200,7 +200,9 @@
 				$.ajax({
 					url : "${ pageContext.request.contextPath }/customercenterrest/disable.do",
 					type : "post",
-					data : { couponName : "싱그러운 점심 10% 할인쿠폰"},
+					data : { couponName : "싱그러운 점심 10% 할인쿠폰",
+				     memberNum : $("#memberNum").val()
+				     },
 					success : function(result) {
 						// console.log(result);
 						
@@ -227,7 +229,9 @@
 				$.ajax({
 					url : "${ pageContext.request.contextPath }/customercenterrest/disable.do",
 					type : "post",
-					data : { couponName : "오래오래 함께해요 5% 할인쿠폰"},
+					data : { couponName : "오래오래 함께해요 5% 할인쿠폰",
+					     memberNum : $("#memberNum").val()
+				     },
 					success : function(result) {
 						// console.log(result);
 						
@@ -254,7 +258,9 @@
 				$.ajax({
 					url : "${ pageContext.request.contextPath }/customercenterrest/disable.do",
 					type : "post",
-					data : { couponName : "대박기원 7% 할인쿠폰"},
+					data : { couponName : "대박기원 7% 할인쿠폰",
+					     memberNum : $("#memberNum").val()
+				     },
 					success : function(result) {
 						// console.log(result);
 						

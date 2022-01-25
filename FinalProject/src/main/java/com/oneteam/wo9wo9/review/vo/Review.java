@@ -10,4 +10,5 @@ public class Review {
 	private String createDate;
 	private String status;
 	private int point;
+	private String memberName;
 }

@@ -37,6 +37,8 @@
 	
 	<!-- typeAliases : VO 클래스에 별칭을 지정하겠다. -->
 	<typeAliases>
+		<typeAlias alias="main" type="com.oneteam.wo9wo9.main.model.vo.Main"></typeAlias>
+	
 		<typeAlias alias="notice" type="com.oneteam.wo9wo9.customercenter.model.vo.Notice"></typeAlias>
 		<typeAlias alias="question" type="com.oneteam.wo9wo9.customercenter.model.vo.Question"></typeAlias>
 		<typeAlias alias="review" type="com.oneteam.wo9wo9.review.vo.Review"></typeAlias>
@@ -50,6 +52,11 @@
 		<typeAlias alias="mypageOderList" type="com.oneteam.wo9wo9.mypage.model.vo.MypageOrderList"/>
 		<typeAlias alias="coupon" type="com.oneteam.wo9wo9.mypage.model.vo.Coupon"/>
 		<typeAlias alias="reviewList" type="com.oneteam.wo9wo9.mypage.model.vo.ReviewList"/>
+		
+		<typeAlias type="com.oneteam.wo9wo9.packagedo.model.vo.Packagedo" alias="packagedo"/>
+		<typeAlias type="com.oneteam.wo9wo9.packagedo.model.vo.Basket" alias="basket"/>
+		<typeAlias type="com.oneteam.wo9wo9.selfdo.model.vo.Selfdo" alias="selfdo"/>
+		<typeAlias type="com.oneteam.wo9wo9.selfdo.model.vo.Sidedo" alias="sidedo"/>
 	</typeAliases>
 	
 </configuration>

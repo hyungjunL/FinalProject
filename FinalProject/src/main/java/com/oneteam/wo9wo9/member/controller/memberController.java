@@ -2,7 +2,7 @@ package com.oneteam.wo9wo9.member.controller;
 
 import javax.servlet.http.HttpSession;
 
-
+import org.apache.taglibs.standard.lang.jstl.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.oneteam.wo9wo9.member.model.service.MemberService;
 import com.oneteam.wo9wo9.member.model.vo.Member;
@@ -48,6 +49,18 @@ public class memberController {
 			return "redirect:join.do?error";
 		}
 	}
+
+	@PostMapping("/emailCheck")
+	public int emailCheck(
+			@RequestParam String email) {
+		
+		int result = memberService.emailCheck(email);
+		
+		System.out.println(email);
+		System.out.println(result);
+		
+		return result;
+	}
 	
 	@GetMapping("/joinSuccess.do")
 	public String joinSuccess() {
@@ -57,6 +70,7 @@ public class memberController {
 	// 로그인
 	@GetMapping("/login.do")
 	public String login() {
+		
 		return "member/memberLogin";
 	}
 	
@@ -80,13 +94,34 @@ public class memberController {
 			
 		}
 		else {
-			session.setAttribute("alertMsg", "로그인 성공");
-			
-			// session 에 로그인한 회원의 저보 담기
-			session.setAttribute("loginUser", loginUser);
-			
-			return "redirect:/customercenter/notice.do";
+			// 관리자로 로그인 시
+			if(loginUser.getMemberId().equals("admin")) {
+				session.setAttribute("loginUser", loginUser);
+				
+				return "redirect:/admin/adminmain.do";
+			} 
+			// 사용자로 로그인 시 
+			else {
+				session.setAttribute("alertMsg", "로그인 성공");
+				
+				// session 에 로그인한 회원의 저보 담기
+				session.setAttribute("loginUser", loginUser);
+				
+				return "redirect:/main/main.do"; 
+			}
 		}
+
+	}
+	
+	
+	@GetMapping("/logout.do")
+	public String logout(
+			@ModelAttribute Member member,
+			HttpSession session) {
+		session.invalidate();
+	
+		
+		return "redirect:/main/main.do";
 	}
 	
 	@GetMapping("findId.do")
@@ -102,7 +137,7 @@ public class memberController {
 
 		Member findUserId = memberService.findId(member);
 		
-		System.out.println("findUserId.getId -" + findUserId.getMemberId());
+		//System.out.println("findUserId.getId -" + findUserId.getMemberId());
 		
 		// 결과에 따른 응답뷰 지정
 		if(findUserId==null){ 
@@ -149,7 +184,7 @@ public class memberController {
 		}
 		else {
 			
-			model.addAttribute("pwd", findUserPwd.getMemberPwd());
+			//model.addAttribute("pwd", findUserPwd.getMemberPwd());
 			
 			session.setAttribute("pwd", findUserPwd.getMemberPwd());
 			
@@ -158,6 +193,8 @@ public class memberController {
 		return "redirect:/member/findPwd.do";
 		
 	}
+	
+
 
 	
 

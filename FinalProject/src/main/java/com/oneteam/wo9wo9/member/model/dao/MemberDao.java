@@ -22,5 +22,9 @@ public interface MemberDao {
 	// 비밀번호 찾기
 	Member findPwd(Member member);
 	
+	// 이메일 중복 체크
+	int emailCheck(String email);
+	
 	
 }
+s

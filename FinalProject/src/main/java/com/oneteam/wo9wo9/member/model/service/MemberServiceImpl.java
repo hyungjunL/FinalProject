@@ -43,11 +43,11 @@ public class MemberServiceImpl implements MemberService {
 		// 결과값을 담은 변수 초기화
 		int result = 0;
 
-		System.out.println(member);
+		//System.out.println(member);
 		
 		// 일단 아이디 중복체크 => SELECT 문
 		Member findMem = memberDao.idCheck(member);
-		
+
 		// 중복되는 아이디 없으면 가입 진행 => INSERT 문
 		if(findMem == null) { // 중복 아이디가 없다면 => 가입 진행
 			result = memberDao.join(member);
@@ -55,6 +55,18 @@ public class MemberServiceImpl implements MemberService {
 		
 		return result;
 	}
+
+	// 이메일 중복 체크
+	@Override
+	public int emailCheck(String email) {
+		
+		int result = memberDao.emailCheck(email);
+
+		return result;
+
+	}
+
+
 
 	
 

@@ -2,7 +2,7 @@ package com.oneteam.wo9wo9.member.model.vo;
 
 public class Member {
 	
-	private String memberNum;//MEMBER_NUM	NUMBER		NOT NULL,
+	private int memberNum;//MEMBER_NUM	NUMBER		NOT NULL,
 	private String memberId;//MEMBER_ID	VARCHAR2(20)		NOT NULL,
 	private String memberPwd;//MEMBER_PWD	VARCHAR2(15)		NOT NULL,
 	private String memberName;//MEMBER_NAME	VARCHAR2(20)		NOT NULL,
@@ -19,7 +19,7 @@ public class Member {
 		super();
 	}
 	
-	public Member(String memberNum, String memberId, String memberPwd, String memberName, String phone, String email,
+	public Member(int memberNum, String memberId, String memberPwd, String memberName, String phone, String email,
 			String postNo, String address, String detailAddress, String gender, String status, String birth) {
 		super();
 		this.memberNum = memberNum;
@@ -36,10 +36,10 @@ public class Member {
 		this.birth = birth;
 	}
 	
-	public String getMemberNum() {
+	public int getMemberNum() {
 		return memberNum;
 	}
-	public void setMemberNum(String memberNum) {
+	public void setMemberNum(int memberNum) {
 		this.memberNum = memberNum;
 	}
 	public String getMemberId() {

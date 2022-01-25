@@ -11,6 +11,6 @@ public class PackageProduct {
 	private int packagePrice;	//	PACKAGE_PRICE	NUMBER		NOT NULL,
 	private String status;	//	STATUS	VARCHAR2(1)	DEFAULT 'Y'	NOT NULL
 	private int count;
-	
+	private String bestPackageImg;
 	private String titleImg;
 }

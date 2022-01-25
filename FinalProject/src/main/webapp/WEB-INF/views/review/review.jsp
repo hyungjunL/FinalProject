@@ -10,7 +10,7 @@
 </head>
 <body>
 	<header class="header">
-        <%@ include file="../common/header.jsp" %>
+        <%@ include file="../common/main_top.jsp" %>
     </header>
     <hr>
     <br>
@@ -87,7 +87,7 @@
 							 		+ "<td>" + result[i].noticeNo + "</td>"
 							 		+ "<td><img src='../resources/img/"+ result[i].point +"point.PNG'width='100' height='20' ></td>"
 							 		+ "<td>" + result[i].noticeContent + "</td>"
-							 		+ "<td> ${loginUser.memberName} </td>"
+							 		+ "<td>" + result[i].memberName + "</td>"
 							 		+ "<td>" + result[i].createDate.substring(0, 10) + "</td>"
 							 + "</tr>";
 					}

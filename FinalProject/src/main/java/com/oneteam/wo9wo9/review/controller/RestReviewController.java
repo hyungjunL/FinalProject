@@ -32,6 +32,8 @@ public class RestReviewController {
 		return list;
 		
 	}
+	
+	
 	@PostMapping("/insert.do")
 	public int insertList(@RequestParam String content,
 			  @RequestParam String memberName,

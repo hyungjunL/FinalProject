@@ -58,6 +58,15 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return result;
 	}
+
+	// 이메일 중복 체크
+	@Override
+	public int emailCheck(String email) {
+		
+		int result = sqlSession.selectOne("member.emailCheck", email);
+		
+		return result;
+	}
 	
 
 }

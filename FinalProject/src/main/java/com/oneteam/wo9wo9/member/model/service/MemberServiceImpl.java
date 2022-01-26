@@ -1,5 +1,7 @@
 package com.oneteam.wo9wo9.member.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,6 +67,33 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 
 	}
+	
+	// ------------ 이영훈 ---------------
+		@Override
+		public List<Member> memberList() {
+			
+			List<Member> list = memberDao.memberList();
+			
+			return list;
+		}
+
+		@Override
+		public int memberCrime(int memberNum) {
+			
+			int result = memberDao.memberCrime(memberNum);
+			
+			return result;
+		}
+
+		@Override
+		public int memberCrimeRe(int memberNum) {
+			
+			int result = memberDao.memberCrimeRe(memberNum);
+			
+			return result;
+		}
+		
+		// ------------ 이영훈 ---------------
 
 
 

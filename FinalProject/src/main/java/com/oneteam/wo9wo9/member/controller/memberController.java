@@ -2,7 +2,6 @@ package com.oneteam.wo9wo9.member.controller;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.taglibs.standard.lang.jstl.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.oneteam.wo9wo9.member.model.service.MemberService;
 import com.oneteam.wo9wo9.member.model.vo.Member;
@@ -49,16 +49,14 @@ public class memberController {
 			return "redirect:join.do?error";
 		}
 	}
-
-	@PostMapping("/emailCheck")
+	
+	@ResponseBody
+	@GetMapping("/emailCheck.do")
 	public int emailCheck(
 			@RequestParam String email) {
 		
 		int result = memberService.emailCheck(email);
-		
-		System.out.println(email);
-		System.out.println(result);
-		
+		System.out.println("이메일 중복 결과 : " + result);
 		return result;
 	}
 	

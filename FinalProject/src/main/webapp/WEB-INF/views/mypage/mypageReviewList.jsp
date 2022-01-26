@@ -68,7 +68,6 @@
 	}
 </style>
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 	<!-- Breadcrumb Section Begin -->
@@ -101,7 +100,7 @@
 									<div class="accordion accordion-flush" id="accordionFlushExample">
                         				<div class="accordion-item">
                             				<h2 class="accordion-header" id="flush-heading0">
-				                                <button class="accordion-button collapsed rounded" style="font-family: 'BMDOHYEON'; border: 0.1px solid rgb(243, 221, 217);" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+				                                <button class="accordion-button collapsed rounded" style="font-family: 'BMDOHYEON'; border: 0.1px solid rgb(243, 221, 217);" type="button" aria-expanded="false" aria-controls="flush-collapseOne">
 				                                  작성한 리뷰가 없습니다.
 				                                </button>
                             				</h2>
@@ -112,11 +111,11 @@
 									<c:forEach var="r" items="${ list }" varStatus="status">
 					                      <div class="accordion-item">
 				                            <h2 class="accordion-header" id="flush-heading${ r.reviewListNum }">
-				                                <button class="accordion-button collapsed rounded" style="font-family: 'BMDOHYEON'; border: 0.1px solid pink; background-color: rgb(243, 221, 217); color: white;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${ r.reviewListNum }" aria-expanded="false" aria-controls="flush-collapse${ r.reviewListNum }/>">
+				                                <button class="accordion-button collapsed rounded" style="font-family: 'BMDOHYEON'; border: 0.1px solid pink; background-color: rgb(243, 221, 217); color: white;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${ r.reviewListNum }" aria-expanded="false" aria-controls="flush-collapse${ r.reviewListNum }">
 				                                    ${ r.sideName }
 				                                </button>
 				                            </h2>
-				                            <div id="flush-collapse${ r.reviewListNum }" class="accordion-collapse collapse" aria-labelledby="flush-heading${ q.reviewListNum }/>" data-bs-parent="#accordionFlushExample">
+				                            <div id="flush-collapse${ r.reviewListNum }" class="accordion-collapse collapse" aria-labelledby="flush-heading${ r.reviewListNum }" data-bs-parent="#accordionFlushExample">
 				                                <div class="accordion-body">
 				                                    <!-- 리뷰내용 -->
 				                                    <div class="contact-form spad" style="padding-top: 10px; padding-bottom: 5px;">

@@ -155,6 +155,30 @@
                     </div>
                 </div>
 				</c:forEach>
+			
+			<!--  
+			<c:choose>	
+            	<c:when test="${ empty list }">
+            		<input type="radio" name="sideNum1" value="0" style="width: 30px; height: 30px;">
+            	</c:when>
+            	<c:otherwise>
+            	   <c:forEach var="b" items="${ list }">
+            	   <div class="col-lg-3 col-md-4 col-sm-6 mix rice">
+	                    <div class="featured__item">	
+	                        <div class="featured__item__pic set-bg" data-setbg="${ pageContext.request.contextPath }/${ b.titleImg }">
+	                            <ul class="featured__item__pic__hover">
+	                                <input type="radio" name="sideNum1" value="${ b.sideNum }" style="width: 30px; height: 30px;">
+	                            </ul>
+	                        </div>
+	                        <div class="featured__item__text">
+	                            <h6><a href="#">${ b.sideName }</a></h6>
+	                            <h5>${ b.price }원</h5>	                            
+	                        </div>
+	                    </div>
+	                </div>
+	                </c:forEach>
+            	</c:otherwise>
+			</c:choose> -->
 				
 				<c:forEach var="b" items="${ list2 }">
                 <div class="col-lg-3 col-md-4 col-sm-6 mix soup">
@@ -229,6 +253,12 @@
             
         </div>
     </section>
+    
+           		<input type="radio" name="sideNum1" value="0" checked style="width: 1px; height: 1px;">
+				<input type="radio" name="sideNum2" value="0" checked style="width: 1px; height: 1px;">
+				<input type="radio" name="sideNum3" value="0" checked style="width: 1px; height: 1px;">
+				<input type="radio" name="sideNum4" value="0" checked style="width: 1px; height: 1px;">
+				<input type="radio" name="sideNum5" value="0" checked style="width: 1px; height: 1px;">
     </form>
 
     <br>
@@ -264,6 +294,7 @@
                     </div>
                 </div>
                 </c:forEach>
+               
                 
                 <c:forEach var="s" items="${ list_2 }">
                 <div class="featured__item" style="width:200px; margin-left: 10px;">
@@ -340,6 +371,8 @@
         </form>
         
     </section>
+    
+
     
     
         <div class="container">
@@ -432,15 +465,14 @@
 												
 													<tr>
 													
-														<td width="7%"></td>
-														
 														<td>
-															<textarea id="replyContent" cols="70" rows="2" style="resize:none; margin-top:1px;" placeholder="내용을 입력해 주세요.."></textarea>
+															<textarea id="replyContent" cols="100" rows="2" style="resize:none; margin-top:1px;" placeholder="내용을 입력해 주세요.."></textarea>
 									        			   	
 															</td>
+														
 														<td>
-															
-														별점:<select id="point" style="margin-top:10px;">
+														
+														<select id="point" style="padding-top:10000px;">
 																<option value="1">1점</option>
 																<option value="2">2점</option>
 																<option value="3">3점</option>
@@ -450,7 +482,7 @@
 														</td>
 														<td>
 															<c:if test="${ loginUser != null }">
-									                            <button onclick="insertReply();" class="btn btn-success" style="margin-top:10px;">등록</button>
+									                            <button onclick="insertReply();" class="btn btn-success" style="width:100px; margin-top:10px;" >등록</button>
 									                        </c:if>
 																
 															<input type="hidden" id="userName" value="${loginUser.memberName }">
@@ -544,6 +576,8 @@
                 </div>
             </div>
         </div>
+        
+ 
         
         <br><br><br><br><br>
     

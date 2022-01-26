@@ -48,7 +48,7 @@ public class CustomerCenterController {
 		Notice nextNotice = customerCenterService.nextDetail(noticeNo);
 		Notice beforeNotice = customerCenterService.beforeDetail(noticeNo);
 		int result = customerCenterService.viewCount(noticeNo);
-		System.out.println(notice.getCount());
+		System.out.println(notice);
 		
 		
 		

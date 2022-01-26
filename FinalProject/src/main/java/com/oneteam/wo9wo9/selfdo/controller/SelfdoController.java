@@ -66,57 +66,67 @@ public class SelfdoController {
 		}
 	    else { // 로그인 했으면
 	    	
-			// 밥,국,반찬 가격 뽑아오기
-			Sidedo sidedo1 = sqlSession.selectOne("selfdo.selectprice1", sideNum1);
-			Sidedo sidedo2 = sqlSession.selectOne("selfdo.selectprice2", sideNum2);
-			Sidedo sidedo3 = sqlSession.selectOne("selfdo.selectprice3", sideNum3);
-			Sidedo sidedo4 = sqlSession.selectOne("selfdo.selectprice4", sideNum4);
-			Sidedo sidedo5 = sqlSession.selectOne("selfdo.selectprice5", sideNum5);		
-			int price = sidedo1.getPrice() + sidedo2.getPrice() + sidedo3.getPrice()
-			            + sidedo4.getPrice() + sidedo5.getPrice();
-			int memberNum =((Member)session.getAttribute("loginUser")).getMemberNum();
-			
-			// 셀프 테이블에 insert
-			Selfdo selfdo = new Selfdo();
-			selfdo.setMemberNum(memberNum);
-			selfdo.setRice(sideNum1);
-			selfdo.setSoup(sideNum2);
-			selfdo.setSide1(sideNum3);
-			selfdo.setSide2(sideNum4);
-			selfdo.setSide3(sideNum5);
-			selfdo.setPrice(price);
-			int result = selfdoService.putselfdo(selfdo);	
+	    	if((sideNum1 == 0) || (sideNum2 == 0) || (sideNum3 == 0) || (sideNum4 == 0) || (sideNum5 == 0)) {
+	    		
+				session.setAttribute("alertMsg", "선택이 모두 완료되지 않았습니다.");
+				
+				return "redirect:meal.do";
+	    	}
+	    	else {
+	    		
+				// 밥,국,반찬 가격 뽑아오기
+				Sidedo sidedo1 = sqlSession.selectOne("selfdo.selectprice1", sideNum1);
+				Sidedo sidedo2 = sqlSession.selectOne("selfdo.selectprice2", sideNum2);
+				Sidedo sidedo3 = sqlSession.selectOne("selfdo.selectprice3", sideNum3);
+				Sidedo sidedo4 = sqlSession.selectOne("selfdo.selectprice4", sideNum4);
+				Sidedo sidedo5 = sqlSession.selectOne("selfdo.selectprice5", sideNum5);		
+				int price = sidedo1.getPrice() + sidedo2.getPrice() + sidedo3.getPrice()
+				            + sidedo4.getPrice() + sidedo5.getPrice();
+				int memberNum =((Member)session.getAttribute("loginUser")).getMemberNum();
+				
+				// 셀프 테이블에 insert
+				Selfdo selfdo = new Selfdo();
+				selfdo.setMemberNum(memberNum);
+				selfdo.setRice(sideNum1);
+				selfdo.setSoup(sideNum2);
+				selfdo.setSide1(sideNum3);
+				selfdo.setSide2(sideNum4);
+				selfdo.setSide3(sideNum5);
+				selfdo.setPrice(price);
+				int result = selfdoService.putselfdo(selfdo);	
+		    	
+				// 구성된 도시락 보여주기
+				List<Sidedo> list_1 = sqlSession.selectList("selfdo.selectsidedo_com1", sideNum1);
+				model.addAttribute("list_1", list_1);
+				List<Sidedo> list_2 = sqlSession.selectList("selfdo.selectsidedo_com2", sideNum2);
+				model.addAttribute("list_2", list_2);
+				List<Sidedo> list_3 = sqlSession.selectList("selfdo.selectsidedo_com3", sideNum3);
+				model.addAttribute("list_3", list_3);
+				List<Sidedo> list_4 = sqlSession.selectList("selfdo.selectsidedo_com4", sideNum4);
+				model.addAttribute("list_4", list_4);
+				List<Sidedo> list_5 = sqlSession.selectList("selfdo.selectsidedo_com5", sideNum5);
+				model.addAttribute("list_5", list_5);
+				
+				model.addAttribute("price", price);
+				
+				// 셀프 도시락 PK 빼오기
+				Selfdo selfdo1 = new Selfdo();
+				selfdo1.setMemberNum(memberNum);
+				selfdo1.setRice(sideNum1);
+				selfdo1.setSoup(sideNum2);
+				selfdo1.setSide1(sideNum3);
+				selfdo1.setSide2(sideNum4);
+				selfdo1.setSide3(sideNum5);
+				
+				Selfdo selfdo2 = sqlSession.selectOne("selfdo.selectdNum", selfdo1);		
+				int dNum = selfdo2.getdNum();
+				model.addAttribute("dNum", dNum);
+						
+				session.setAttribute("alertMsg", "셀프 도시락 구성 완료!");
+				
+				return "selfdo/selfdoMeal";
+	    	}
 	    	
-			// 구성된 도시락 보여주기
-			List<Sidedo> list_1 = sqlSession.selectList("selfdo.selectsidedo_com1", sideNum1);
-			model.addAttribute("list_1", list_1);
-			List<Sidedo> list_2 = sqlSession.selectList("selfdo.selectsidedo_com2", sideNum2);
-			model.addAttribute("list_2", list_2);
-			List<Sidedo> list_3 = sqlSession.selectList("selfdo.selectsidedo_com3", sideNum3);
-			model.addAttribute("list_3", list_3);
-			List<Sidedo> list_4 = sqlSession.selectList("selfdo.selectsidedo_com4", sideNum4);
-			model.addAttribute("list_4", list_4);
-			List<Sidedo> list_5 = sqlSession.selectList("selfdo.selectsidedo_com5", sideNum5);
-			model.addAttribute("list_5", list_5);
-			
-			model.addAttribute("price", price);
-			
-			// 셀프 도시락 PK 빼오기
-			Selfdo selfdo1 = new Selfdo();
-			selfdo1.setMemberNum(memberNum);
-			selfdo1.setRice(sideNum1);
-			selfdo1.setSoup(sideNum2);
-			selfdo1.setSide1(sideNum3);
-			selfdo1.setSide2(sideNum4);
-			selfdo1.setSide3(sideNum5);
-			
-			Selfdo selfdo2 = sqlSession.selectOne("selfdo.selectdNum", selfdo1);		
-			int dNum = selfdo2.getdNum();
-			model.addAttribute("dNum", dNum);
-					
-			session.setAttribute("alertMsg", "셀프 도시락 구성 완료!");
-			
-			return "selfdo/selfdoMeal";
 	    }			
 
 		
@@ -152,8 +162,8 @@ public class SelfdoController {
 	
 	@PostMapping("/basket.do")
 	public String basket(
-			@RequestParam int price,
-			@RequestParam int dNum,
+			@RequestParam(defaultValue="0") int price,
+			@RequestParam(defaultValue="0") int dNum,
 			HttpSession session){
 			
 		if(session.getAttribute("loginUser") == null) {  // 로그인 안했으면
@@ -163,21 +173,30 @@ public class SelfdoController {
 			return "redirect:meal.do";
 		}
 		else { // 로그인 했으면
-		
-			int memberNum =((Member)session.getAttribute("loginUser")).getMemberNum();
+			
+			if((dNum == 0) || (price == 0) ) {
 				
-			Basket basket = new Basket();
-			basket.setdNum(dNum);
-			basket.setMemberNum(memberNum);
-			basket.setPrice(price);
+				session.setAttribute("alertMsg", "도시락을 구성해주세요.");
+				
+				return "redirect:meal.do";
+			}
 			
-			int result = selfdoService.putbasket(basket);
-			
-			
-			session.setAttribute("alertMsg", "장바구니 담기 완료!");
-			
-			return "redirect:meal.do"; // 장바구니로 가게해야 함.
-			
+			else {
+				
+				int memberNum =((Member)session.getAttribute("loginUser")).getMemberNum();
+				
+				Basket basket = new Basket();
+				basket.setdNum(dNum);
+				basket.setMemberNum(memberNum);
+				basket.setPrice(price);
+				
+				int result = selfdoService.putbasket(basket);
+				
+				
+				session.setAttribute("alertMsg", "장바구니 담기 완료!");
+				
+				return "redirect:../basket/list"; // 장바구니로 가게해야 함.
+			}			
 		}
 			
 	}

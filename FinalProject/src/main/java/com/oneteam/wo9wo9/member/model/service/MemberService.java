@@ -1,4 +1,6 @@
 package com.oneteam.wo9wo9.member.model.service;
+import java.util.List;
+
 import com.oneteam.wo9wo9.member.model.vo.Member;
 
 public interface MemberService {
@@ -21,7 +23,18 @@ public interface MemberService {
 	// 이메일 중복
 	int emailCheck(String email);
 
-
+	// ------------ 이영훈 ---------------
+	
+	// 회원전체조회 기능 메소드 틀
+	List<Member> memberList();
+	
+	// 회원제재 기능 메소드 틀1
+	int memberCrime(int memberNum);
+	
+	// 회원제재 기능 메소드 틀2
+	int memberCrimeRe(int memberNum);
+	
+	// ------------ 이영훈 ---------------
 
 
 

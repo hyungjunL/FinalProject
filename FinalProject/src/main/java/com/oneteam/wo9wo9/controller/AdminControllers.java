@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.oneteam.wo9wo9.admin.model.vo.PackageProduct;
+import com.oneteam.wo9wo9.admin.model.vo.SelfProduct;
 import com.oneteam.wo9wo9.inquiry.model.service.InquiryService;
 import com.oneteam.wo9wo9.inquiry.model.vo.Inquiry;
 import com.oneteam.wo9wo9.member.model.service.MemberService;
@@ -77,26 +79,35 @@ public class AdminControllers {
 	
 	// 회원 정보 리스트 화면을 띄워주는 메소드
 	@GetMapping("/memberList")
-	public String memberList(Model model) {
+	public String memberList(
+			Model model, 
+			HttpSession session) {
 		
-		// 화면을 뿌려주기 전에
-		// 조회부터 할거 => DB 에 저장된 회원의 정보를 싹 다 긁어와야함 (SELECT)
-		// Spring + MyBatis => 도구를 가져다 쓰겠다고 연동 먼저(==객체 생성, @Autowired)
-		// 도구이름 : sqlSession
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		// 모듈화 전
-		// List<Member> list = sqlSession.selectList("member.selectList");
-		
-		// 모듈화 후
-		// Service 단으로 토스
-		List<Member> list = memberService.memberList();
-		
-		// 조회를 다했다면 => 수하물 붙이고 (Model 객체를 이용해서 addAttribute 메소드 이용)
-		model.addAttribute("list", list);
-		
-		// 응답뷰 지정
-		return "admin/memberManager/memberList"; // "/WEB-INF/views/admin/memberList.jsp"
-		
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			// 화면을 뿌려주기 전에
+			// 조회부터 할거 => DB 에 저장된 회원의 정보를 싹 다 긁어와야함 (SELECT)
+			// Spring + MyBatis => 도구를 가져다 쓰겠다고 연동 먼저(==객체 생성, @Autowired)
+			// 도구이름 : sqlSession
+			
+			// 모듈화 전
+			// List<Member> list = sqlSession.selectList("member.selectList");
+			
+			// 모듈화 후
+			// Service 단으로 토스
+			List<Member> list = memberService.memberList();
+			
+			// 조회를 다했다면 => 수하물 붙이고 (Model 객체를 이용해서 addAttribute 메소드 이용)
+			model.addAttribute("list", list);
+			
+			// 응답뷰 지정
+			return "admin/memberManager/memberList"; // "/WEB-INF/views/admin/memberList.jsp"
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
+		}
+
 	}
 	
 	// 회원 제재 메소드1
@@ -107,21 +118,29 @@ public class AdminControllers {
 		HttpSession session
 			) {
 		
-		System.out.println(memberNum);
-		int result = memberService.memberCrime(memberNum);
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		if(result > 0) { // 성공
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			System.out.println(memberNum);
+			int result = memberService.memberCrime(memberNum);
 			
-			session.setAttribute("alertMsg", "회원 활성화");
-			
-			return "redirect:memberList";
+			if(result > 0) { // 성공
+				
+				session.setAttribute("alertMsg", "회원 활성화");
+				
+				return "redirect:memberList";
+			}
+			else { // 실패
+				
+				session.setAttribute("alertMsg", "회원 활성화 실패");
+				
+				return "redirect:memberList";
+			}
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
 		}
-		else { // 실패
-			
-			session.setAttribute("alertMsg", "회원 활성화 실패");
-			
-			return "redirect:memberList";
-		}
+	
 	}
 	
 	// 회원 제재 메소드2
@@ -132,37 +151,55 @@ public class AdminControllers {
 		HttpSession session
 			) {
 		
-		System.out.println(memberNum);
-		int result = memberService.memberCrimeRe(memberNum);
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		if(result > 0) { // 성공
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			System.out.println(memberNum);
+			int result = memberService.memberCrimeRe(memberNum);
 			
-			session.setAttribute("alertMsg", "회원재제 성공"); 
-			
-			return "redirect:memberList";
+			if(result > 0) { // 성공
+				
+				session.setAttribute("alertMsg", "회원재제 성공"); 
+				
+				return "redirect:memberList";
+			}
+			else { // 실패
+				
+				session.setAttribute("alertMsg", "회원재제 실패");
+				
+				return "redirect:memberList";
+			}
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
 		}
-		else { // 실패
-			
-			session.setAttribute("alertMsg", "회원재제 실패");
-			
-			return "redirect:memberList";
-		}
+		
 	}
 	
 	// 문의사항 리스트
 	@GetMapping("/inquiryList")
-	public String inquiryList(Model model) {
+	public String inquiryList(
+			Model model,
+			HttpSession session) {
 		
-		// 모듈화 후
-		// Service 단으로 토스
-		List<Inquiry> list = inquiryService.inquiryList();
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		// 조회를 다했다면 => 수하물 붙이고 (Model 객체를 이용해서 addAttribute 메소드 이용)
-		model.addAttribute("list", list);
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			// 모듈화 후
+			// Service 단으로 토스
+			List<Inquiry> list = inquiryService.inquiryList();
+			
+			// 조회를 다했다면 => 수하물 붙이고 (Model 객체를 이용해서 addAttribute 메소드 이용)
+			model.addAttribute("list", list);
+			
+			System.out.println(list);
+			
+			return "admin/inquiryManager/inquiryList";
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
+		}
 		
-		System.out.println(list);
-		
-		return "admin/inquiryManager/inquiryList";
 	}
 	
 	
@@ -170,16 +207,24 @@ public class AdminControllers {
 	@GetMapping("/inquiryAnswer")
 	public String inquiryAnswer(
 			@RequestParam int qNum,
-			Model model) {
+			Model model,
+			HttpSession session) {
 		
-		Inquiry inquiry = inquiryService.inquiryAnswer(qNum);
-		System.out.println(inquiry);
-		 
-		 // 수하물 붙이기
-		 model.addAttribute("inquiry", inquiry);
-		 
-		 // 응답뷰 지정
-		return "admin/inquiryManager/inquiryAnswer";
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			Inquiry inquiry = inquiryService.inquiryAnswer(qNum);
+			System.out.println(inquiry);
+			 
+			 // 수하물 붙이기
+			 model.addAttribute("inquiry", inquiry);
+			 
+			 // 응답뷰 지정
+			return "admin/inquiryManager/inquiryAnswer";
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
+		}
 		
 	}
 	
@@ -190,65 +235,93 @@ public class AdminControllers {
 			@RequestParam int qNum,
 			HttpSession session) {
 		
-		Inquiry param = new Inquiry();
-		param.setAContent(aContent);
-		param.setQNum(qNum);
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		System.out.println(param);
-		
-		// Service 단으로 토스
-		int result = inquiryService.inquiryWrite(param);
-		
-		// 결과에 따라서 메세지 띄우고 응답뷰를 지정
-		if(result > 0) { 
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			Inquiry param = new Inquiry();
+			param.setAContent(aContent);
+			param.setQNum(qNum);
 			
-			session.setAttribute("alertMsg", "답변이 등록되었습니다.");
-			return "redirect:inquiryList"; 
+			System.out.println(param);
+			
+			// Service 단으로 토스
+			int result = inquiryService.inquiryWrite(param);
+			
+			// 결과에 따라서 메세지 띄우고 응답뷰를 지정
+			if(result > 0) { 
+				
+				session.setAttribute("alertMsg", "답변이 등록되었습니다.");
+				return "redirect:inquiryList"; 
+			}
+			else { 
+				return "redirect:inquiryAnswer";
+			}
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
 		}
-		else { 
-			return "redirect:inquiryAnswer";
-		}
+
 		
 	}
 	
 	// 공지사항 리스트 보여주기
 	@GetMapping("/noticeList")
-	public String noticeList(Model model) {
+	public String noticeList(
+			Model model,
+			HttpSession session) {
 		
-		// 화면을 뿌려주기 전에
-		// 조회부터 할거 => DB 에 저장된 회원의 정보를 싹 다 긁어와야함 (SELECT)
-		// Spring + MyBatis => 도구를 가져다 쓰겠다고 연동 먼저(==객체 생성, @Autowired)
-		// 도구이름 : sqlSession
+		Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		// 모듈화 전
-		// List<Member> list = sqlSession.selectList("member.selectList");
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			// 화면을 뿌려주기 전에
+			// 조회부터 할거 => DB 에 저장된 회원의 정보를 싹 다 긁어와야함 (SELECT)
+			// Spring + MyBatis => 도구를 가져다 쓰겠다고 연동 먼저(==객체 생성, @Autowired)
+			// 도구이름 : sqlSession
+			
+			// 모듈화 전
+			// List<Member> list = sqlSession.selectList("member.selectList");
+			
+			// 모듈화 후
+			// Service 단으로 토스
+			List<NoticeS> list = noticeService.noticeList();
+			
+			// 조회를 다했다면 => 수하물 붙이고 (Model 객체를 이용해서 addAttribute 메소드 이용)
+			model.addAttribute("list", list);
+			
+			System.out.println(list);
+			
+			return "admin/noticeManager/noticeList";
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
+		}
 		
-		// 모듈화 후
-		// Service 단으로 토스
-		List<NoticeS> list = noticeService.noticeList();
 		
-		// 조회를 다했다면 => 수하물 붙이고 (Model 객체를 이용해서 addAttribute 메소드 이용)
-		model.addAttribute("list", list);
 		
-		System.out.println(list);
-		
-		return "admin/noticeManager/noticeList";
 	}
 	
 	// 공지사항 상세보기
 	 @GetMapping("/noticeContent")
 	 public String noticeContent(
 			 @RequestParam int noticeNo,
-			 Model model) {
+			 Model model,
+			 HttpSession session) {
 		 
-		 NoticeS notice = noticeService.noticeContent(noticeNo);
-		 System.out.println(notice);
-		 
-		 // 수하물 붙이기
-		 model.addAttribute("notice", notice);
-		 
-		 // 응답뷰 지정
-		 return "admin/noticeManager/noticeContent";
+		 	Member loginUser = (Member)session.getAttribute("loginUser");
+			
+			if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+				 NoticeS notice = noticeService.noticeContent(noticeNo);
+				 System.out.println(notice);
+				 
+				 // 수하물 붙이기
+				 model.addAttribute("notice", notice);
+				 
+				 // 응답뷰 지정
+				 return "admin/noticeManager/noticeContent";
+			} else {
+				session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+				return "redirect:/member/login.do";
+			}
 		 
 	 }
 	
@@ -259,27 +332,43 @@ public class AdminControllers {
 			@RequestParam int noticeNo,
 			HttpSession session) {
 		
-		System.out.println(noticeNo);
-		int result = noticeService.noticeDelete(noticeNo);
+	 	Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		if(result > 0) { // 성공
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			System.out.println(noticeNo);
+			int result = noticeService.noticeDelete(noticeNo);
 			
-			session.setAttribute("alertMsg", "공지사항 삭제 성공");
-			
-			return "redirect:noticeList";
-		}
-		else { // 실패
-			session.setAttribute("alertMsg", "공지사항 삭제 실패");
-			return "redirect:noticeList";
+			if(result > 0) { // 성공
+				
+				session.setAttribute("alertMsg", "공지사항 삭제 성공");
+				
+				return "redirect:noticeList";
+			}
+			else { // 실패
+				session.setAttribute("alertMsg", "공지사항 삭제 실패");
+				return "redirect:noticeList";
+			}
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
 		}
 		
 	}
 	
 	// 공지사항 등록 폼 보여주기
 	@GetMapping("/noticeEnroll")
-	public String noticeEnroll(Model model) {
+	public String noticeEnroll(
+			Model model,
+			HttpSession session) {
 		
-		return "admin/noticeManager/noticeEnroll";
+	 	Member loginUser = (Member)session.getAttribute("loginUser");
+		
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			return "admin/noticeManager/noticeEnroll";
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
+		}
 	
 	}
 	
@@ -289,34 +378,53 @@ public class AdminControllers {
 			@ModelAttribute NoticeS notice,
 			HttpSession session) {
 		
-		// Service 단으로 토스
-		int result = noticeService.noticeWrite(notice);
+	 	Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		// 결과에 따라서 메세지 띄우고 응답뷰를 지정
-		if(result > 0) { 
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			// Service 단으로 토스
+			int result = noticeService.noticeWrite(notice);
 			
-			session.setAttribute("alertMsg", "공지사항이 등록되었습니다.");
-			return "redirect:noticeList"; 
+			// 결과에 따라서 메세지 띄우고 응답뷰를 지정
+			if(result > 0) { 
+				
+				session.setAttribute("alertMsg", "공지사항이 등록되었습니다.");
+				return "redirect:noticeList"; 
+			}
+			else { 
+				return "redirect:noticeEnroll";
+			}
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
 		}
-		else { 
-			return "redirect:noticeEnroll";
-		}
+		
 	}
 	
 	// 주문관리 조회 리스트
 	@GetMapping("/orderList")
-	public String orderList(Model model) {
+	public String orderList(
+			Model model,
+			HttpSession session) {
 		
-		// 모듈화 후
-		// Service 단으로 토스
-		List<OrderList> list = orderService.orderList();
+	 	Member loginUser = (Member)session.getAttribute("loginUser");
 		
-		System.out.println(list);
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			// 모듈화 후
+			// Service 단으로 토스
+			List<OrderList> list = orderService.orderList();
+			
+			System.out.println(list);
+			
+			// 조회를 다했다면 => 수하물 붙이고 (Model 객체를 이용해서 addAttribute 메소드 이용)
+			model.addAttribute("list", list);
+			
+			return "admin/orderManager/orderList";
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
+		}
 		
-		// 조회를 다했다면 => 수하물 붙이고 (Model 객체를 이용해서 addAttribute 메소드 이용)
-		model.addAttribute("list", list);
 		
-		return "admin/orderManager/orderList";
 	}
 	
 	
@@ -324,16 +432,24 @@ public class AdminControllers {
     public String deleteOrder(
             @RequestParam int orderNum
           , HttpSession session) {
-        int result = orderService.orderDelete(orderNum);
-        
-        if(result > 0) {
-            session.setAttribute("alertMsg", "주문 취소 완료");
-            return "redirect:/orderList";
-        } else {
-            session.setAttribute("alertMsg", "주문 취소 실패!!!!!!!!!!!!!!");
-            return "redirect:/orderList";
-        }
-        
+		
+	 	Member loginUser = (Member)session.getAttribute("loginUser");
+		
+		if( loginUser != null && loginUser.getMemberId().equals("admin") && loginUser.getMemberPwd().equals("admin")) {
+			int result = orderService.orderDelete(orderNum);
+	        
+	        if(result > 0) {
+	            session.setAttribute("alertMsg", "주문 취소 완료");
+	            return "redirect:/orderList";
+	        } else {
+	            session.setAttribute("alertMsg", "주문 취소 실패!!!!!!!!!!!!!!");
+	            return "redirect:/orderList";
+	        }
+		} else {
+			session.setAttribute("alertMsg", "관리자로그인 시에만 접속할 수 있습니다.");
+			return "redirect:/member/login.do";
+		}
+
     }
 	
 	

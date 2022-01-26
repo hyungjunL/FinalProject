@@ -37,6 +37,12 @@
 	
 	<!-- typeAliases : VO 클래스에 별칭을 지정하겠다. -->
 	<typeAliases>
+		<typeAlias alias="card" type="com.oneteam.wo9wo9.card.model.vo.Card"></typeAlias>
+	 	<typeAlias alias="product" type="com.oneteam.wo9wo9.basket.model.vo.Product"></typeAlias>
+	 	<typeAlias alias="self" type="com.oneteam.wo9wo9.basket.model.vo.Self"></typeAlias>
+	 	<typeAlias alias="package" type="com.oneteam.wo9wo9.basket.model.vo.PackageVo"></typeAlias>
+	 	
+		
 		<typeAlias alias="main" type="com.oneteam.wo9wo9.main.model.vo.Main"></typeAlias>
 	
 		<typeAlias alias="notice" type="com.oneteam.wo9wo9.customercenter.model.vo.Notice"></typeAlias>

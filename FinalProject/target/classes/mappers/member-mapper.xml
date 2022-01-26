@@ -21,7 +21,7 @@
 						   BIRTH
 						   )
 		VALUES(
-			   SEQ_UNO.NEXTVAL,
+			   SEQ_MEM.NEXTVAL,
 			   #{memberId}, 
 			   #{memberPwd},
 			   #{memberName},
@@ -76,7 +76,11 @@
 		WHERE MEMBER_ID = #{memberId}
 		  AND EMAIL = #{email}
 	</select>
-	
+	<select id="emailCheck" resultType="int" parameterType="String" >
+		SELECT count(*) ass
+		FROM MEMBER
+		WHERE EMAIL = #{email}
+	</select>
 	<!-- 이영훈 -->
 	<update id="memberCrime" parameterType="member">
 		UPDATE MEMBER

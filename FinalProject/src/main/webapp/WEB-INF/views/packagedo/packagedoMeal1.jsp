@@ -17,18 +17,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>키토제닉</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="../resources/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="../resources/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="../resources/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="../resources/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="../resources/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="../resources/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="../resources/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
 
     <style>
           .list-area {
@@ -184,15 +172,14 @@
 												
 													<tr>
 													
-														<td width="7%"></td>
-														
 														<td>
-															<textarea id="replyContent" cols="70" rows="2" style="resize:none; margin-top:1px;" placeholder="내용을 입력해 주세요.."></textarea>
+															<textarea id="replyContent" cols="100" rows="2" style="resize:none; margin-top:1px;" placeholder="내용을 입력해 주세요.."></textarea>
 									        			   	
 															</td>
+														
 														<td>
-															
-														별점:<select id="point" style="margin-top:10px;">
+														
+														<select id="point" style="padding-top:10000px;">
 																<option value="1">1점</option>
 																<option value="2">2점</option>
 																<option value="3">3점</option>
@@ -202,7 +189,7 @@
 														</td>
 														<td>
 															<c:if test="${ loginUser != null }">
-									                            <button onclick="insertReply();" class="btn btn-success" style="margin-top:10px;">등록</button>
+									                            <button onclick="insertReply();" class="btn btn-success" style="width:100px; margin-top:10px;" >등록</button>
 									                        </c:if>
 																
 															<input type="hidden" id="userName" value="${loginUser.memberName }">
@@ -263,6 +250,9 @@
 																
 											         					$("#replyContent").val(""); // textarea 초기화
 											          			}
+											      				else{
+											      					alert("댓글 작성에 실패했습니다.");
+											      				}
 											      				
 											      				
 											      			},
@@ -303,15 +293,7 @@
 	<%@ include file="../common/main_bottom.jsp" %>
 </div>
 
-    <!-- Js Plugins -->
-    <script src="../resources/js/jquery-3.3.1.min.js"></script>
-    <script src="../resources/js/bootstrap.min.js"></script>
-    <script src="../resources/js/jquery.nice-select.min.js"></script>
-    <script src="../resources/js/jquery-ui.min.js"></script>
-    <script src="../resources/js/jquery.slicknav.js"></script>
-    <script src="../resources/js/mixitup.min.js"></script>
-    <script src="../resources/js/owl.carousel.min.js"></script>
-    <script src="../resources/js/main.js"></script>
+
     
 
 

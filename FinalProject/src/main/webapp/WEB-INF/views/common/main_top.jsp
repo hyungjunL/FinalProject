@@ -53,6 +53,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <style>
         .header__top__right a:hover{
             color: green;
@@ -138,7 +139,7 @@
                             </li>
                             <li>
                                 <div class="header__top__right__auth">
-                                    <a href="#"><i class="fa fa-shopping-bag"></i></a>
+                                    <a href="${ pageContext.request.contextPath }/basket/list"><i class="fa fa-shopping-bag"></i></a>
                                 </div>
                             </li>
                         </ul>
@@ -160,9 +161,9 @@
     <!-- Header Section End -->
 
     </body>
+    <script src="../resources/assets/dist/js/bootstrap.bundle.min.js.map"></script>
     <script src="../resources/js/jquery-3.3.1.min.js"></script>
     <script src="../resources/js/bootstrap.min.js"></script>
-    <script src="../resources/js/jquery.nice-select.min.js"></script>
     <script src="../resources/js/jquery-ui.min.js"></script>
     <script src="../resources/js/jquery.slicknav.js"></script>
     <script src="../resources/js/mixitup.min.js"></script>

@@ -57,11 +57,11 @@
 		INSERT INTO COUPON(
 						  COUPON,
 						  MEMBER_NUM,
-						  DISCOUN,
+						  DISCOUNT,
 						  STATUS,
 						  COUPON_NAME)
 		VALUES(
-			   SEQ_CNO.NEXTVAL,
+			   SEQ_COUP.NEXTVAL,
 			   #{memberNum},
 			   #{discount},
 			   DEFAULT,
@@ -81,7 +81,7 @@
 						  A_DATE,
 						  COUNT)
 		VALUES(
-			   SEQ_QNO.NEXTVAL,
+			   SEQ_QUES.NEXTVAL,
 			   1,
 			   #{categoryNum},
 			   DEFAULT,

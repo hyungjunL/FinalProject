@@ -184,15 +184,14 @@
 												
 													<tr>
 													
-														<td width="7%"></td>
-														
 														<td>
-															<textarea id="replyContent" cols="70" rows="2" style="resize:none; margin-top:1px;" placeholder="내용을 입력해 주세요.."></textarea>
+															<textarea id="replyContent" cols="100" rows="2" style="resize:none; margin-top:1px;" placeholder="내용을 입력해 주세요.."></textarea>
 									        			   	
 															</td>
+														
 														<td>
-															
-														별점:<select id="point" style="margin-top:10px;">
+														
+														<select id="point" style="padding-top:10000px;">
 																<option value="1">1점</option>
 																<option value="2">2점</option>
 																<option value="3">3점</option>
@@ -202,7 +201,7 @@
 														</td>
 														<td>
 															<c:if test="${ loginUser != null }">
-									                            <button onclick="insertReply();" class="btn btn-success" style="margin-top:10px;">등록</button>
+									                            <button onclick="insertReply();" class="btn btn-success" style="width:100px; margin-top:10px;" >등록</button>
 									                        </c:if>
 																
 															<input type="hidden" id="userName" value="${loginUser.memberName }">

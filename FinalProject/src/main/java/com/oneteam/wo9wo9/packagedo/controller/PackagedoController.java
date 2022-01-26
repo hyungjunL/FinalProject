@@ -61,7 +61,7 @@ public class PackagedoController {
 		if(session.getAttribute("loginUser") == null) {  // 로그인 안했으면
 			session.setAttribute("alertMsg", "로그인을 해주세요.");
 			
-			return "redirect:meal1.do";
+			return "redire	ct:meal1.do";
 		}
 	    else { // 로그인 했으면
 	    	    	
@@ -78,7 +78,7 @@ public class PackagedoController {
 		
 	    	session.setAttribute("alertMsg", "장바구니 담기 완료!");
 	    	
-	    	return "redirect:meal1.do"; // 장바구니로 가게 해야함.
+	    	return "redirect:../basket/list"; // 장바구니로 가게해야 함.
 	    }	
 	}
 	
@@ -123,7 +123,7 @@ public class PackagedoController {
 		
 	    	session.setAttribute("alertMsg", "장바구니 담기 완료!");
 	    	
-	    	return "redirect:meal2.do"; // 장바구니로 가게 해야함.
+	    	return "redirect:../basket/list"; // 장바구니로 가게해야 함.
 	    }	
 	}
 	
@@ -170,7 +170,7 @@ public class PackagedoController {
 		
 	    	session.setAttribute("alertMsg", "장바구니 담기 완료!");
 	    	
-	    	return "redirect:meal3.do"; // 장바구니로 가게 해야함.
+	    	return "redirect:../basket/list"; // 장바구니로 가게해야 함.
 	    }	
 	}
 	
@@ -215,7 +215,7 @@ public class PackagedoController {
 		
 	    	session.setAttribute("alertMsg", "장바구니 담기 완료!");
 	    	
-	    	return "redirect:meal4.do"; // 장바구니로 가게 해야함.
+	    	return "redirect:../basket/list"; // 장바구니로 가게해야 함.
 	    }	
 	}
 }

@@ -1,5 +1,7 @@
 package com.oneteam.wo9wo9.member.model.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -69,4 +71,29 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 
+	// ------------ 이영훈 ---------------
+	
+		@Override
+		public List<Member> memberList() {
+			
+			return sqlSession.selectList("member.selectList");
+			
+		}
+		
+		
+		@Override
+		public int memberCrime(int memberNum) {
+			
+			return sqlSession.update("member.memberCrime", memberNum);
+		}
+
+		@Override
+		public int memberCrimeRe(int memberNum) {
+			
+			return sqlSession.update("member.memberCrimeRe", memberNum);
+		}
+		
+		// ------------ 이영훈 ---------------
+
+	
 }

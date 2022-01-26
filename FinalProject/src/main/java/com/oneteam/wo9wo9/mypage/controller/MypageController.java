@@ -76,6 +76,12 @@ public class MypageController {
 			Model model,
 			HttpSession session) {
 		
+		if(session.getAttribute("loginUser") == null) {  // 로그인 안했으면
+			session.setAttribute("alertMsg", "로그인을 해주세요.");
+			
+			return "redirect:../main/main.do";
+		}
+	    else { // 로그인 했으면
 		Map<String, String> param = new HashMap<>();
 		
 		param.put("memberId", ((Member)session.getAttribute("loginUser")).getMemberId());
@@ -87,6 +93,7 @@ public class MypageController {
 		
 		return "mypage/mypageSuccess";
 	}
+	}
 	
 	// 회원정보 수정
 	@PostMapping("/infoEdit.wo")
@@ -95,6 +102,13 @@ public class MypageController {
 			Model model,
 			HttpSession session) {
 		
+		
+		if(session.getAttribute("loginUser") == null) {  // 로그인 안했으면
+			session.setAttribute("alertMsg", "로그인을 해주세요.");
+			
+			return "redirect:../main/main.do";
+		}
+	    else { // 로그인 했으면
 		int result = mypageService.memberInfoEdit(m);
 		
 
@@ -122,6 +136,7 @@ public class MypageController {
 			return "redirect:mypageSuccess.wo";
 			
 		}
+	    }
 	}
 	
 	// 주문내역 조회
@@ -129,6 +144,13 @@ public class MypageController {
 	public String mypageOrderList(
 			HttpSession session,
 			Model model) {
+		
+		if(session.getAttribute("loginUser") == null) {  // 로그인 안했으면
+			session.setAttribute("alertMsg", "로그인을 해주세요.");
+			
+			return "redirect:../main/main.do";
+		}
+	    else { // 로그인 했으면
 		
 			String memberId = ((Member)session.getAttribute("loginUser")).getMemberId();
 			
@@ -145,7 +167,7 @@ public class MypageController {
 			
 			return "mypage/mypageOrderList";
 	}
-	
+	}
 	// 주문취소
 	@GetMapping("/mypageOrderCancel.wo")
 	
@@ -154,6 +176,12 @@ public class MypageController {
 			HttpSession session,
 			Model model) {
 		
+		if(session.getAttribute("loginUser") == null) {  // 로그인 안했으면
+			session.setAttribute("alertMsg", "로그인을 해주세요.");
+			
+			return "redirect:../main/main.do";
+		}
+	    else { // 로그인 했으면
 		String memberId = ((Member)session.getAttribute("loginUser")).getMemberId();
 		
 		Map<String, String> param = new HashMap<>();
@@ -181,6 +209,7 @@ public class MypageController {
 			
 			return "redirect:mypageOrderList.wo";
 		}
+	    }
 		
 	}
 	
@@ -190,6 +219,12 @@ public class MypageController {
 			HttpSession session,
 			Model model) {
 		
+		if(session.getAttribute("loginUser") == null) {  // 로그인 안했으면
+			session.setAttribute("alertMsg", "로그인을 해주세요.");
+			
+			return "redirect:../main/main.do";
+		}
+	    else { // 로그인 했으면
 			String memberId = ((Member)session.getAttribute("loginUser")).getMemberId();
 			
 			Map<String, String> param = new HashMap<>();
@@ -205,14 +240,20 @@ public class MypageController {
 			
 			return "mypage/mypageOrderCancelList";
 	}
-	
+	}
 	// 쿠폰 조회
 	@GetMapping("/mypageCouponList.wo")
 	public String mypageCouponList(
 			HttpSession session,
 			Model model) {
 		
-		String memberId = "user01";
+		if(session.getAttribute("loginUser") == null) {  // 로그인 안했으면
+			session.setAttribute("alertMsg", "로그인을 해주세요.");
+			
+			return "redirect:../main/main.do";
+		}
+	    else { // 로그인 했으면
+		String memberId = ((Member)session.getAttribute("loginUser")).getMemberId();
 		
 		// 쿠폰 사용가능 조회
 		List<Coupon> list = mypageService.mypageCouponList(memberId);
@@ -226,6 +267,7 @@ public class MypageController {
 		
 		return "mypage/mypageCouponList";
 	}
+	}
 	
 	// 문의내역 조회
 	@GetMapping("/mypageInquiry.wo")
@@ -233,6 +275,12 @@ public class MypageController {
 			HttpSession session,
 			Model model) {
 		
+		if(session.getAttribute("loginUser") == null) {  // 로그인 안했으면
+			session.setAttribute("alertMsg", "로그인을 해주세요.");
+			
+			return "redirect:../main/main.do";
+		}
+	    else { // 로그인 했으면
 		String memberId = ((Member)session.getAttribute("loginUser")).getMemberId();
 		
 		List<Question> list = mypageService.mypageInquiry(memberId);
@@ -242,17 +290,25 @@ public class MypageController {
 		// 응답뷰 지정
 		return "mypage/mypageInquiryList";
 	}
+	}
 	
 	// 회원 탈퇴 진입 화면
 	@GetMapping("/mypageWithdrawal.wo")
 	public String mypageWithdrawal(
 			HttpSession session) {
 
+		if(session.getAttribute("loginUser") == null) {  // 로그인 안했으면
+			session.setAttribute("alertMsg", "로그인을 해주세요.");
+			
+			return "redirect:../main/main.do";
+		}
+	    else { // 로그인 했으면
 		String memberId = ((Member)session.getAttribute("loginUser")).getMemberId();
 		
 		session.setAttribute("memberId", memberId);
 		
 		return "mypage/mypageWithdrawal";
+	}
 	}
 	
 	
@@ -264,6 +320,12 @@ public class MypageController {
 			HttpSession session,
 			Model model) {
 		
+		if(session.getAttribute("loginUser") == null) {  // 로그인 안했으면
+			session.setAttribute("alertMsg", "로그인을 해주세요.");
+			
+			return "redirect:../main/main.do";
+		}
+	    else { // 로그인 했으면
 		Map<String, String> param = new HashMap<>();
 		
 		
@@ -298,6 +360,7 @@ public class MypageController {
 			
 			return "redirect:mypageWithdrawal.wo";
 		}
+	    }
 
 		return "redirect:main.wo";
 	}
@@ -307,14 +370,21 @@ public class MypageController {
 			HttpSession session,
 			Model model) {
 		
-		String memberId = "user01";	
+		if(session.getAttribute("loginUser") == null) {  // 로그인 안했으면
+			session.setAttribute("alertMsg", "로그인을 해주세요.");
+			
+			return "redirect:../main/main.do";
+		}
+	    else { // 로그인 했으면
+		String memberId = ((Member)session.getAttribute("loginUser")).getMemberId();	
 		
 		List<ReviewList> list = mypageService.mypageReviewList(memberId);
-		
+		System.out.println("list : " + list);
 		model.addAttribute("list", list);
 		
 		return "mypage/mypageReviewList";
 		
+	}
 	}
 	
 }

@@ -82,7 +82,7 @@
 						  COUNT)
 		VALUES(
 			   SEQ_QUES.NEXTVAL,
-			   1,
+			   #{memberId},
 			   #{categoryNum},
 			   DEFAULT,
 			   #{QTitle},

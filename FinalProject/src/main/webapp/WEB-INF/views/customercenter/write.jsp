@@ -126,7 +126,7 @@
                                 
                 
                             <div align="center">
-                                <button type="submit" class="btn btn-sm btn-success" id="btnSave">저장</button>
+                                <button type="submit" name="memberId" value="${loginUser.memberNum }" class="btn btn-sm btn-success" id="btnSave">저장</button>
                                 <button type="button" class="btn btn-sm btn-success" id="btnList">목록</button>
                             </div>
                 

@@ -175,22 +175,26 @@
 					     memberNum : $("#memberNum").val()
 					     },
 				success : function(result) {
-					// console.log(result);
+					//console.log(result);
+					if(result < 0){
+						alert("로그인을 하세요!");
+					}
+					else{
+						if(result > 0 ){
+							var str ="<input type='button' id='btn1' disabled class='btn btn-success' value='쿠폰받기' style='width:200px; height:200px;font-size : 30px'>"
+							alert("이미 받았어 자식아");
+						}
+						if(result == 0){
+							var str ="<input type='button' id='btn1' disabled class='btn btn-success' value='쿠폰받기' style='width:200px; height:200px;font-size : 30px'>"						
+							alert("쿠폰이 발급 되었습니다.");
+						}
+					}
 					
-					if(result > 0 ){
-						var str ="<input type='button' id='btn1' disabled class='btn btn-success' value='쿠폰받기' style='width:200px; height:200px;font-size : 30px'>"
-						alert("이미 받았어 자식아");
-					}
-					if(result == 0){
-						var str ="<input type='button' id='btn1' disabled class='btn btn-success' value='쿠폰받기' style='width:200px; height:200px;font-size : 30px'>"						
-						alert("쿠폰이 발급 되었습니다.");
-					}
 				
 					$("#coupon_1").html(str);
-					console.log("ajax 통신 실패!");
 					},
 					error : function() {
-						console.log("ajax 통신 실패!");
+						alert("로그인해서 사용하십시오.");
 					}
 				});
 				
@@ -219,7 +223,7 @@
 						console.log("ajax 통신 실패!");
 					},
 					error : function() {
-						console.log("ajax 통신 실패!");
+						alert("로그인해서 사용하십시오.");
 					}
 				});
 				
@@ -248,7 +252,7 @@
 						console.log("ajax 통신 실패!");
 					},
 					error : function() {
-						console.log("ajax 통신 실패!");
+						alert("로그인해서 사용하십시오.");
 					}
 				});
 				
@@ -266,7 +270,7 @@
 						
 						if(result > 0 ){
 							var str ="<input type='button' id='btn4' disabled class='btn btn-success' value='쿠폰받기' style='width:200px; height:200px;font-size : 30px'>"
-							alert("이미 받	았어 자식아");
+							alert("이미 받았어 자식아");
 						}
 						if(result == 0){
 							var str ="<input type='button' id='btn4' disabled class='btn btn-success' value='쿠폰받기' style='width:200px; height:200px;font-size : 30px'>"						
@@ -277,7 +281,7 @@
 						console.log("ajax 통신 실패!");
 					},
 					error : function() {
-						console.log("ajax 통신 실패!");
+						alert("로그인해서 사용하십시오.");
 					}
 				});
 				

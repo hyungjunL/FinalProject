@@ -199,7 +199,7 @@
                                 <select id="couponSelect">
                                     <c:choose>
                                         <c:when test="${empty cList }">
-                                            <option id="asdf" value="-1"><div>쿠폰 없음</div></option>
+                                            <option id="asdf" value="0"><div>쿠폰 없음</div></option>
                                         </c:when>
                                         <c:otherwise>
                                             <option selected="selected" value="0">0.선택안함</option>
@@ -338,7 +338,7 @@
             var minus = $(".minus");
             minus.click(function(){
                 var amount =  $(this).next().val();
-                var price = parseInt($(this).parent().parent().parent().prev().children().eq(0).text());;
+                var price = parseInt($(this).parent().parent().parent().prev().children().eq(0).text());
                 
                 if(amount>1){
                 amount--;
@@ -402,7 +402,7 @@
                 //<div data-coupon="${c.coupon}"><div data-discount="${c.discount}">${c.discount}</div>
                 
                 if(asdf1 != 0 && asdf1 != -1) {
-                    
+                   	
                     var selectCoupon = $("#couponSelect option:selected").text();
                     var asdfTrim = asdf.trim();
                     var sIndex = asdfTrim.lastIndexOf("-") + 1;

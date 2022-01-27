@@ -35,13 +35,19 @@
                     <!-- The slideshow -->
                     <div class="carousel-inner" style="width: 1000; height: 300;">
                       <div class="carousel-item active">
+                        <a href="${pageContext.request.contextPath}/customercenter/event.do">
                         <img src="../resources/img/slide01.PNG" alt="New York" style="height: 350px;">
+                        </a>
                       </div>
                       <div class="carousel-item">
+                        <a href="${pageContext.request.contextPath}/customercenter/event.do">
                         <img src="../resources/img/slide02.PNG" alt="New York"style="height: 350px;" >
+                        </a>
                       </div>
                       <div class="carousel-item">
+                        <a href="${pageContext.request.contextPath}/customercenter/event.do">
                         <img src="../resources/img/slide03.PNG" alt="New York" style="height: 350px;">
+                        </a>
                       </div>
                     </div>
                     <!-- Left and right controls -->
@@ -62,7 +68,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>셀프 도시락 베스트 ></h2>
+                        <h2>셀프 도시락 BEST ></h2>
                     </div>
                     <div class="featured__controls">
                         <ul>
@@ -87,13 +93,16 @@
                     <c:forEach var="bsi" items="${bestSelfImg}" end="3">
                         <div class="col-lg-3 col-md-4 col-sm-6 mix oranges">
                             <div class="featured__item">
+                                <a href="${ pageContext.request.contextPath }/selfdo/meal.do">
                                 <div class="featured__item__pic set-bg" data-setbg="${pageContext.request.contextPath}/${bsi.bestImg}">
+                                    
                                     <ul class="featured__item__pic__hover">
                                     </ul>
                                 </div>
                                 <div class="featured__item__text">
                                     <h6><a>${bsi.sideName}</a></h6>
                                 </div>
+                            </a>
                             </div>
                         </div>
                      </c:forEach>
@@ -107,16 +116,19 @@
                 </c:when>
                 
                 <c:otherwise>
-                 <c:forEach var="r" items="${bestRice}" end="2">
+                 <c:forEach var="r" items="${bestRice}" end="3">
                     <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
                         <div class="featured__item">
+                            <a href="${ pageContext.request.contextPath }/selfdo/meal.do">
                             <div class="featured__item__pic set-bg" data-setbg="${pageContext.request.contextPath}/${r.bestRice}">
+                            
                                 <ul class="featured__item__pic__hover">
                                 </ul>
                             </div>
                             <div class="featured__item__text">
                                 <h6><a>${r.sideName}</a></h6>
                             </div>
+                        </a>
                         </div>
                     </div>
                  </c:forEach>
@@ -134,13 +146,15 @@
 
                                 <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat">
                                     <div class="featured__item">
+                                      <a href="${ pageContext.request.contextPath }/selfdo/meal.do">
                                         <div class="featured__item__pic set-bg" data-setbg="${pageContext.request.contextPath}/${bs.bestSoup}">
                                             <ul class="featured__item__pic__hover">
                                             </ul>
                                         </div>
                                         <div class="featured__item__text">
-                                            <h6><a href="#">${bs.sideName}</a></h6>
+                                            <h6><a>${bs.sideName}</a></h6>
                                         </div>
+                                    </a>
                                     </div>
                                 </div>
                              </c:forEach>
@@ -159,12 +173,12 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="banner__pic">
-                            <img src="../resources/img/banner/banner-3.jpg" alt="">
+                            <a href="${ pageContext.request.contextPath }/packagedo/category.do"><img src="../resources/img/banner/banner-3.jpg"></a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="banner__pic">
-                            <img src="../resources/img/banner/banner-4.jpg" alt="">
+                            <a href="${ pageContext.request.contextPath }/selfdo/meal.do"><img src="../resources/img/banner/banner-4.jpg"></a>
                         </div>
                     </div>
                 </div>
@@ -179,7 +193,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="section-title from-blog__title">
-                                <h2>패키지 도시락 Best 3</h2>
+                                <h2>패키지 도시락 Best 3 ></h2>
                             </div>
                         </div>
                     </div>
@@ -193,6 +207,7 @@
                              <c:forEach var="p" items="${bestPackage}" end="2">
                             <div class="col-lg-4 col-md-4 col-sm-6 mix fresh-meat vegetables" style="display: block; float: left;">
                                 <div class="featured__item">
+                                    <a href="${ pageContext.request.contextPath }/packagedo/meal${p.packageNum2}.do">
                                     <div class="featured__item__pic set-bg" data-setbg="${pageContext.request.contextPath}/${p.bestPackageImg}">
                                         <ul class="featured__item__pic__hover">
                                         </ul>
@@ -200,6 +215,7 @@
                                     <div class="featured__item__text">
                                         <h6><a>${p.packageName}</a></h6>
                                     </div>
+                                </a>
                                 </div>
                         </div>
                              </c:forEach>
@@ -250,11 +266,13 @@
                  <c:forEach var="r" items="${bestRice}" end="2">
                     <div class="col-lg-4 col-md-4 col-sm-6 mix fresh-meat vegetables" style="display: block; float: left;">
                         <div class="featured__item">
+                         <a href="${ pageContext.request.contextPath }/selfdo/meal.do">
                             <div class="featured__item__pic set-bg" data-setbg="${pageContext.request.contextPath}/${r.bestRice}">
                             </div>
                             <div class="featured__item__text">
                                 <h6><a>${r.sideName}</a></h6>
                             </div>
+                            </a>
                         </div>
                     </div>
                  </c:forEach>

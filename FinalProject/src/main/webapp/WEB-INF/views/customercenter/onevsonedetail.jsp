@@ -86,17 +86,7 @@
                                 
                             </div>
                         </div>
-                        <div class="blog__sidebar__item">
-                            <h4>Search By</h4>
-                            <div class="blog__sidebar__item__tags">
-                                <a href="#">Apple</a>
-                                <a href="#">Beauty</a>
-                                <a href="#">Vegetables</a>
-                                <a href="#">Fruit</a>
-                                <a href="#">Healthy Food</a>
-                                <a href="#">Lifestyle</a>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-7">
@@ -109,10 +99,10 @@
                                 <h5><strong>[문의 내용]</strong></h5>
                             </td>
                             <td width="60%">
-                                <h5>배송 언제오나요???</h5>
+                                <h5>${question.QContent}</h5>
                             </td>
                             <td width="15%">
-                                <h5>2021-12-12</h5>
+                                <h5>${question.QDate.substring(0, 10)}</h5>
                             </td>
                         </table>
                         <hr>

@@ -62,6 +62,18 @@
         .header__top__right a{
             text-decoration: none;
         }
+        .inp_search {
+    width: 242px;
+    height: 36px;
+    padding: 0 60px 0 14px;
+    border: 1px solid gray;
+    border-radius: 18px;
+    font-weight: 400;
+    font-size: 12ox;
+    color: #666;
+    line-height: 16px;
+    outline: none;
+}
     </style>
 </head>
 
@@ -131,9 +143,9 @@
                             <li><a href="${ pageContext.request.contextPath }/customercenter/event.do" class="a">이벤트</a></li>
                             <li><a href="${ pageContext.request.contextPath }/packagedo/category.do" class="a">패키지식단</a></li>
                             <li>
-                                <form id="search_form" class="form-inline" action="${pageContext.request.contextPath}/main/sideSearch.mi" mathod="get">
+								<form id="search_form" class="form-inline" action="${pageContext.request.contextPath}/main/sideSearch.mi" mathod="get">
                                     <input class="form-control mr-sm-2 inp_search" id="keyword" name="keyword" type="text" placeholder="Search">
-                                    <a type="submit"><img src="../resources/img/search.png" alt="" style="width: 30px; height: 30px;"></a>
+                                    <button type="submit" style="background: white; border: none;"><img src="../resources/img/search.png" alt="" style="width: 30px; height: 30px;"></button>
                                 </form>
 
                             </li>

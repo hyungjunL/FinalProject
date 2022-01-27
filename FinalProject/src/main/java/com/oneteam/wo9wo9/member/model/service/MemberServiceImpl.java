@@ -68,6 +68,14 @@ public class MemberServiceImpl implements MemberService {
 
 	}
 	
+	@Override
+	public int idsCheck(String memberId) {
+		int result = memberDao.idsCheck(memberId);
+		System.out.println("아이디 : " + memberId);
+		return result;
+	}
+
+	
 	// ------------ 이영훈 ---------------
 		@Override
 		public List<Member> memberList() {

@@ -81,6 +81,13 @@
 		FROM MEMBER
 		WHERE EMAIL = #{email}
 	</select>
+	
+	<select id="idsCheck" resultType="int" parameterType="String" >
+		SELECT count(*)
+		FROM MEMBER
+		WHERE MEMBER_ID = #{memberId}
+	</select>
+	
 	<!-- 이영훈 -->
 	<update id="memberCrime" parameterType="member">
 		UPDATE MEMBER

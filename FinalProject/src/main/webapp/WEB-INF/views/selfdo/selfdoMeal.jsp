@@ -126,7 +126,8 @@
                     </div>
                     <div class="featured__controls">
                         <ul>
-                            <li class="active" data-filter=".rice">&nbsp;밥&nbsp;</li>
+                            <li class="active" data-filter="*">&nbsp;모두&nbsp;</li>
+                            <li data-filter=".rice">&nbsp;밥&nbsp;</li>
                             <li data-filter=".soup">&nbsp;국&nbsp;</li>
                             <li data-filter=".side1">&nbsp;반찬(1)&nbsp;</li>
                             <li data-filter=".side2">&nbsp;반찬(2)&nbsp;</li>

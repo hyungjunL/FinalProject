@@ -22,6 +22,8 @@ public interface MemberService {
 
 	// 이메일 중복
 	int emailCheck(String email);
+	
+	int idsCheck(String memberId);
 
 	// ------------ 이영훈 ---------------
 	

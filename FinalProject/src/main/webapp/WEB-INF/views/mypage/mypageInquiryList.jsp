@@ -203,7 +203,7 @@
 																			
 					                                                    </div>
 					                                                    <div class="col-lg-5 col-md-5">
-					                                                        <input type="text" value=
+					                                                        <input type="text" readonly value=
 					                                                        	<c:choose>
 													                            	<c:when test="${ q.categoryNum eq '1'}">
 													                            		'셀프도시락'
@@ -221,7 +221,7 @@
 					                                                        />
 					                                                    </div>
 					                                                    <div class="col-lg-12 text-center">
-					                                                        <textarea>${ q.AContent }</textarea>
+					                                                        <textarea readonly>${ q.AContent }</textarea>
 					                                                    </div>
 					                                                </div>
 					                                            </form>

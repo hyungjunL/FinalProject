@@ -87,17 +87,7 @@
                                 
                             </div>
                         </div>
-                        <div class="blog__sidebar__item">
-                            <h4>Search By</h4>
-                            <div class="blog__sidebar__item__tags">
-                                <a href="#">Apple</a>
-                                <a href="#">Beauty</a>
-                                <a href="#">Vegetables</a>
-                                <a href="#">Fruit</a>
-                                <a href="#">Healthy Food</a>
-                                <a href="#">Lifestyle</a>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-7">
@@ -154,7 +144,7 @@
 																	셀프
 																</c:when>
 																<c:when test="${n.categoryNum == 2 }">
-																	페키지
+																	패키지
 																</c:when>
 																<c:when test="${n.categoryNum == 3 }">
 																	서비스

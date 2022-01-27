@@ -87,13 +87,6 @@
             vertical-align: middle;
         }
 
-        tr:last-child > td {
-            padding-bottom: 40px;
-        }
-
-        tr:first-child > td{
-            padding-top: 40px;
-        }
         
         #joinForm {
            width:70%
@@ -110,6 +103,10 @@
 
         .pw_ok{color:red; display: none;}
         .pw_already{color:red; display: none;}
+
+        .id_ok{color:red; display: none;}
+        .id_already{color:red; display: none;}
+
 
 
        </style>
@@ -129,11 +126,13 @@
                     <tbody>
                       <tr>
                         <td>아이디<b >*</b></td>
-                        <td>
-                            <input id="user_id" name="memberId" class="form-control" type="text" placeholder="* 6자리 이상의 영문 혹은 영문, 숫자를 조합하여 입력해 주세요." required="required"><br>
-                            <div id="id_check"></div>
+                        <td style="text-align: left; margin: 0px;" >
+                            <input id="user_id"name="memberId" class="form-control" type="text" placeholder="* 6자리 이상의 영문 혹은 영문, 숫자를 조합하여 입력해 주세요." required="required"><br>
+                            <span class="id_ok">사용 가능한 아이디입니다.</span>
+                            <span class="id_already">사용중인 아이디입니다.</span>
                         </td>
                         <td>
+                            <button type="button" class="btn btn-outline-success" onclick="checkId();">중복확인</button>
                         </td>
                       </tr>
                       <tr>
@@ -162,7 +161,8 @@
                       </tr>
                       <tr>
                           <td>이메일<b >*</b></td>
-                          <td style="text-align: left; margin: 0px;">
+                          <td id="goCheck" style="text-align: left; margin: 0px;">
+                              <input type="hidden" name="emailCheckResult" value="0">
                               <input id="email" name="email" class="form-control" type="email" placeholder="* 예) abcd@naver.com" required="required">
                               <span class="email_ok">사용 가능한 이메일입니다.</span>
                               <span class="email_already">사용중인 이메일입니다.</span>
@@ -175,16 +175,16 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-9">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id = "postNo" name="postNo" type="text" placeholder="우편번호" required />
+                                                        <input class="form-control" id = "postNo" name="postNo" type="text" placeholder="우편번호" required readonly/>
                                                     </div>
                                                 </div>
                                             </div>
                                            
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id = "address" name="address"  type="text" placeholder="주소" required />
+                                                <input class="form-control" id = "address" name="address"  type="text" placeholder="주소" required readonly/>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="detailAddress" name="detailAddress" type="text" placeholder="상세 주소 입력"  required  />
+                                                <input class="form-control" id="detailAddress" name="detailAddress" type="text" placeholder="상세 주소 입력" />
                                             </div>
                           </td>
                           <td>
@@ -223,7 +223,7 @@
                     </tbody>
                   </table>
 
-                  <button id="joinSuccess" class="btn btn-success" type="submit" style="width: 100%; margin-top: 70px; margin-bottom:50px; height: 70px;"> 가입하기</button><br>
+                  <button id="joinSuccess"class="btn btn-success" type="submit" style="width: 100%; margin-top: 70px; margin-bottom:50px; height: 70px;"> 가입하기</button><br>
             </form>
           </div>
 
@@ -253,7 +253,6 @@
                
                 }
             $("#joinSuccess").click(function() {
-				console.log("sdfsd");
                 
                 var regExp = /^[0-9][0-9][0-9]-[0-9]{3,4}-[0-9][0-9][0-9][0-9]$/;
                 var phone = document.getElementById('phone').value;
@@ -276,6 +275,19 @@
                     document.getElementById('memberPwd').focus();
                     return false;
                 }
+
+                //document.getElementById('address').value=
+                if($('#emailCheckResult').value != '0'){
+                    console.log($('#emailCheckResult').value);
+                    return true;
+                }
+                else{
+                    alert("이메일 중복 확인을 해주세요");
+                    console.log($('#emailCheckResult').value);
+                    return false;
+                }
+                
+
     			
     			});
  
@@ -307,9 +319,42 @@
                            if(result == 0){ //사용 가능한 
                                $('.email_ok').css("display","inline-block"); 
                                $('.email_already').css("display", "none");
+                               $('#emailCheckResult').value=='1';
+                               
                            } else { //  이미 존재하는
                                $('.email_already').css("display","inline-block");
                                $('.email_ok').css("display", "none");
+                               $('#emailCheckResult').value=='1';
+                               
+                           }
+                        },
+                        error:function(){
+                            alert("에러입니다");
+                        }
+                    });
+                };
+
+                function checkId(){
+                    var memberId = $('#user_id').val();
+
+                    $.ajax({
+                        url:'idsCheck.do', //Controller에서 인식할 주소
+                        type:'get',
+                        data :{memberId:memberId},
+                        success:function(result){ //컨트롤러에서 넘어온 값을 받는다 
+                        	
+                        	 console.log(result);
+                        
+                           if(result == 0){ //사용 가능한 
+                            
+                               $('.id_ok').css("display","inline-block"); 
+                               $('.id_already').css("display", "none");
+                               
+                           } else { //  이미 존재하는
+                            
+                               $('.id_already').css("display","inline-block");
+                               $('.id_ok').css("display", "none");
+                               
                            }
                         },
                         error:function(){
@@ -326,16 +371,50 @@
                 //비밀번호 확인
                     $('#checkPwd').blur(function(){
                     if($('#memberPwd').val() != $('#checkPwd').val()){
-                            if($('#checkPwd').val()!=''){
+                        if($('#checkPwd').val()!=''){
                             alert("비밀번호가 일치하지 않습니다.");
-                                $('#checkPwd').val('');
+                            $('#checkPwd').val('');
                             $('#checkPwd').focus();
                         }
                         }
                     })  	   
                 });
 
+
             </script>
+<!--
+            <script>
+        $(function() {
+         
+         // blur : 인풋태그에서 포커스를 잃었을 때 발생하는 이벤트
+         $("#email").blur(function() {
+            
+            // 할일 : 이름이 DB 에 있는지 확인해서 결과를 입력창 밑에 있는 span 에 출력하기
+            var email = $("#email").val();
+         
+            $.ajax({
+               url : "${ pageContext.request.contextPath }/emailCheck.do", 
+                     // 아이디 조회하는 곳 
+               type : "get", 
+               data : { email : email }, 
+               success:function(result){ //컨트롤러에서 넘어온 값을 받는다 
+            
+                if(result == 0){ //사용 가능한 
+                    $('.email_ok').css("display","inline-block"); 
+                    $('.email_already').css("display", "none");
+                    
+                } else { //  이미 존재하는
+                    $('.email_already').css("display","inline-block");
+                    $('.email_ok').css("display", "none");
+                }
+            },
+            error:function(){
+                alert("에러입니다");
+            }
+        });   
+});
+            </script>
+-->
 
             
             

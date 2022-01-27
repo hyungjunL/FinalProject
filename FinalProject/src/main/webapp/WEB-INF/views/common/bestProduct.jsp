@@ -35,10 +35,10 @@
 											</div>
 											<div class="featured__controls">
 												<ul style="float: right; margin-bottom:10px;">
-													<li class="active" data-filter="*">모두 | </li>
-													<li data-filter=".oranges">국 | </li>
-													<li data-filter=".fresh-meat">밥 | </li>
-													<li data-filter=".vegetables">반찬</li>
+													<li class="active" data-filter="*">모두</li>
+													<li data-filter=".oranges">반찬 </li>
+													<li data-filter=".fresh-meat">국 </li>
+													<li data-filter=".vegetables">밥</li>
 												</ul>
 											</div>
 										</div>

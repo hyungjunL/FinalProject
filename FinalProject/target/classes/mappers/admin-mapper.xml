@@ -114,7 +114,6 @@
 		     , DEFAULT)
 	</insert>
 	
-	<!-- 패키지 상품 이미지 추가 -->
 	<insert id="insertPackAtt" parameterType="packageAttachment">
 		INSERT INTO PACKAGE_ATTACHMENT(IMG_NUM
 		                             , PACKAGE_NUM
@@ -126,7 +125,7 @@
 		     , SEQ_PATT.CURRVAL
 		     , #{originName}
 		     , #{changeName}
-		     , 'resources\packUpfiles\'
+		     , 'resources/packUpfiles/'
 		     , DEFAULT)
 	</insert>
 	

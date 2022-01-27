@@ -70,6 +70,14 @@ public class MemberDaoImpl implements MemberDao {
 		return result;
 	}
 	
+	@Override
+	public int idsCheck(String memberId) {
+		int result = sqlSession.selectOne("member.idsCheck", memberId);
+		
+		System.out.println("아이디 : " + memberId);
+		return result;
+	}
+	
 
 	// ------------ 이영훈 ---------------
 	

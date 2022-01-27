@@ -92,7 +92,7 @@ public class MainController {
 			Model model) {
 		// 반찬 베스트 3
 		List<Main> bestside = mainService.bestSelfImg();
-		
+		System.out.println("이걸 확인해 : " + bestside);
 		model.addAttribute("bestside", bestside);
 		
 		// 패키지 베스트
@@ -134,6 +134,7 @@ public class MainController {
 		model.addAttribute("bestF", bestF);
 		
 		List<Main> bestG = mainService.bestG();
+		System.out.println("뱃지: " + bestG);
 		model.addAttribute("bestG", bestG);
 		
 		List<Main> bestP = mainService.bestP();

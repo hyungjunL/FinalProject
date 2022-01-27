@@ -27,6 +27,8 @@ public interface MemberDao {
 	// 이메일 중복 체크
 	int emailCheck(String email);
 	
+	int idsCheck(String memberId);
+	
 	// ------------ 이영훈 ---------------
 	
 	// 회원 전체조회기능 메소드 틀

@@ -60,6 +60,23 @@ public class memberController {
 		return result;
 	}
 	
+	@ResponseBody
+	@GetMapping("/idsCheck.do")
+	public int idsCheck(
+			@RequestParam String memberId) {
+		
+		System.out.println(memberId);
+		
+		int result = memberService.idsCheck(memberId);
+		System.out.println("아이디 중복 결과 : " + result);
+		return result;
+	}
+	
+	@GetMapping("/joinSuccess.do")
+	public String joinSuccess() {
+		return "member/joinSuccess";
+	}
+	
 	@GetMapping("/joinSuccess.do")
 	public String joinSuccess() {
 		return "member/joinSuccess";

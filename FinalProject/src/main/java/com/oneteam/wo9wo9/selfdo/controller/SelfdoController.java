@@ -195,7 +195,7 @@ public class SelfdoController {
 				
 				session.setAttribute("alertMsg", "장바구니 담기 완료!");
 				
-				return "redirect:../basket/list"; // 장바구니로 가게해야 함.
+				return "redirect:meal.do"; // 장바구니로 가게해야 함.
 			}			
 		}
 			

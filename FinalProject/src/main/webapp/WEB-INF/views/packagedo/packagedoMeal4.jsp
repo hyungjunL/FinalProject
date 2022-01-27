@@ -13,18 +13,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>단백질</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="../resources/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="../resources/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="../resources/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="../resources/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="../resources/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="../resources/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="../resources/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
 
     <style>
           .list-area {
@@ -300,17 +288,6 @@
 <div id="footer">
 	<%@ include file="../common/main_bottom.jsp" %>
 </div>
-
-
-    <!-- Js Plugins -->
-    <script src="../resources/../resources/js/jquery-3.3.1.min.js"></script>
-    <script src="../resources/../resources/js/bootstrap.min.js"></script>
-    <script src="../resources/../resources/js/jquery.nice-select.min.js"></script>
-    <script src="../resources/../resources/js/jquery-ui.min.js"></script>
-    <script src="../resources/../resources/js/jquery.slicknav.js"></script>
-    <script src="../resources/../resources/js/mixitup.min.js"></script>
-    <script src="../resources/../resources/js/owl.carousel.min.js"></script>
-    <script src="../resources/../resources/js/main.js"></script>
 
 
 </body>

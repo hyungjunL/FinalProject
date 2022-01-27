@@ -10,7 +10,7 @@ public class Main {
 	private int price; //PRICE	NUMBER		NOT NULL,
 	private String status;//STATUS	VARCHAR2(1)	DEFAULT 'Y'	NOT NULL,
 	private int count; //COUNT	NUMBER	DEFAULT 0	NOT NULL
-	
+	private int packagePrice;
 	private String bestImg; //BESTIMG
 	private String bestRice;
 	private String bestSoup;

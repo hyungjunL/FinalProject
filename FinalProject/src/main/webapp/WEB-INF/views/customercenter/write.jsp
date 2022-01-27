@@ -79,17 +79,7 @@
                                 
                             </div>
                         </div>
-                        <div class="blog__sidebar__item">
-                            <h4>Search By</h4>
-                            <div class="blog__sidebar__item__tags">
-                                <a href="#">Apple</a>
-                                <a href="#">Beauty</a>
-                                <a href="#">Vegetables</a>
-                                <a href="#">Fruit</a>
-                                <a href="#">Healthy Food</a>
-                                <a href="#">Lifestyle</a>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-7">
@@ -104,7 +94,7 @@
                                 <br>
                                 <div >
                                     <select name="categoryNum">
-                                        <option value="1">페키지도시락</option>
+                                        <option value="1">패키지도시락</option>
                                         <option value="2">셀프도시락</option>
                                         <option value="3">서비스</option>
                                         <option value="4">기타</option>

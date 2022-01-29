@@ -78,11 +78,11 @@
                                   <div class="card-header" style="background-color: white;"><h3 class="text-center"><img src="${ pageContext.request.contextPath }/resources/logo.png" alt=""></h3></div>
                                   <div class="card-body">
                                     <form action="/wo9wo9/member/findId.do" method="post">
-                                        <h1 style="margin-bottom: 50px; text-align: center;">아이디 찾기</h1>
+                                        <h2 style="margin-bottom: 50px; text-align: center;">아이디 찾기</h2>
 
                                         <c:choose>
                                               <c:when test="${id!=null}"><!-- 아이디 찾았을때  -->
-                                                   <label style="text-align: center;">찾으시는 아이디는' ${id}' 입니다.</label>
+                                                   <h2 style="text-align: center;margin-bottom: 50px;color:green;">' ${id}'</h2>
                                                   <div class="form-label-group">
                                                       <input class="btn btn-lg btn-secondary btn-block text-uppercase"
                                                           type="button" value="OK" onclick="closethewindow()">

@@ -28,7 +28,7 @@
 									<div class="row">
 										<div class="col-lg-12">
 											<div class="section-title">
-												<h2 style="text-align:center;"> 셀프 도시락 BEST ></h2>
+												<h2 style="text-align:center;"> self 도시락 BEST ></h2>
 											</div>
 											<div>
 

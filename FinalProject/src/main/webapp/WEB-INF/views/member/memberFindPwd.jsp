@@ -78,11 +78,11 @@
                             <div class="card-header" style="background-color: white;"><h3 class="text-center"><img src="${ pageContext.request.contextPath }/resources/logo.png" alt=""></h3></div>
                             <div class="card-body">
                               <form action="/wo9wo9/member/findPwd.do" method="post">
-                                <h1 style="margin-bottom: 50px; text-align: center;">비밀번호 찾기</h1>
+                                <h2 style="margin-bottom: 50px; text-align: center;">비밀번호 찾기</h2>
                                 
                                 <c:choose>
                                       <c:when test="${pwd!=null}"><!-- 비밀번호 찾았을때  -->
-                                           <label style="text-align: center;">찾으시는 비밀번호는' ${pwd}' 입니다.</label>
+                                           <h2 style="text-align: center;margin-bottom: 50px;color:green">' ${pwd}'</h2>
                                 <div class="form-label-group">
                                   <input class="btn btn-lg btn-secondary btn-block text-uppercase"
                                     type="button" value="OK" onclick="closethewindow()">
